@@ -138,3 +138,4 @@ tests/test_file_workload.py::TestFileWorkload::test_file_workload_processing SKI
 [2025-10-04 14:13:47] 📊 Generando resumen final de pruebas...
 [2025-10-04 14:13:47] 🎉 TODOS LOS TESTS PASARON (3/3)
 [2025-10-04 14:13:47] ✅ Requisitos Entrega #1 verificados
+[2025-10-04 14:17:05] ❌ Fallo en paso 3: Verificar que GC esté listo
