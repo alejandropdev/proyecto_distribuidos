@@ -1,0 +1,5 @@
+NAME        IMAGE                                  COMMAND                  SERVICE            CREATED          STATUS                    PORTS
+actor_dev   sistema_distribuido-actor_devolucion   "python actor_devolu…"   actor_devolucion   26 minutes ago   Up 26 minutes (healthy)   
+actor_ren   sistema_distribuido-actor_renovacion   "python actor_renova…"   actor_renovacion   26 minutes ago   Up 26 minutes (healthy)   
+gc          sistema_distribuido-gc                 "python gestor_carga…"   gc                 26 minutes ago   Up 26 minutes (healthy)   0.0.0.0:5001-5002->5001-5002/tcp
+ps          sistema_distribuido-ps                 "python proceso_soli…"   ps                 5 seconds ago    Up 4 seconds              

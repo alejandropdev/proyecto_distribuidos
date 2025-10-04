@@ -2,7 +2,7 @@
   {
     "libro_id": "L001",
     "titulo": "1984",
-    "ejemplares_disponibles": 6,
+    "ejemplares_disponibles": 5,
     "fecha_devolucion": "2025-10-11"
   },
   {
@@ -14,7 +14,7 @@
   {
     "libro_id": "L003",
     "titulo": "Cien Años de Soledad",
-    "ejemplares_disponibles": 8,
+    "ejemplares_disponibles": 7,
     "fecha_devolucion": "2025-10-11"
   }
 ]

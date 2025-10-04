@@ -1,0 +1,86 @@
+2025-10-04 18:47:24 - ACTOR_DEV - INFO - 🚀 Iniciando Actor de Devolución...
+2025-10-04 18:47:24 - ACTOR_DEV - INFO - ✅ Conectado al Gestor de Carga en tcp://gc:5002
+2025-10-04 18:47:24 - ACTOR_DEV - INFO - 📡 Suscrito al topic 'devolucion'
+2025-10-04 18:47:26 - ACTOR_DEV - INFO - ✅ Actor de Devolución iniciado correctamente
+2025-10-04 18:47:26 - ACTOR_DEV - INFO - 📡 Esperando eventos de devolución...
+2025-10-04 18:47:26 - ACTOR_DEV - INFO - 🔄 Iniciando escucha de eventos de devolución...
+2025-10-04 19:06:40 - ACTOR_DEV - INFO - 📨 Evento recibido - Topic: devolucion
+2025-10-04 19:06:40 - ACTOR_DEV - INFO - 📄 Datos: {"operacion": "DEVOLUCION", "libro_id": "L001", "usuario_id": "U_TEST_DEV", "sede": "SEDE_TEST", "timestamp": "2025-10-04T19:06:40.573070"}
+2025-10-04 19:06:40 - ACTOR_DEV - INFO - 🔄 Procesando devolución: Libro L001 - Usuario U_TEST_DEV
+2025-10-04 19:06:40 - ACTOR_DEV - INFO - 📚 Base de datos de libros cargada: 3 libros
+2025-10-04 19:06:40 - ACTOR_DEV - INFO - 📚 Libro L001 devuelto por usuario U_TEST_DEV
+2025-10-04 19:06:40 - ACTOR_DEV - INFO - 📊 Ejemplares disponibles actualizados: 3 → 4
+2025-10-04 19:06:40 - ACTOR_DEV - INFO - 💾 Base de datos de libros actualizada y guardada
+2025-10-04 19:06:40 - ACTOR_DEV - INFO - ✅ Devolución procesada exitosamente (#1)
+2025-10-04 19:09:06 - ACTOR_DEV - INFO - 📨 Evento recibido - Topic: devolucion
+2025-10-04 19:09:06 - ACTOR_DEV - INFO - 📄 Datos: {"operacion": "DEVOLUCION", "libro_id": "L001", "usuario_id": "U_TEST_DEV", "sede": "SEDE_TEST", "timestamp": "2025-10-04T19:09:06.760342"}
+2025-10-04 19:09:06 - ACTOR_DEV - INFO - 🔄 Procesando devolución: Libro L001 - Usuario U_TEST_DEV
+2025-10-04 19:09:06 - ACTOR_DEV - INFO - 📚 Base de datos de libros cargada: 3 libros
+2025-10-04 19:09:06 - ACTOR_DEV - INFO - 📚 Libro L001 devuelto por usuario U_TEST_DEV
+2025-10-04 19:09:06 - ACTOR_DEV - INFO - 📊 Ejemplares disponibles actualizados: 4 → 5
+2025-10-04 19:09:06 - ACTOR_DEV - INFO - 💾 Base de datos de libros actualizada y guardada
+2025-10-04 19:09:06 - ACTOR_DEV - INFO - ✅ Devolución procesada exitosamente (#2)
+2025-10-04 19:11:01 - ACTOR_DEV - INFO - 📨 Evento recibido - Topic: devolucion
+2025-10-04 19:11:01 - ACTOR_DEV - INFO - 📄 Datos: {"operacion": "DEVOLUCION", "libro_id": "L003", "usuario_id": "U_TEST_DEV", "sede": "SEDE_TEST", "timestamp": "2025-10-04T19:11:01.182347"}
+2025-10-04 19:11:01 - ACTOR_DEV - INFO - 🔄 Procesando devolución: Libro L003 - Usuario U_TEST_DEV
+2025-10-04 19:11:01 - ACTOR_DEV - INFO - 📚 Base de datos de libros cargada: 3 libros
+2025-10-04 19:11:01 - ACTOR_DEV - INFO - 📚 Libro L003 devuelto por usuario U_TEST_DEV
+2025-10-04 19:11:01 - ACTOR_DEV - INFO - 📊 Ejemplares disponibles actualizados: 1 → 2
+2025-10-04 19:11:01 - ACTOR_DEV - INFO - 💾 Base de datos de libros actualizada y guardada
+2025-10-04 19:11:01 - ACTOR_DEV - INFO - ✅ Devolución procesada exitosamente (#3)
+2025-10-04 19:11:45 - ACTOR_DEV - INFO - 📨 Evento recibido - Topic: devolucion
+2025-10-04 19:11:45 - ACTOR_DEV - INFO - 📄 Datos: {"operacion": "DEVOLUCION", "libro_id": "L003", "usuario_id": "U_TEST_DEV", "sede": "SEDE_TEST", "timestamp": "2025-10-04T19:11:45.450345"}
+2025-10-04 19:11:45 - ACTOR_DEV - INFO - 🔄 Procesando devolución: Libro L003 - Usuario U_TEST_DEV
+2025-10-04 19:11:45 - ACTOR_DEV - INFO - 📚 Base de datos de libros cargada: 3 libros
+2025-10-04 19:11:45 - ACTOR_DEV - INFO - 📚 Libro L003 devuelto por usuario U_TEST_DEV
+2025-10-04 19:11:45 - ACTOR_DEV - INFO - 📊 Ejemplares disponibles actualizados: 2 → 3
+2025-10-04 19:11:45 - ACTOR_DEV - INFO - 💾 Base de datos de libros actualizada y guardada
+2025-10-04 19:11:45 - ACTOR_DEV - INFO - ✅ Devolución procesada exitosamente (#4)
+2025-10-04 19:12:18 - ACTOR_DEV - INFO - 📨 Evento recibido - Topic: devolucion
+2025-10-04 19:12:18 - ACTOR_DEV - INFO - 📄 Datos: {"operacion": "DEVOLUCION", "libro_id": "L003", "usuario_id": "U_TEST_DEV", "sede": "SEDE_TEST", "timestamp": "2025-10-04T19:12:18.323757"}
+2025-10-04 19:12:18 - ACTOR_DEV - INFO - 🔄 Procesando devolución: Libro L003 - Usuario U_TEST_DEV
+2025-10-04 19:12:18 - ACTOR_DEV - INFO - 📚 Base de datos de libros cargada: 3 libros
+2025-10-04 19:12:18 - ACTOR_DEV - INFO - 📚 Libro L003 devuelto por usuario U_TEST_DEV
+2025-10-04 19:12:18 - ACTOR_DEV - INFO - 📊 Ejemplares disponibles actualizados: 3 → 4
+2025-10-04 19:12:18 - ACTOR_DEV - INFO - 💾 Base de datos de libros actualizada y guardada
+2025-10-04 19:12:18 - ACTOR_DEV - INFO - ✅ Devolución procesada exitosamente (#5)
+2025-10-04 19:12:48 - ACTOR_DEV - INFO - 📨 Evento recibido - Topic: devolucion
+2025-10-04 19:12:48 - ACTOR_DEV - INFO - 📄 Datos: {"operacion": "DEVOLUCION", "libro_id": "L003", "usuario_id": "U_TEST_DEV", "sede": "SEDE_TEST", "timestamp": "2025-10-04T19:12:48.222509"}
+2025-10-04 19:12:48 - ACTOR_DEV - INFO - 🔄 Procesando devolución: Libro L003 - Usuario U_TEST_DEV
+2025-10-04 19:12:48 - ACTOR_DEV - INFO - 📚 Base de datos de libros cargada: 3 libros
+2025-10-04 19:12:48 - ACTOR_DEV - INFO - 📚 Libro L003 devuelto por usuario U_TEST_DEV
+2025-10-04 19:12:48 - ACTOR_DEV - INFO - 📊 Ejemplares disponibles actualizados: 4 → 5
+2025-10-04 19:12:48 - ACTOR_DEV - INFO - 💾 Base de datos de libros actualizada y guardada
+2025-10-04 19:12:48 - ACTOR_DEV - INFO - ✅ Devolución procesada exitosamente (#6)
+2025-10-04 19:13:14 - ACTOR_DEV - INFO - 📨 Evento recibido - Topic: devolucion
+2025-10-04 19:13:14 - ACTOR_DEV - INFO - 📄 Datos: {"operacion": "DEVOLUCION", "libro_id": "L003", "usuario_id": "U_TEST_DEV", "sede": "SEDE_TEST", "timestamp": "2025-10-04T19:13:13.991684"}
+2025-10-04 19:13:14 - ACTOR_DEV - INFO - 🔄 Procesando devolución: Libro L003 - Usuario U_TEST_DEV
+2025-10-04 19:13:14 - ACTOR_DEV - INFO - 📚 Base de datos de libros cargada: 3 libros
+2025-10-04 19:13:14 - ACTOR_DEV - INFO - 📚 Libro L003 devuelto por usuario U_TEST_DEV
+2025-10-04 19:13:14 - ACTOR_DEV - INFO - 📊 Ejemplares disponibles actualizados: 5 → 6
+2025-10-04 19:13:14 - ACTOR_DEV - INFO - 💾 Base de datos de libros actualizada y guardada
+2025-10-04 19:13:14 - ACTOR_DEV - INFO - ✅ Devolución procesada exitosamente (#7)
+2025-10-04 19:13:28 - ACTOR_DEV - INFO - 📨 Evento recibido - Topic: devolucion
+2025-10-04 19:13:28 - ACTOR_DEV - INFO - 📄 Datos: {"operacion": "DEVOLUCION", "libro_id": "L003", "usuario_id": "U_PUBSUB_TEST_DEV", "sede": "SEDE_PUBSUB", "timestamp": "2025-10-04T19:13:28.909694"}
+2025-10-04 19:13:28 - ACTOR_DEV - INFO - 🔄 Procesando devolución: Libro L003 - Usuario U_PUBSUB_TEST_DEV
+2025-10-04 19:13:28 - ACTOR_DEV - INFO - 📚 Base de datos de libros cargada: 3 libros
+2025-10-04 19:13:28 - ACTOR_DEV - INFO - 📚 Libro L003 devuelto por usuario U_PUBSUB_TEST_DEV
+2025-10-04 19:13:28 - ACTOR_DEV - INFO - 📊 Ejemplares disponibles actualizados: 6 → 7
+2025-10-04 19:13:28 - ACTOR_DEV - INFO - 💾 Base de datos de libros actualizada y guardada
+2025-10-04 19:13:28 - ACTOR_DEV - INFO - ✅ Devolución procesada exitosamente (#8)
+2025-10-04 19:13:39 - ACTOR_DEV - INFO - 📨 Evento recibido - Topic: devolucion
+2025-10-04 19:13:39 - ACTOR_DEV - INFO - 📄 Datos: {"operacion": "DEVOLUCION", "libro_id": "L002", "usuario_id": "U_MULTI_TEST_DEV", "sede": "SEDE_MULTI", "timestamp": "2025-10-04T19:13:39.022643"}
+2025-10-04 19:13:39 - ACTOR_DEV - INFO - 🔄 Procesando devolución: Libro L002 - Usuario U_MULTI_TEST_DEV
+2025-10-04 19:13:39 - ACTOR_DEV - INFO - 📚 Base de datos de libros cargada: 3 libros
+2025-10-04 19:13:39 - ACTOR_DEV - INFO - 📚 Libro L002 devuelto por usuario U_MULTI_TEST_DEV
+2025-10-04 19:13:39 - ACTOR_DEV - INFO - 📊 Ejemplares disponibles actualizados: 2 → 3
+2025-10-04 19:13:39 - ACTOR_DEV - INFO - 💾 Base de datos de libros actualizada y guardada
+2025-10-04 19:13:39 - ACTOR_DEV - INFO - ✅ Devolución procesada exitosamente (#9)
+2025-10-04 19:13:45 - ACTOR_DEV - INFO - 📨 Evento recibido - Topic: devolucion
+2025-10-04 19:13:45 - ACTOR_DEV - INFO - 📄 Datos: {"operacion": "DEVOLUCION", "libro_id": "L002", "usuario_id": "U002", "sede": "SEDE_1", "timestamp": "2025-10-04T19:13:45.719938"}
+2025-10-04 19:13:45 - ACTOR_DEV - INFO - 🔄 Procesando devolución: Libro L002 - Usuario U002
+2025-10-04 19:13:45 - ACTOR_DEV - INFO - 📚 Base de datos de libros cargada: 3 libros
+2025-10-04 19:13:45 - ACTOR_DEV - INFO - 📚 Libro L002 devuelto por usuario U002
+2025-10-04 19:13:45 - ACTOR_DEV - INFO - 📊 Ejemplares disponibles actualizados: 3 → 4
+2025-10-04 19:13:45 - ACTOR_DEV - INFO - 💾 Base de datos de libros actualizada y guardada
+2025-10-04 19:13:45 - ACTOR_DEV - INFO - ✅ Devolución procesada exitosamente (#10)

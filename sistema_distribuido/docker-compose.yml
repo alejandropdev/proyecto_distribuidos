@@ -9,6 +9,7 @@ services:
       - "5002:5002"  # Puerto PUB/SUB para eventos
     volumes:
       - ./data:/app/data
+      - ./logs:/app/logs
     networks:
       - red_distribuida
     restart: unless-stopped
@@ -27,6 +28,7 @@ services:
       - gc
     volumes:
       - ./data:/app/data
+      - ./logs:/app/logs
     networks:
       - red_distribuida
     restart: unless-stopped
@@ -45,6 +47,7 @@ services:
       - gc
     volumes:
       - ./data:/app/data
+      - ./logs:/app/logs
     networks:
       - red_distribuida
     restart: unless-stopped
@@ -65,9 +68,25 @@ services:
       - actor_renovacion
     volumes:
       - ./data:/app/data
+      - ./logs:/app/logs
     networks:
       - red_distribuida
     restart: "no"  # No reiniciar automáticamente, solo ejecutar una vez
+    profiles: ["demo"]  # Solo ejecutar en perfil demo
+
+  # Tester - Servicio para ejecutar pruebas
+  tester:
+    build: .
+    container_name: tester
+    command: sleep infinity
+    volumes:
+      - ./:/app
+      - ./data:/app/data
+      - ./logs:/app/logs
+    depends_on:
+      - gc
+    networks:
+      - red_distribuida
 
 # Red personalizada para comunicación entre contenedores
 networks:

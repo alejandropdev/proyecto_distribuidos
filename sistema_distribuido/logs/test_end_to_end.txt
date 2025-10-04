@@ -1,0 +1,11 @@
+=== REPORTE DE TEST: test_end_to_end ===
+Timestamp: 2025-10-04T19:13:26.145970
+
+test_name: test_end_to_end
+timestamp: 2025-10-04T19:13:26.108614
+passed: True
+operaciones_procesadas: 1
+tiempo_ack_promedio: 0.0
+errores: []
+
+Estado: PASSED

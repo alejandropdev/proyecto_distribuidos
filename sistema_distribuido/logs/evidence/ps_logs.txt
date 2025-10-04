@@ -1,0 +1,23 @@
+2025-10-04 19:13:42 - PS - INFO - 🚀 Iniciando Proceso Solicitante...
+2025-10-04 19:13:42 - PS - INFO - ✅ Conectado al Gestor de Carga en tcp://gc:5001
+2025-10-04 19:13:44 - PS - INFO - 🔄 Iniciando procesamiento de solicitudes...
+2025-10-04 19:13:44 - PS - INFO - 📖 Leídas 6 solicitudes desde data/solicitudes.txt
+2025-10-04 19:13:44 - PS - INFO - 📊 Procesando 6 solicitudes...
+2025-10-04 19:13:44 - PS - INFO - 🔄 Procesando solicitud 1/6: RENOVACION - L001 - U001
+2025-10-04 19:13:44 - PS - INFO - 📤 Solicitud #1 enviada: {"op": "RENOVACION", "libro_id": "L001", "usuario_id": "U001", "sede": "SEDE_1"}
+2025-10-04 19:13:44 - PS - INFO - 📥 Respuesta recibida: {"status": "OK", "message": "Recibido. Procesando...", "operacion": "RENOVACION", "libro_id": "L001"}
+2025-10-04 19:13:44 - PS - INFO - ✅ Solicitud procesada exitosamente
+2025-10-04 19:13:44 - PS - INFO - ✅ Solicitud 1 completada
+2025-10-04 19:13:44 - PS - INFO - ⏳ Esperando 1 segundo antes de la siguiente solicitud...
+2025-10-04 19:13:45 - PS - INFO - 🔄 Procesando solicitud 2/6: DEVOLUCION - L002 - U002
+2025-10-04 19:13:45 - PS - INFO - 📤 Solicitud #2 enviada: {"op": "DEVOLUCION", "libro_id": "L002", "usuario_id": "U002", "sede": "SEDE_1"}
+2025-10-04 19:13:45 - PS - INFO - 📥 Respuesta recibida: {"status": "OK", "message": "Recibido. Procesando...", "operacion": "DEVOLUCION", "libro_id": "L002"}
+2025-10-04 19:13:45 - PS - INFO - ✅ Solicitud procesada exitosamente
+2025-10-04 19:13:45 - PS - INFO - ✅ Solicitud 2 completada
+2025-10-04 19:13:45 - PS - INFO - ⏳ Esperando 1 segundo antes de la siguiente solicitud...
+2025-10-04 19:13:46 - PS - INFO - 🔄 Procesando solicitud 3/6: RENOVACION - L003 - U003
+2025-10-04 19:13:46 - PS - INFO - 📤 Solicitud #3 enviada: {"op": "RENOVACION", "libro_id": "L003", "usuario_id": "U003", "sede": "SEDE_1"}
+2025-10-04 19:13:46 - PS - INFO - 📥 Respuesta recibida: {"status": "OK", "message": "Recibido. Procesando...", "operacion": "RENOVACION", "libro_id": "L003"}
+2025-10-04 19:13:46 - PS - INFO - ✅ Solicitud procesada exitosamente
+2025-10-04 19:13:46 - PS - INFO - ✅ Solicitud 3 completada
+2025-10-04 19:13:46 - PS - INFO - ⏳ Esperando 1 segundo antes de la siguiente solicitud...

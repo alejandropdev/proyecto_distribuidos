@@ -1,0 +1,14 @@
+=== REPORTE DE TEST: test_file_workload ===
+Timestamp: 2025-10-04T19:13:46.215265
+
+test_name: test_file_workload
+timestamp: 2025-10-04T19:13:46.211881
+passed: True
+solicitudes_en_archivo: 0
+solicitudes_procesadas: 0
+operaciones_ok: 0
+operaciones_error: 0
+cambios_en_libros: False
+errores: []
+
+Estado: PASSED
