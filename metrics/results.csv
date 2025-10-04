@@ -1,0 +1,2 @@
+timestamp,ps_per_site,mode,site,avg_ms,stdev_ms,count_2min
+1759590762833,2,serial,A,1.55,0.6,40

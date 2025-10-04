@@ -1,0 +1,78 @@
+version: '3.8'
+
+services:
+  # Site A - Alejandro's components only (for development/testing)
+  sitio-a-dev:
+    build: .
+    container_name: sitio-a-dev
+    hostname: sitio-a-dev
+    networks:
+      - biblioteca-network
+    ports:
+      - "5555:5555"  # GC REQ/REP
+      - "5556:5556"  # GC PUB/SUB
+    environment:
+      - GC_BIND=tcp://0.0.0.0:5555
+      - GC_PUB_BIND=tcp://0.0.0.0:5556
+      - TOPIC_RENOVACION=RENOVACION
+      - TOPIC_DEVOLUCION=DEVOLUCION
+      - AP_REQ_CONNECT=tcp://sitio-b-dev:5557
+      - GC_MODE=serial
+      - METRICS_CSV=metrics/results.csv
+      - MEASUREMENT_WINDOW_SEC=120
+    volumes:
+      - ./data:/app/data
+      - ./metrics:/app/metrics
+    command: ["python", "-m", "gestor_central.server", "--mode", "serial", "--mock-ap", "--pretty"]
+
+  # Mock Site B - Simple mock for testing
+  sitio-b-dev:
+    build: .
+    container_name: sitio-b-dev
+    hostname: sitio-b-dev
+    networks:
+      - biblioteca-network
+    ports:
+      - "5557:5557"  # Mock AP
+    environment:
+      - MOCK_MODE=true
+    command: ["python", "-c", "print('Mock Site B - AP simulation'); import time; time.sleep(3600)"]
+
+  # PS Client Test - Single PS for testing
+  ps-test:
+    build: .
+    container_name: ps-test
+    hostname: ps-test
+    networks:
+      - biblioteca-network
+    environment:
+      - GC_ENDPOINT=tcp://sitio-a-dev:5555
+    volumes:
+      - ./data:/app/data
+      - ./metrics:/app/metrics
+    command: ["python", "-m", "ps.client", "--sede", "A", "--file", "data/ejemplos/peticiones_sample.txt", "--gc", "tcp://sitio-a-dev:5555", "--pretty", "--delay", "100"]
+    depends_on:
+      - sitio-a-dev
+
+  # Load Generator - For performance testing
+  load-test:
+    build: .
+    container_name: load-test
+    hostname: load-test
+    networks:
+      - biblioteca-network
+    environment:
+      - GC_ENDPOINT=tcp://sitio-a-dev:5555
+    volumes:
+      - ./data:/app/data
+      - ./metrics:/app/metrics
+    command: ["python", "tools/spawn_ps.py", "--ps-per-site", "2", "--sites", "A", "--duration-sec", "30", "--gc", "tcp://sitio-a-dev:5555", "--mode", "serial", "--out", "metrics/results.csv"]
+    depends_on:
+      - sitio-a-dev
+
+networks:
+  biblioteca-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
