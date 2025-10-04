@@ -1,0 +1,20 @@
+[
+  {
+    "libro_id": "L001",
+    "titulo": "1984",
+    "ejemplares_disponibles": 3,
+    "fecha_devolucion": "2025-10-11"
+  },
+  {
+    "libro_id": "L002",
+    "titulo": "El Principito",
+    "ejemplares_disponibles": 2,
+    "fecha_devolucion": "2025-10-11"
+  },
+  {
+    "libro_id": "L003",
+    "titulo": "Cien Años de Soledad",
+    "ejemplares_disponibles": 0,
+    "fecha_devolucion": "2025-10-11"
+  }
+]

@@ -1,0 +1,76 @@
+services:
+  # Gestor de Carga - Servicio central que maneja las solicitudes
+  gc:
+    build: .
+    container_name: gc
+    command: python gestor_carga.py
+    ports:
+      - "5001:5001"  # Puerto REQ/REP para solicitudes
+      - "5002:5002"  # Puerto PUB/SUB para eventos
+    volumes:
+      - ./data:/app/data
+    networks:
+      - red_distribuida
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import zmq; print('GC healthy')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Actor de Devolución - Procesa eventos de devolución
+  actor_devolucion:
+    build: .
+    container_name: actor_dev
+    command: python actor_devolucion.py
+    depends_on:
+      - gc
+    volumes:
+      - ./data:/app/data
+    networks:
+      - red_distribuida
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import zmq; print('Actor Dev healthy')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Actor de Renovación - Procesa eventos de renovación
+  actor_renovacion:
+    build: .
+    container_name: actor_ren
+    command: python actor_renovacion.py
+    depends_on:
+      - gc
+    volumes:
+      - ./data:/app/data
+    networks:
+      - red_distribuida
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import zmq; print('Actor Ren healthy')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Proceso Solicitante - Envía solicitudes al sistema
+  ps:
+    build: .
+    container_name: ps
+    command: python proceso_solicitante.py
+    depends_on:
+      - gc
+      - actor_devolucion
+      - actor_renovacion
+    volumes:
+      - ./data:/app/data
+    networks:
+      - red_distribuida
+    restart: "no"  # No reiniciar automáticamente, solo ejecutar una vez
+
+# Red personalizada para comunicación entre contenedores
+networks:
+  red_distribuida:
+    driver: bridge
+    name: red_distribuida
