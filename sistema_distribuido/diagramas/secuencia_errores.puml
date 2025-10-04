@@ -1,0 +1,196 @@
+@startuml
+!theme plain
+title Diagrama de Secuencia - Manejo de Errores del Sistema Distribuido
+
+skinparam sequence {
+  BackgroundColor LightRed
+  BorderColor DarkRed
+  ArrowColor Red
+  LifeLineBackgroundColor LightYellow
+  LifeLineBorderColor DarkOrange
+}
+
+participant "Proceso\nSolicitante" as PS
+participant "Gestor de\nCarga" as GC
+participant "Actor\nDevolución" as AD
+participant "Actor\nRenovación" as AR
+participant "Base de\nDatos" as BD
+participant "Sistema de\nLogs" as LOG
+
+== Error 1: Conexión Fallida ==
+
+PS -> PS : conectar_gestor_carga()
+PS -> GC : connect("tcp://gc:5001")
+GC --> PS : return(connection_refused)
+
+note over PS,GC
+**Error de conexión**
+GC no disponible
+Puerto 5001 cerrado
+end note
+
+PS -> LOG : log("ERROR: No se pudo conectar al GC")
+PS -> PS : incrementar_contador_errores()
+PS -> PS : retry_connection()
+
+alt Si reintento exitoso
+  PS -> GC : connect("tcp://gc:5001")
+  GC --> PS : return(connection_ok)
+  PS -> LOG : log("Conexión restablecida")
+else Si reintento fallido
+  PS -> LOG : log("ERROR FATAL: No se puede conectar")
+  PS -> PS : detener()
+end
+
+== Error 2: Solicitud Malformada ==
+
+PS -> PS : parsear_linea("INVALID_FORMAT")
+PS -> PS : crear_mensaje_json()
+PS -> GC : send(solicitud_invalida) [REQ]
+
+GC -> GC : recv(solicitud_invalida) [REP]
+GC -> GC : procesar_solicitud()
+GC -> GC : validar_operacion("INVALID_OP")
+GC -> GC : crear_error_response()
+
+note over GC
+**Error de validación**
+Operación inválida
+Formato incorrecto
+end note
+
+GC -> PS : send(error_response) [REP]
+PS -> PS : procesar_respuesta()
+PS -> LOG : log("ERROR: Solicitud inválida")
+PS -> PS : incrementar_contador_errores()
+
+== Error 3: Archivo de Base de Datos No Encontrado ==
+
+AD -> AD : procesar_devolucion(evento)
+AD -> BD : cargar_libros()
+BD --> AD : return(file_not_found_error)
+
+note over AD,BD
+**Error de archivo**
+libros.json no existe
+Archivo corrupto
+end note
+
+AD -> LOG : log("ERROR: Archivo de libros no encontrado")
+AD -> AD : incrementar_contador_errores()
+AD -> AD : crear_archivo_default()
+
+alt Si creación exitosa
+  AD -> BD : crear_libros_vacio()
+  AD -> LOG : log("Archivo de libros creado")
+  AD -> AD : continuar_procesamiento()
+else Si creación fallida
+  AD -> LOG : log("ERROR FATAL: No se puede crear BD")
+  AD -> AD : detener()
+end
+
+== Error 4: Libro No Encontrado ==
+
+AD -> AD : procesar_devolucion(evento)
+AD -> BD : cargar_libros()
+BD --> AD : return(libros_json)
+AD -> AD : buscar_libro("L999")
+
+note over AD
+**Libro inexistente**
+L999 no está en BD
+ID inválido
+end note
+
+AD -> LOG : log("WARNING: Libro L999 no encontrado")
+AD -> AD : incrementar_contador_errores()
+AD -> AD : continuar_siguiente_evento()
+
+== Error 5: Error de Serialización JSON ==
+
+PS -> PS : crear_mensaje_json()
+PS -> PS : json.dumps(solicitud)
+PS -> PS : json_encode_error
+
+note over PS
+**Error de JSON**
+Datos no serializables
+Codificación inválida
+end note
+
+PS -> LOG : log("ERROR: Error serializando JSON")
+PS -> PS : incrementar_contador_errores()
+PS -> PS : saltar_solicitud()
+
+== Error 6: Timeout en Comunicación ==
+
+PS -> GC : send(solicitud_json) [REQ]
+PS -> PS : wait_for_response(timeout=30s)
+PS -> PS : timeout_occurred
+
+note over PS,GC
+**Timeout**
+GC no responde
+Sistema sobrecargado
+end note
+
+PS -> LOG : log("ERROR: Timeout esperando respuesta")
+PS -> PS : incrementar_contador_errores()
+PS -> PS : reintentar_solicitud()
+
+== Error 7: Error de Red Docker ==
+
+AD -> AD : conectar_gestor_carga()
+AD -> GC : connect("tcp://gc:5002")
+GC --> AD : return(network_unreachable)
+
+note over AD,GC
+**Error de red**
+Red Docker caída
+Contenedores aislados
+end note
+
+AD -> LOG : log("ERROR: Red Docker no disponible")
+AD -> AD : esperar_reconexion()
+AD -> AD : reintentar_conexion()
+
+== Error 8: Error de Permisos de Archivo ==
+
+AD -> BD : guardar_libros(libros_actualizados)
+BD --> AD : return(permission_denied_error)
+
+note over AD,BD
+**Error de permisos**
+Archivo de solo lectura
+Permisos insuficientes
+end note
+
+AD -> LOG : log("ERROR: Sin permisos para escribir BD")
+AD -> AD : incrementar_contador_errores()
+AD -> AD : notificar_administrador()
+
+== Estrategias de Recuperación ==
+
+note over PS,AR
+**Estrategias implementadas:**
+• Reintentos automáticos
+• Logs detallados
+• Continuación del procesamiento
+• Notificación de errores
+end note
+
+== Monitoreo de Errores ==
+
+PS -> LOG : log("Estadísticas de errores")
+GC -> LOG : log("Errores de validación")
+AD -> LOG : log("Errores de procesamiento")
+AR -> LOG : log("Errores de procesamiento")
+
+note over LOG
+**Sistema de monitoreo**
+Contadores de errores
+Logs centralizados
+Alertas automáticas
+end note
+
+@enduml

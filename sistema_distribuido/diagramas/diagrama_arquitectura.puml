@@ -1,0 +1,101 @@
+@startuml
+!theme plain
+title Diagrama de Arquitectura - Sistema Distribuido de Préstamo de Libros
+
+skinparam rectangle {
+  BackgroundColor LightBlue
+  BorderColor DarkBlue
+}
+
+skinparam component {
+  BackgroundColor LightGreen
+  BorderColor DarkGreen
+}
+
+skinparam database {
+  BackgroundColor LightYellow
+  BorderColor Orange
+}
+
+skinparam note {
+  BackgroundColor LightCyan
+  BorderColor DarkCyan
+}
+
+' ========= Red Docker (contiene los contenedores) =========
+cloud "Red Docker\n(red_distribuida)" as Network {
+
+  ' === Contenedor GC ===
+  rectangle "Contenedor GC" as GC {
+    component "Gestor de Carga" as GC_Service
+    note right of GC_Service
+      • Puerto 5001: REQ/REP
+      • Puerto 5002: PUB/SUB
+      • Coordina solicitudes
+      • Publica eventos
+    end note
+  }
+
+  ' === Contenedor PS ===
+  rectangle "Contenedor PS" as PS {
+    component "Proceso Solicitante" as PS_Service
+    note right of PS_Service
+      • Lee solicitudes.txt
+      • Envía solicitudes JSON
+      • Comunicación síncrona
+    end note
+  }
+
+  ' === Contenedor Actor Devolución ===
+  rectangle "Contenedor Actor Devolución" as ActorDev {
+    component "Actor Devolución" as ActorDev_Service
+    note right of ActorDev_Service
+      • Suscribe a "devolucion"
+      • Actualiza ejemplares
+      • Modifica libros.json
+    end note
+  }
+
+  ' === Contenedor Actor Renovación ===
+  rectangle "Contenedor Actor Renovación" as ActorRen {
+    component "Actor Renovación" as ActorRen_Service
+    note right of ActorRen_Service
+      • Suscribe a "renovacion"
+      • Actualiza fechas
+      • Modifica libros.json
+    end note
+  }
+
+  ' === Archivos Compartidos (bind mount) ===
+  database "Archivos Compartidos" as DB {
+    component "libros.json" as LibrosDB
+    component "solicitudes.txt" as SolicitudesFile
+  }
+
+  ' === Comunicación REQ/REP (Síncrona) ===
+  PS_Service -[#red]-> GC_Service : REQ/REP\nPuerto 5001
+
+  ' === Comunicación PUB/SUB (Asíncrona) ===
+  GC_Service -[#green]-> ActorDev_Service : PUB/SUB\nPuerto 5002\ntopic: devolucion
+  GC_Service -[#green]-> ActorRen_Service : PUB/SUB\nPuerto 5002\ntopic: renovacion
+
+  ' === Acceso a archivos ===
+  PS_Service -[#orange]-> SolicitudesFile : Lee
+  ActorDev_Service -[#orange]-> LibrosDB : Lee/Escribe
+  ActorRen_Service -[#orange]-> LibrosDB : Lee/Escribe
+}
+
+' === Notas explicativas fuera de la nube (para que no molesten el layout) ===
+note top of PS_Service
+**Patrón REQ/REP**
+Comunicación síncrona
+Request-Response
+end note
+
+note top of GC_Service
+**Patrón PUB/SUB**
+Comunicación asíncrona
+Publisher-Subscriber
+end note
+
+@enduml

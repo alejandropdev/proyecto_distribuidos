@@ -1,0 +1,130 @@
+@startuml
+!theme plain
+title Diagrama de Secuencia - Inicialización del Sistema Distribuido
+
+skinparam sequence {
+  BackgroundColor LightBlue
+  BorderColor DarkBlue
+  ArrowColor DarkGreen
+  LifeLineBackgroundColor LightYellow
+  LifeLineBorderColor DarkOrange
+}
+
+participant "Docker\nCompose" as DC
+participant "Gestor de\nCarga" as GC
+participant "Actor\nDevolución" as AD
+participant "Actor\nRenovación" as AR
+participant "Proceso\nSolicitante" as PS
+participant "Red\nDocker" as NET
+
+== Fase 1: Levantamiento de Contenedores ==
+
+DC -> DC : docker compose up --build -d
+DC -> GC : create container "gc"
+DC -> AD : create container "actor_dev"
+DC -> AR : create container "actor_ren"
+DC -> PS : create container "ps"
+
+note over DC
+**Contenedores creados**
+Imagen Docker construida
+Volúmenes montados
+end note
+
+== Fase 2: Configuración de Red ==
+
+DC -> NET : create network "red_distribuida"
+GC -> NET : attach to network
+AD -> NET : attach to network
+AR -> NET : attach to network
+PS -> NET : attach to network
+
+note over NET
+**Red Docker configurada**
+Bridge network activa
+Comunicación entre contenedores
+end note
+
+== Fase 3: Inicialización de Servicios ==
+
+GC -> GC : __init__()
+GC -> GC : inicializar_sockets()
+GC -> GC : bind("tcp://0.0.0.0:5001") [REP]
+GC -> GC : bind("tcp://0.0.0.0:5002") [PUB]
+GC -> GC : healthcheck()
+
+note over GC
+**Gestor de Carga activo**
+Puerto 5001: REQ/REP
+Puerto 5002: PUB/SUB
+end note
+
+AD -> AD : __init__()
+AD -> AD : conectar_gestor_carga()
+AD -> NET : connect("tcp://gc:5002")
+AD -> AD : subscribe("devolucion")
+AD -> AD : healthcheck()
+
+note over AD
+**Actor Devolución activo**
+Suscrito a topic "devolucion"
+Esperando eventos
+end note
+
+AR -> AR : __init__()
+AR -> AR : conectar_gestor_carga()
+AR -> NET : connect("tcp://gc:5002")
+AR -> AR : subscribe("renovacion")
+AR -> AR : healthcheck()
+
+note over AR
+**Actor Renovación activo**
+Suscrito a topic "renovacion"
+Esperando eventos
+end note
+
+== Fase 4: Verificación de Estado ==
+
+DC -> GC : healthcheck status
+GC --> DC : return(healthy)
+
+DC -> AD : healthcheck status
+AD --> DC : return(healthy)
+
+DC -> AR : healthcheck status
+AR --> DC : return(healthy)
+
+note over DC
+**Todos los servicios saludables**
+Sistema listo para operar
+Healthchecks pasando
+end note
+
+== Fase 5: Preparación del Cliente ==
+
+PS -> PS : __init__()
+PS -> PS : leer_solicitudes("data/solicitudes.txt")
+PS -> PS : parsear_archivo()
+PS -> PS : conectar_gestor_carga()
+PS -> NET : connect("tcp://gc:5001")
+
+note over PS
+**Cliente preparado**
+Solicitudes cargadas
+Conectado al GC
+end note
+
+== Fase 6: Sistema Listo ==
+
+PS -> PS : mostrar_estadisticas_iniciales()
+GC -> GC : log("Sistema iniciado correctamente")
+AD -> AD : log("Esperando eventos de devolución")
+AR -> AR : log("Esperando eventos de renovación")
+
+note over PS,AR
+**Sistema completamente inicializado**
+Todos los componentes activos
+Listo para procesar solicitudes
+end note
+
+@enduml

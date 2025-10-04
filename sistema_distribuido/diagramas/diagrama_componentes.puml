@@ -1,0 +1,146 @@
+@startuml
+!theme plain
+title Diagrama de Componentes - Sistema Distribuido de Préstamo de Libros
+
+skinparam component {
+  BackgroundColor LightBlue
+  BorderColor DarkBlue
+}
+skinparam interface {
+  BackgroundColor LightGreen
+  BorderColor DarkGreen
+}
+skinparam package {
+  BackgroundColor LightYellow
+  BorderColor Orange
+}
+
+' ====================== Interfaces ======================
+interface "REQ/REP Interface" as REQREP
+interface "PUB/SUB Interface" as PUBSUB
+interface "File Interface" as FILE
+
+' ====================== Gestor de Carga ======================
+package "Gestor de Carga (GC)" {
+  [Socket Manager] as SocketMgr
+  [Request Processor] as ReqProcessor
+  [Event Publisher] as EventPub
+  [JSON Parser] as JSONParser
+  [Operation Counter] as OpCounter
+}
+
+' ====================== Proceso Solicitante ======================
+package "Proceso Solicitante (PS)" {
+  [Request Sender] as ReqSender
+  [File Reader] as FileReader
+  [Response Handler] as RespHandler
+  [Statistics Manager] as StatsMgr
+}
+
+' ====================== Actor Devolución ======================
+package "Actor de Devolución" {
+  [Event Subscriber Dev] as EventSubDev
+  [Devolución Processor] as DevProcessor
+  [Database Manager Dev] as DBManagerDev
+  [Backup Manager Dev] as BackupMgrDev
+}
+
+' ====================== Actor Renovación ======================
+package "Actor de Renovación" {
+  [Event Subscriber Ren] as EventSubRen
+  [Renovación Processor] as RenProcessor
+  [Database Manager Ren] as DBManagerRen
+  [Backup Manager Ren] as BackupMgrRen
+}
+
+' ====================== Data Layer ======================
+package "Capa de Datos" {
+  [libros.json] as LibrosDB
+  [solicitudes.txt] as SolicitudesFile
+  [Backup Files] as BackupFiles
+}
+
+' ====================== Infraestructura ======================
+package "Infraestructura" {
+  [ZeroMQ Context] as ZMQContext
+  [Docker Network] as DockerNet
+  [Logging System] as Logging
+}
+
+' ====================== Relaciones ======================
+
+' --- Comunicación REQ/REP ---
+ReqSender --> REQREP : usa
+REQREP --> ReqProcessor : recibe solicitud
+ReqProcessor --> EventPub : dispara evento
+EventPub --> PUBSUB : publica
+
+' --- Comunicación PUB/SUB ---
+PUBSUB --> EventSubDev : topic "devolucion"
+PUBSUB --> EventSubRen : topic "renovacion"
+
+' --- Procesamiento ---
+EventSubDev --> DevProcessor : procesa evento
+EventSubRen --> RenProcessor : procesa evento
+
+' --- Acceso a Base de Datos ---
+DevProcessor --> DBManagerDev : actualiza
+RenProcessor --> DBManagerRen : actualiza
+DBManagerDev --> LibrosDB : lee/escribe
+DBManagerRen --> LibrosDB : lee/escribe
+
+' --- Archivos de Solicitudes ---
+FileReader --> FILE : lee
+FILE --> SolicitudesFile : accede
+
+' --- Backups ---
+DBManagerDev --> BackupMgrDev : crea backup
+DBManagerRen --> BackupMgrRen : crea backup
+BackupMgrDev --> BackupFiles : almacena
+BackupMgrRen --> BackupFiles : almacena
+
+' --- Infraestructura ---
+SocketMgr --> ZMQContext : usa
+EventPub --> ZMQContext : usa
+EventSubDev --> ZMQContext : usa
+EventSubRen --> ZMQContext : usa
+ReqSender --> ZMQContext : usa
+ZMQContext --> DockerNet : comunica a través de
+
+' --- Logging ---
+ReqProcessor --> Logging : logs
+EventPub --> Logging : logs
+DevProcessor --> Logging : logs
+RenProcessor --> Logging : logs
+
+' ====================== Notas ======================
+note right of REQREP
+**Síncrono**
+Request-Response
+Puerto 5001
+end note
+
+note right of PUBSUB
+**Asíncrono**
+Publisher-Subscriber
+Puerto 5002
+end note
+
+note right of FILE
+**Acceso a archivos**
+Volúmenes Docker compartidos
+end note
+
+note bottom of LibrosDB
+**Estado compartido**
+Actualizado por ambos actores
+Control de concurrencia básico
+end note
+
+note top of ZMQContext
+**ZeroMQ**
+Librería de mensajería
+Comunicación distribuida
+end note
+
+@enduml

@@ -1,0 +1,152 @@
+@startuml
+!theme plain
+title Diagrama de Secuencia - Flujo de Devolución de Libros
+
+skinparam sequence {
+  BackgroundColor LightBlue
+  BorderColor DarkBlue
+  ArrowColor DarkGreen
+  LifeLineBackgroundColor LightYellow
+  LifeLineBorderColor DarkOrange
+}
+
+participant "Proceso\nSolicitante" as PS
+participant "Gestor de\nCarga" as GC
+participant "Actor\nDevolución" as AD
+participant "Base de\nDatos" as BD
+participant "Sistema de\nLogs" as LOG
+
+== Flujo de Devolución de Libro ==
+
+PS -> PS : leer_solicitudes()
+PS -> PS : parsear_linea("DEVOLUCION L001 U001")
+PS -> PS : crear_mensaje_json()
+
+note over PS
+**Solicitud preparada**
+Operación: DEVOLUCION
+Libro: L001, Usuario: U001
+end note
+
+== Comunicación REQ/REP (Síncrona) ==
+
+PS -> GC : send(solicitud_json) [REQ]
+note right of PS
+**Puerto 5001**
+Patrón REQ/REP
+Comunicación síncrona
+end note
+
+GC -> GC : recv(solicitud_json) [REP]
+GC -> GC : procesar_solicitud()
+GC -> GC : validar_operacion("DEVOLUCION")
+GC -> GC : crear_evento_devolucion()
+
+note over GC
+**Evento creado**
+Timestamp: 2025-01-XX
+Operación: DEVOLUCION
+end note
+
+GC -> PS : send(respuesta_ok) [REP]
+PS -> PS : procesar_respuesta()
+PS -> LOG : log("Solicitud enviada exitosamente")
+
+note over PS
+**Respuesta recibida**
+Status: OK
+Procesando...
+end note
+
+== Comunicación PUB/SUB (Asíncrona) ==
+
+GC -> GC : enviar_evento_a_actores()
+GC -> AD : publish("devolucion", evento) [PUB]
+note right of GC
+**Puerto 5002**
+Patrón PUB/SUB
+Topic: "devolucion"
+end note
+
+AD -> AD : recv_multipart() [SUB]
+AD -> AD : parsear_evento()
+AD -> LOG : log("Evento de devolución recibido")
+
+== Procesamiento de Devolución ==
+
+AD -> AD : procesar_devolucion(evento)
+AD -> BD : cargar_libros()
+BD --> AD : return(libros_json)
+
+note over AD
+**Base de datos cargada**
+Estado actual de libros
+Lista para modificar
+end note
+
+AD -> AD : buscar_libro("L001")
+AD -> AD : verificar_libro_existe()
+
+alt Si libro existe
+  AD -> AD : obtener_ejemplares_actuales()
+  AD -> AD : incrementar_ejemplares()
+  AD -> AD : actualizar_libro()
+
+  note over AD
+  **Ejemplares incrementados**
+  L001: 8 → 9 ejemplares
+  Estado actualizado
+  end note
+
+  AD -> BD : crear_backup()
+  AD -> BD : guardar_libros(libros_actualizados)
+  AD -> LOG : log("Devolución procesada exitosamente")
+
+  note over BD
+  **Base de datos actualizada**
+  Backup creado
+  Cambios persistidos
+  end note
+
+else Si libro no existe
+  AD -> LOG : log("ERROR: Libro L001 no encontrado")
+  AD -> AD : incrementar_contador_errores()
+end
+
+== Finalización ==
+
+AD -> AD : incrementar_contador_devoluciones()
+AD -> LOG : log("Total devoluciones: X")
+PS -> PS : incrementar_contador_exitosos()
+
+note over PS,AD
+**Devolución completada**
+Ejemplares disponibles +1
+Sistema actualizado
+end note
+
+== Casos de Error en Devolución ==
+
+alt Si error de conexión
+  PS -> GC : send(solicitud_json) [REQ]
+  GC --> PS : return(timeout_error) [REP]
+  PS -> LOG : log("ERROR: No se pudo conectar al GC")
+  PS -> PS : incrementar_contador_errores()
+end
+
+alt Si error en procesamiento
+  AD -> AD : procesar_devolucion(evento)
+  AD -> BD : cargar_libros()
+  BD --> AD : return(file_not_found_error)
+  AD -> LOG : log("ERROR: No se pudo cargar BD")
+  AD -> AD : incrementar_contador_errores()
+end
+
+alt Si error de validación
+  GC -> GC : validar_operacion("INVALID_OP")
+  GC -> PS : send(error_response) [REP]
+  PS -> LOG : log("ERROR: Operación inválida")
+  PS -> PS : incrementar_contador_errores()
+end
+
+@enduml

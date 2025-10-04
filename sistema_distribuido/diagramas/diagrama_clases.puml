@@ -1,0 +1,232 @@
+@startuml
+!theme plain
+title Diagrama de Clases - Sistema Distribuido de Préstamo de Libros
+
+skinparam class {
+  BackgroundColor LightBlue
+  BorderColor DarkBlue
+}
+skinparam interface {
+  BackgroundColor LightGreen
+  BorderColor DarkGreen
+}
+skinparam enum {
+  BackgroundColor LightYellow
+  BorderColor Orange
+}
+
+' ===================== Clases e Interfaces =====================
+
+abstract class BaseActor {
+  - context: Context
+  - sub_socket: Socket
+  - archivo_libros: str
+  - contador_operaciones: int
+  - running: bool
+  --
+  + __init__(archivo_libros: str)
+  + conectar_gestor_carga(): void
+  + cargar_libros(): List<Dict>
+  + guardar_libros(libros: List<Dict>): void
+  + escuchar_eventos(): void
+  + iniciar(): void
+  + detener(): void
+  --
+  {abstract} + procesar_evento(evento: Dict): bool
+}
+
+class GestorCarga {
+  - context: Context
+  - rep_socket: Socket
+  - pub_socket: Socket
+  - contador_operaciones: int
+  - running: bool
+  --
+  + __init__()
+  + inicializar_sockets(): void
+  + procesar_solicitud(mensaje_json: str): Dict
+  + enviar_evento_a_actores(evento: Dict): void
+  + manejar_solicitudes(): void
+  + iniciar(): void
+  + detener(): void
+  --
+  - _validar_operacion(operacion: str): bool
+  - _crear_evento(datos: Dict): Dict
+  - _calcular_fecha_renovacion(): str
+}
+
+class ProcesoSolicitante {
+  - context: Context
+  - req_socket: Socket
+  - contador_solicitudes: int
+  - contador_exitosos: int
+  - contador_errores: int
+  --
+  + __init__()
+  + conectar_gestor_carga(): void
+  + leer_solicitudes(archivo: str): List<Dict>
+  + enviar_solicitud(solicitud: Dict): bool
+  + procesar_solicitudes(archivo: str): void
+  + mostrar_estadisticas(): void
+  + iniciar(archivo: str): void
+  + detener(): void
+  --
+  - _parsear_linea(linea: str): Dict
+  - _crear_mensaje_json(solicitud: Dict): str
+  - _procesar_respuesta(respuesta: Dict): bool
+}
+
+class ActorDevolucion {
+  + procesar_devolucion(evento: Dict): bool
+  --
+  - _incrementar_ejemplares(libro: Dict): void
+  - _buscar_libro(libros: List<Dict], libro_id: str): Dict
+}
+
+class ActorRenovacion {
+  + procesar_renovacion(evento: Dict): bool
+  --
+  - _actualizar_fecha_devolucion(libro: Dict, nueva_fecha: str): void
+  - _buscar_libro(libros: List<Dict], libro_id: str): Dict
+}
+
+class Solicitud {
+  + op: str
+  + libro_id: str
+  + usuario_id: str
+  + sede: str
+  + linea: int
+  --
+  + __init__(op: str, libro_id: str, usuario_id: str, sede: str, linea: int)
+  + to_dict(): Dict
+}
+
+class Evento {
+  + operacion: str
+  + libro_id: str
+  + usuario_id: str
+  + sede: str
+  + timestamp: str
+  + nueva_fecha_devolucion: str
+  --
+  + __init__(operacion: str, libro_id: str, usuario_id: str, sede: str)
+  + to_dict(): Dict
+}
+
+class Libro {
+  + libro_id: str
+  + titulo: str
+  + ejemplares_disponibles: int
+  + fecha_devolucion: str
+  --
+  + __init__(libro_id: str, titulo: str, ejemplares: int, fecha: str)
+  + incrementar_ejemplares(): void
+  + actualizar_fecha_devolucion(nueva_fecha: str): void
+  + to_dict(): Dict
+}
+
+class Respuesta {
+  + status: str
+  + message: str
+  + operacion: str
+  + libro_id: str
+  --
+  + __init__(status: str, message: str, operacion: str = "", libro_id: str = "")
+  + is_ok(): bool
+  + to_dict(): Dict
+}
+
+enum TipoOperacion {
+  RENOVACION
+  DEVOLUCION
+}
+
+enum EstadoSolicitud {
+  PENDIENTE
+  PROCESANDO
+  COMPLETADA
+  ERROR
+}
+
+enum TipoSocket {
+  REQ
+  REP
+  PUB
+  SUB
+}
+
+interface IProcesadorEventos {
+  + procesar_evento(evento: Evento): bool
+}
+
+interface IComunicador {
+  + conectar(): void
+  + enviar(mensaje: str): void
+  + recibir(): str
+  + desconectar(): void
+}
+
+interface IRepositorioDatos {
+  + cargar(): List<Dict>
+  + guardar(datos: List<Dict>): void
+  + crear_backup(): void
+}
+
+' ===================== Relaciones =====================
+
+' Herencia
+BaseActor <|-- ActorDevolucion
+BaseActor <|-- ActorRenovacion
+
+' Implementación de interfaces
+ActorDevolucion ..|> IProcesadorEventos
+ActorRenovacion ..|> IProcesadorEventos
+GestorCarga ..|> IComunicador
+ProcesoSolicitante ..|> IComunicador
+ActorDevolucion ..|> IRepositorioDatos
+ActorRenovacion ..|> IRepositorioDatos
+
+' Composición / agregación de uso de objetos de dominio
+GestorCarga *-- Solicitud : processes
+GestorCarga *-- Evento : creates
+GestorCarga *-- Respuesta : generates
+ProcesoSolicitante *-- Solicitud : creates
+ActorDevolucion *-- Libro : updates
+ActorRenovacion *-- Libro : updates
+
+' Dependencias (uso de tipos)
+Solicitud --> TipoOperacion : uses
+Evento --> TipoOperacion : uses
+Respuesta --> EstadoSolicitud : uses
+GestorCarga --> TipoSocket : uses
+ProcesoSolicitante --> TipoSocket : uses
+
+' Notas
+note right of BaseActor
+**Clase base abstracta**
+Funcionalidad común de actores
+end note
+
+note right of GestorCarga
+**Componente central**
+REQ/REP y PUB/SUB
+Coordina el sistema
+end note
+
+note right of ProcesoSolicitante
+**Cliente del sistema**
+Lee archivo y envía solicitudes
+Comunicación síncrona
+end note
+
+note right of ActorDevolucion
+**Procesador de devoluciones**
+Incrementa ejemplares y guarda
+end note
+
+note right of ActorRenovacion
+**Procesador de renovaciones**
+Actualiza fechas y guarda
+end note
+
+@enduml
