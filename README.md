@@ -1,324 +1,148 @@
-# Sistema Distribuido de Biblioteca
+# Sistema Distribuido de Préstamo de Libros
 
-Este proyecto implementa un sistema distribuido de biblioteca con componentes desarrollados por Alejandro siguiendo el contrato funcional especificado.
+## 📋 Contexto del Proyecto
 
-## Arquitectura
+Este proyecto implementa un sistema distribuido de préstamo de libros para la Universidad Ada Lovelace, desarrollado como parte de un curso de sistemas distribuidos. El sistema está diseñado para funcionar en múltiples máquinas con comunicación distribuida usando ZeroMQ.
 
-El sistema está compuesto por:
+## 🏗️ Arquitectura del Sistema
 
+### Componentes Principales
 - **PS (Proceso Solicitante)**: Cliente que envía solicitudes (renovar, devolver, prestar)
-- **GC (Gestor Central)**: Recibe solicitudes de PS, las enruta a los actores correctos
-- **AR (Actor Renovación)**: Procesa renovaciones (desarrollado por Sebastián)
-- **AD (Actor Devolución)**: Procesa devoluciones (desarrollado por Sebastián)
-- **AP (Actor Préstamo)**: Procesa préstamos (desarrollado por Sebastián)
-- **GA (Gestor de Almacenamiento)**: CRUD sobre libros y préstamos (desarrollado por Sebastián)
+- **GC (Gestor Central)**: Recibe solicitudes de PS y las enruta a los actores correctos
+- **AR (Actor Renovación)**: Procesa renovaciones via PUB/SUB
+- **AD (Actor Devolución)**: Procesa devoluciones via PUB/SUB  
+- **AP (Actor Préstamo)**: Procesa préstamos via REQ/REP
+- **GA (Gestor de Almacenamiento)**: Servidor de almacenamiento con replicación
 
-## Componentes de Alejandro
+### Patrones de Comunicación
+- **PS ↔ GC**: REQ/REP (síncrono)
+- **GC → AR/AD**: PUB/SUB (asíncrono)
+- **GC ↔ AP**: REQ/REP (síncrono)
+- **Actores ↔ GA**: REQ/REP (síncrono)
+- **GA_A ↔ GA_B**: Replicación (asíncrono)
 
-Este repositorio contiene los componentes desarrollados por Alejandro:
+### Operaciones Implementadas
+- **RENOVAR**: Renovación de préstamo (1 semana adicional, máximo 2 renovaciones)
+- **DEVOLVER**: Devolución de libro (marca como disponible)
+- **PRESTAR**: Préstamo de libro (verificación de disponibilidad)
 
-- **GC Server**: Servidor central con modos serial y threaded
-- **PS Client**: Cliente solicitante con medición de latencia
-- **Load Generator**: Generador de carga con múltiples PS
-- **Charts Generator**: Generador de gráficos de métricas
-- **Demo Script**: Script de demostración completa
+## 🚀 Uso del Sistema
 
-## Instalación
-
-### 1. Crear entorno virtual
-
+### Para Usar el Menú de Opciones
 ```bash
-python3 -m venv venv
-source venv/bin/activate  # En Windows: venv\Scripts\activate
+./demo.sh
 ```
 
-### 2. Instalar dependencias
+### Para Uso General
+```bash
+# Opción 1: Menú Python (Recomendado)
+python run_system.py
 
+# Opción 2: Menú Docker
+./docker-scripts/menu.sh menu
+
+# Opción 3: Inicio Rápido
+./start.sh
+```
+
+## 📁 Estructura del Proyecto
+
+```
+proyecto_distribuidos/
+├── actors/                    # Actores (AR, AD, AP)
+├── common/                    # Utilidades comunes
+├── data/                      # Datos de prueba y configuración
+├── ga/                        # Gestor de Almacenamiento
+├── gestor_central/            # Gestor Central
+├── ps/                        # Proceso Solicitante
+├── tools/                     # Herramientas y utilidades
+├── docker-scripts/            # Scripts de Docker
+├── specs/                     # Especificaciones técnicas
+├── demo_profesor.py           # Demostración para profesor
+├── demo.sh                    # Script de demostración
+├── run_system.py              # Interfaz principal del sistema
+└── docker-compose.yml         # Configuración Docker
+```
+
+## 🎯 Requisitos Cumplidos
+
+### Primera Entrega (15%)
+- ✅ Operaciones RENOVAR y DEVOLVER implementadas
+- ✅ Comunicación ZeroMQ (REQ/REP y PUB/SUB)
+- ✅ Generación de carga automática desde archivo
+- ✅ Distribución en 2 máquinas (simuladas con Docker)
+- ✅ Base de datos inicial: 1000 libros, 200 préstamos
+- ✅ Logs claros del flujo PS → GC → Actor → GA
+- ✅ Respuesta inmediata al PS, procesamiento asíncrono
+
+### Datos Iniciales
+- **1000 libros** generados automáticamente
+- **200 libros prestados** (50 en sitio A, 150 en sitio B)
+- **Campos requeridos**: código, título, disponible
+- **Copias idénticas** en ambas sedes
+
+## 🔧 Configuración
+
+### Dependencias
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Configurar variables de entorno
-
-```bash
-cp .env.example .env
-# Editar .env con las IPs reales de las máquinas
-```
-
-## 🚀 Quick Start
-
-**The easiest way to use the system is through our menu interfaces:**
-
-```bash
-# Option 1: Python Menu Interface (Recommended)
-python run_system.py
-
-# Option 2: Docker Menu Interface  
-./docker-scripts/menu.sh menu
-
-# Option 3: Quick Start Script
-./start.sh
-```
-
-**📖 For detailed usage instructions, see [USAGE_GUIDE.md](USAGE_GUIDE.md)**
-
----
-
-## Uso
-
 ### Variables de Entorno
+El sistema usa variables de entorno para configuración:
+- Puertos de comunicación ZeroMQ
+- Endpoints de conexión
+- Modo de operación (serial/threaded)
+- Configuración de métricas
 
-Las siguientes variables pueden configurarse en `.env`:
-
+### Docker
 ```bash
-# GC Configuration
-GC_BIND=tcp://0.0.0.0:5555
-GC_PUB_BIND=tcp://0.0.0.0:5556
-TOPIC_RENOVACION=RENOVACION
-TOPIC_DEVOLUCION=DEVOLUCION
+# Construir e iniciar sistema completo
+docker-compose up -d
 
-# Connections
-GC_PUB_CONNECT=tcp://127.0.0.1:5556
-AP_REQ_CONNECT=tcp://127.0.0.1:5557
-
-# GC Mode
-GC_MODE=serial  # o threaded
-
-# Metrics
-METRICS_CSV=metrics/results.csv
-MEASUREMENT_WINDOW_SEC=120
+# Detener sistema
+docker-compose down
 ```
 
-### 1. Ejecutar GC Server
+## 📊 Métricas y Pruebas
 
-**Modo Serial:**
-```bash
-python -m gc.server --mode serial --pretty
-```
+### Generación de Carga
+- Lectura automática desde `peticiones.txt`
+- Múltiples procesos PS simultáneos
+- Medición de latencia y throughput
+- Generación de gráficos de rendimiento
 
-**Modo Threaded:**
-```bash
-python -m gc.server --mode threaded --workers 8 --pretty
-```
-
-**Con Mock AP (para pruebas sin Sebastián):**
-```bash
-python -m gc.server --mode serial --mock-ap --pretty
-```
-
-### 2. Ejecutar PS Client
-
-```bash
-python -m ps.client --sede A --file data/ejemplos/peticiones_sample.txt --pretty
-```
-
-Opciones:
-- `--sede`: Sitio (A o B)
-- `--file`: Archivo de peticiones
-- `--gc`: Endpoint del GC
-- `--pretty`: Logging bonito
-- `--delay`: Delay entre requests (ms)
-
-### 3. Generar Carga
-
-```bash
-python tools/spawn_ps.py \
-    --ps-per-site 4 \
-    --sites A,B \
-    --duration-sec 120 \
-    --file data/ejemplos/peticiones_sample.txt \
-    --gc tcp://127.0.0.1:5555 \
-    --mode serial \
-    --out metrics/results.csv
-```
-
-### 4. Generar Gráficos
-
-```bash
-python tools/charts.py --csv metrics/results.csv --outdir metrics/
-```
-
-### 5. Demo Completo
-
-```bash
-./tools/demo.sh
-# o con modo threaded:
-./tools/demo.sh threaded
-```
-
-## Formato de Peticiones
-
-El archivo `peticiones.txt` debe tener el formato:
-
+### Archivo de Peticiones
+Formato: `OPERACION CODIGO_LIBRO USUARIO`
 ```
 PRESTAR ISBN-0001 u-1
 RENOVAR ISBN-0100 u-17
 DEVOLVER ISBN-0099 u-5
 ```
 
-Donde:
-- **PRESTAR**: Solicitar préstamo de libro
-- **RENOVAR**: Renovar préstamo existente
-- **DEVOLVER**: Devolver libro prestado
-- **ISBN-XXXX**: Código del libro
-- **u-XX**: ID del usuario
+## 📚 Documentación
 
-## Esquemas de Mensajes
+- **DEMOSTRACION_PROFESOR.md**: Guía completa del sistema
+- **GUIA_DEMOSTRACION.md**: Secuencia paso a paso de uso
+- **ENUNCIADO.md**: Requisitos originales del proyecto
+- **specs/**: Especificaciones técnicas y contratos
 
-### PS → GC (solicitud)
-```json
-{
-  "id": "uuid-unique",
-  "sedeId": "A|B",
-  "userId": "u-123",
-  "op": "RENOVAR|DEVOLVER|PRESTAR",
-  "libroCodigo": "ISBN-XYZ",
-  "timestamp": 1710000000000
-}
-```
+## 🎯 Estado del Proyecto
 
-### GC → PS (respuesta)
-```json
-// Para RENOVAR/DEVOLVER
-{ "id": "uuid-unique", "status": "RECIBIDO" }
+**Primera Entrega**: ✅ Completada y lista para uso
+- Todas las funcionalidades requeridas implementadas
+- Sistema funcionando correctamente
+- Interfaz interactiva en español disponible
+- Documentación completa del sistema
 
-// Para PRESTAR
-{ "id": "uuid-unique", "status": "OK|ERROR", "reason": "opcional", "dueDate": "2025-10-31" }
-```
+## 🔄 Desarrollo Futuro
 
-### GC → Actores (PUB)
-```json
-{
-  "id": "uuid-unique",
-  "sedeId": "A|B",
-  "userId": "u-123",
-  "libroCodigo": "ISBN-XYZ",
-  "op": "RENOVAR|DEVOLVER",
-  "dueDateNew": "2025-11-07"  // solo en RENOVAR
-}
-```
+El sistema está preparado para:
+- Segunda entrega (25%): Operaciones completas, tolerancia a fallas
+- Pruebas de rendimiento: Comparación serial vs threaded
+- Implementación en máquinas físicas reales
+- Optimizaciones de rendimiento
 
-## Métricas
+---
 
-El sistema genera métricas en formato CSV con las siguientes columnas:
-
-- `timestamp`: Timestamp de la medición
-- `ps_per_site`: Número de PS por sitio
-- `mode`: Modo del GC (serial/threaded)
-- `site`: Sitio (A/B)
-- `avg_ms`: Latencia promedio de PRESTAR (ms)
-- `stdev_ms`: Desviación estándar de latencia (ms)
-- `count_2min`: Cantidad de PRESTAR exitosos en 2 minutos
-
-## Logging
-
-El sistema usa logging JSON estandarizado:
-
-```json
-{ "ts": 1710000000000, "proc": "GC|PS", "id": "uuid", "op": "RENOVAR|DEVOLVER|PRESTAR",
-  "stage": "recibido|enviado|aplicado|error", "detail": "texto" }
-```
-
-Usar `--pretty` para formato legible.
-
-## Pruebas Manuales
-
-### Sin Sebastián (Mock AP)
-
-1. **Iniciar GC con mock:**
-```bash
-python -m gc.server --mode serial --mock-ap --pretty
-```
-
-2. **Ejecutar PS client:**
-```bash
-python -m ps.client --sede A --file data/ejemplos/peticiones_sample.txt --pretty
-```
-
-3. **Verificar logs:**
-- Para RENOVAR/DEVOLVER: respuesta RECIBIDO + publicación en tópicos
-- Para PRESTAR: status=OK y dueDate presente
-
-4. **Ejecutar carga:**
-```bash
-python tools/spawn_ps.py --ps-per-site 2 --duration-sec 30 --mode serial
-```
-
-5. **Generar gráficos:**
-```bash
-python tools/charts.py --csv metrics/results.csv --outdir metrics/
-```
-
-## Compatibilidad con Sebastián
-
-El sistema está diseñado para integrarse con los componentes de Sebastián:
-
-- **Tópicos fijos**: `RENOVACION`, `DEVOLUCION`
-- **ActorMessage**: Formato exacto según contrato
-- **AP Connection**: `AP_REQ_CONNECT` para préstamos
-- **Variables de entorno**: Todas las IPs/puertos configurables
-
-## Estructura del Proyecto
-
-```
-dist-biblio/
-├── common/                    # Utilidades comunes
-│   ├── models.py             # Esquemas Pydantic
-│   ├── env.py                # Configuración de entorno
-│   ├── logging_utils.py      # Logging JSON + pretty
-│   └── time_utils.py         # Utilidades de tiempo
-├── gc/                       # Gestor Central
-│   ├── server.py             # Servidor principal
-│   ├── router.py             # Lógica de enrutamiento
-│   └── modes.py              # Modos serial/threaded
-├── ps/                       # Proceso Solicitante
-│   ├── client.py             # Cliente PS
-│   └── workload.py           # Generador de carga
-├── tools/                    # Herramientas
-│   ├── spawn_ps.py           # Generador de carga
-│   ├── charts.py             # Generador de gráficos
-│   └── demo.sh               # Script de demo
-├── data/ejemplos/            # Datos de ejemplo
-│   └── peticiones_sample.txt # Archivo de peticiones
-├── metrics/                  # Métricas y gráficos
-│   ├── results.csv           # CSV de métricas
-│   ├── latency_vs_ps.png     # Gráfico de latencia
-│   └── throughput_vs_ps.png  # Gráfico de throughput
-├── requirements.txt          # Dependencias Python
-├── .env.example             # Variables de entorno
-└── README.md                # Este archivo
-```
-
-## Troubleshooting
-
-### Error de conexión ZMQ
-- Verificar que los puertos estén disponibles
-- Comprobar configuración de `.env`
-- Asegurar que GC esté ejecutándose antes que PS
-
-### Timeout en PS
-- Verificar que GC esté respondiendo
-- Comprobar conectividad de red
-- Revisar logs del GC
-
-### Métricas vacías
-- Verificar que haya requests PRESTAR en el archivo
-- Comprobar que la duración sea suficiente
-- Revisar logs de PS para errores
-
-## Desarrollo
-
-### Agregar nuevas operaciones
-1. Actualizar `common/models.py` con nuevos esquemas
-2. Modificar `gc/router.py` para manejar la nueva operación
-3. Actualizar `ps/client.py` si es necesario
-4. Agregar tests en `data/ejemplos/peticiones_sample.txt`
-
-### Modificar métricas
-1. Actualizar `tools/spawn_ps.py` para recopilar nuevas métricas
-2. Modificar `tools/charts.py` para visualizar nuevas métricas
-3. Actualizar documentación
-
-## Licencia
-
-Este proyecto es parte de un trabajo académico de sistemas distribuidos.
+**Para usar el sistema: ejecutar `./demo.sh` y seguir las opciones numeradas.**
