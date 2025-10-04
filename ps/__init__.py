@@ -1,1 +1,0 @@
-# PS (Proceso Solicitante) components
