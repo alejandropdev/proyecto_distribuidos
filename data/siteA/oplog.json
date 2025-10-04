@@ -1,0 +1,107 @@
+[
+  {
+    "id": "manual-ap-1759593975008",
+    "op": "PRESTAR",
+    "codigo": "ISBN-0002",
+    "userId": "u-manual-ap",
+    "ts": 1759593975020
+  },
+  {
+    "id": "manual-ga-1759593975022",
+    "op": "PRESTAR",
+    "codigo": "ISBN-0003",
+    "userId": "u-manual-ga",
+    "ts": 1759593975029
+  },
+  {
+    "id": "faff9204-b386-4ee2-ba02-4b7b79e0121d",
+    "op": "PRESTAR",
+    "codigo": "ISBN-0001",
+    "userId": "u-1",
+    "ts": 1759594308984
+  },
+  {
+    "id": "e313fe0e-b2a8-4ce8-8e0b-367929e06489",
+    "op": "PRESTAR",
+    "codigo": "ISBN-0004",
+    "userId": "u-4",
+    "ts": 1759594309156
+  },
+  {
+    "id": "ea17c0da-a4ad-4df4-b05a-d3994fb5f2f8",
+    "op": "PRESTAR",
+    "codigo": "ISBN-0006",
+    "userId": "u-6",
+    "ts": 1759594309287
+  },
+  {
+    "id": "962c0650-40c3-461a-9593-26a67a217112",
+    "op": "PRESTAR",
+    "codigo": "ISBN-0008",
+    "userId": "u-8",
+    "ts": 1759594309477
+  },
+  {
+    "id": "c30e055b-a944-40ae-8dad-25703c2b12c3",
+    "op": "PRESTAR",
+    "codigo": "ISBN-0009",
+    "userId": "u-9",
+    "ts": 1759594309631
+  },
+  {
+    "id": "8026846c-01d4-4b42-b011-0f816bafa40f",
+    "op": "PRESTAR",
+    "codigo": "ISBN-0010",
+    "userId": "u-10",
+    "ts": 1759594309709
+  },
+  {
+    "id": "5b27a431-7f29-4e29-a212-9adedf4b7727",
+    "op": "PRESTAR",
+    "codigo": "ISBN-0011",
+    "userId": "u-11",
+    "ts": 1759594309782
+  },
+  {
+    "id": "d3a8f419-c581-48f7-9eed-fb0a91310f4b",
+    "op": "PRESTAR",
+    "codigo": "ISBN-0013",
+    "userId": "u-13",
+    "ts": 1759594309903
+  },
+  {
+    "id": "5dc38a3f-4985-44df-a5c4-5a41eac676b2",
+    "op": "PRESTAR",
+    "codigo": "ISBN-0016",
+    "userId": "u-16",
+    "ts": 1759594310064
+  },
+  {
+    "id": "48c00db4-0821-478c-beab-2b00e3b9fc3c",
+    "op": "PRESTAR",
+    "codigo": "ISBN-0017",
+    "userId": "u-17",
+    "ts": 1759594310121
+  },
+  {
+    "id": "f322d9b8-822c-4785-b4cb-09fdf2ae984c",
+    "op": "PRESTAR",
+    "codigo": "ISBN-0018",
+    "userId": "u-18",
+    "ts": 1759594310178
+  },
+  {
+    "id": "526bad16-c059-4980-9d6b-842224fea262",
+    "op": "PRESTAR",
+    "codigo": "ISBN-0019",
+    "userId": "u-19",
+    "ts": 1759594310235
+  },
+  {
+    "id": "fbfd80e5-fe3b-4067-97e2-8243845b0a75",
+    "op": "PRESTAR",
+    "codigo": "ISBN-0020",
+    "userId": "u-20",
+    "ts": 1759594310293
+  }
+]

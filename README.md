@@ -45,6 +45,25 @@ cp .env.example .env
 # Editar .env con las IPs reales de las máquinas
 ```
 
+## 🚀 Quick Start
+
+**The easiest way to use the system is through our menu interfaces:**
+
+```bash
+# Option 1: Python Menu Interface (Recommended)
+python run_system.py
+
+# Option 2: Docker Menu Interface  
+./docker-scripts/menu.sh menu
+
+# Option 3: Quick Start Script
+./start.sh
+```
+
+**📖 For detailed usage instructions, see [USAGE_GUIDE.md](USAGE_GUIDE.md)**
+
+---
+
 ## Uso
 
 ### Variables de Entorno

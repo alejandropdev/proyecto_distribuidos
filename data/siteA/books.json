@@ -1,0 +1,5002 @@
+[
+  {
+    "codigo": "ISBN-0208",
+    "titulo": "El código Da Vinci - Julio Cortázar",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0137",
+    "titulo": "La ciudad y los perros - Ray Bradbury",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0326",
+    "titulo": "El amor en los tiempos del cólera - J.D. Salinger",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0571",
+    "titulo": "Crimen y castigo - Roberto Bolaño",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0527",
+    "titulo": "El túnel - Ray Bradbury",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0539",
+    "titulo": "Cien años de soledad - Mark Twain",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0604",
+    "titulo": "Cien años de soledad - J.D. Salinger",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0165",
+    "titulo": "La casa de los espíritus - Isabel Allende",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0370",
+    "titulo": "Cien años de soledad - Ernesto Sábato",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0597",
+    "titulo": "El guardián entre el centeno - J.D. Salinger",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0440",
+    "titulo": "Ulises - Jane Austen",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0234",
+    "titulo": "En busca del tiempo perdido - Miguel de Cervantes",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0263",
+    "titulo": "El Quijote - Carlos Fuentes",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0880",
+    "titulo": "1984 - Miguel de Cervantes",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0147",
+    "titulo": "El Quijote - Harper Lee",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0163",
+    "titulo": "El alquimista - Leo Tolstoy",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0699",
+    "titulo": "Harry Potter - Juan Rulfo",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0553",
+    "titulo": "El Quijote - Leo Tolstoy",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0712",
+    "titulo": "Rayuela - Jane Austen",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0449",
+    "titulo": "Rayuela - Fyodor Dostoevsky",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0899",
+    "titulo": "El amor en los tiempos del cólera - Mark Twain",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0121",
+    "titulo": "Ulises - Suzanne Collins",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0728",
+    "titulo": "El túnel - Fyodor Dostoevsky",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0620",
+    "titulo": "Rayuela - Jane Austen",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0984",
+    "titulo": "El alquimista - J.R.R. Tolkien",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0474",
+    "titulo": "Fahrenheit 451 - Juan Rulfo",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0623",
+    "titulo": "1984 - Suzanne Collins",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0229",
+    "titulo": "Harry Potter - Marcel Proust",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0839",
+    "titulo": "Los detectives salvajes - Herman Melville",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0042",
+    "titulo": "El guardián entre el centeno - Dan Brown",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0195",
+    "titulo": "El código Da Vinci - Roberto Bolaño",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0524",
+    "titulo": "Cien años de soledad - Carlos Fuentes",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0253",
+    "titulo": "Los detectives salvajes - Carlos Fuentes",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0945",
+    "titulo": "El alquimista - Dan Brown",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0081",
+    "titulo": "Las aventuras de Huckleberry Finn - Herman Melville",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0731",
+    "titulo": "Ulises - Harper Lee",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0420",
+    "titulo": "El señor de los anillos - Ernesto Sábato",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0117",
+    "titulo": "Harry Potter - Herman Melville",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0265",
+    "titulo": "La casa de los espíritus - Ernesto Sábato",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0749",
+    "titulo": "Cien años de soledad - Ernesto Sábato",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0609",
+    "titulo": "Fahrenheit 451 - Miguel de Cervantes",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0303",
+    "titulo": "1984 - Isabel Allende",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0997",
+    "titulo": "Orgullo y prejuicio - Isabel Allende",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0706",
+    "titulo": "Los detectives salvajes - James Joyce",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0403",
+    "titulo": "Ulises - James Joyce",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0795",
+    "titulo": "El señor de los anillos - Marcel Proust",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0689",
+    "titulo": "El alquimista - J.K. Rowling",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0834",
+    "titulo": "Rayuela - Jane Austen",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0582",
+    "titulo": "2666 - Isabel Allende",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0329",
+    "titulo": "1984 - J.D. Salinger",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0102",
+    "titulo": "Moby Dick - J.R.R. Tolkien",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0261",
+    "titulo": "El gran Gatsby - Julio Cortázar",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0959",
+    "titulo": "Cien años de soledad - Juan Rulfo",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0721",
+    "titulo": "Conversación en La Catedral - J.K. Rowling",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0697",
+    "titulo": "El Quijote - Paulo Coelho",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0711",
+    "titulo": "Orgullo y prejuicio - J.D. Salinger",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0743",
+    "titulo": "Harry Potter - James Joyce",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0652",
+    "titulo": "Cien años de soledad - Dan Brown",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0237",
+    "titulo": "Orgullo y prejuicio - Jane Austen",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0814",
+    "titulo": "El amor en los tiempos del cólera - Paulo Coelho",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0099",
+    "titulo": "Fahrenheit 451 - Mario Vargas Llosa",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0590",
+    "titulo": "1984 - Carlos Fuentes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0399",
+    "titulo": "1984 - Gabriel García Márquez",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0695",
+    "titulo": "Orgullo y prejuicio - Marcel Proust",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0679",
+    "titulo": "Anna Karenina - Mark Twain",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0887",
+    "titulo": "Crimen y castigo - Dan Brown",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0642",
+    "titulo": "Cien años de soledad - Miguel de Cervantes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0466",
+    "titulo": "El túnel - Mario Vargas Llosa",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0777",
+    "titulo": "Pedro Páramo - Juan Rulfo",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0111",
+    "titulo": "El gran Gatsby - Gabriel García Márquez",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0810",
+    "titulo": "Dune - Isabel Allende",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0813",
+    "titulo": "1984 - Fyodor Dostoevsky",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0057",
+    "titulo": "Harry Potter - Herman Melville",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0684",
+    "titulo": "El amor en los tiempos del cólera - Mario Vargas Llosa",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0801",
+    "titulo": "Pedro Páramo - Mario Vargas Llosa",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0700",
+    "titulo": "Moby Dick - George Orwell",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0772",
+    "titulo": "Moby Dick - Julio Cortázar",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0230",
+    "titulo": "La casa de los espíritus - Carlos Fuentes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0018",
+    "titulo": "El amor en los tiempos del cólera - James Joyce",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0244",
+    "titulo": "El alquimista - Mark Twain",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0786",
+    "titulo": "Rayuela - Dan Brown",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0674",
+    "titulo": "Pedro Páramo - Ray Bradbury",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0846",
+    "titulo": "2666 - Frank Herbert",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0856",
+    "titulo": "Cien años de soledad - Fyodor Dostoevsky",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0781",
+    "titulo": "Crimen y castigo - Gabriel García Márquez",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0522",
+    "titulo": "El señor de los anillos - Suzanne Collins",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0569",
+    "titulo": "El túnel - Dan Brown",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0088",
+    "titulo": "Crimen y castigo - Marcel Proust",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0238",
+    "titulo": "Orgullo y prejuicio - Carlos Fuentes",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0996",
+    "titulo": "Crimen y castigo - Leo Tolstoy",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0573",
+    "titulo": "Rayuela - Juan Rulfo",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0833",
+    "titulo": "Ulises - Juan Rulfo",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0416",
+    "titulo": "El código Da Vinci - J.D. Salinger",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0902",
+    "titulo": "La casa de los espíritus - Gabriel García Márquez",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0807",
+    "titulo": "El alquimista - J.R.R. Tolkien",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0228",
+    "titulo": "1984 - Gabriel García Márquez",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0953",
+    "titulo": "En busca del tiempo perdido - Isabel Allende",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0385",
+    "titulo": "El Quijote - Herman Melville",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0540",
+    "titulo": "1984 - Marcel Proust",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0993",
+    "titulo": "En busca del tiempo perdido - James Joyce",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0232",
+    "titulo": "Los juegos del hambre - Isabel Allende",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0581",
+    "titulo": "El túnel - Jane Austen",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0065",
+    "titulo": "2666 - Ernesto Sábato",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0694",
+    "titulo": "Los detectives salvajes - Gabriel García Márquez",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0538",
+    "titulo": "Conversación en La Catedral - Paulo Coelho",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0909",
+    "titulo": "La ciudad y los perros - Ray Bradbury",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0343",
+    "titulo": "Pedro Páramo - Mark Twain",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0817",
+    "titulo": "Rayuela - Mario Vargas Llosa",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0061",
+    "titulo": "Los juegos del hambre - Ray Bradbury",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0319",
+    "titulo": "El túnel - Mario Vargas Llosa",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0318",
+    "titulo": "Matar a un ruiseñor - Fyodor Dostoevsky",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0005",
+    "titulo": "Las aventuras de Huckleberry Finn - Leo Tolstoy",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0966",
+    "titulo": "El guardián entre el centeno - Gabriel García Márquez",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0034",
+    "titulo": "1984 - F. Scott Fitzgerald",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0359",
+    "titulo": "Ulises - Juan Rulfo",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0339",
+    "titulo": "El Quijote - Fyodor Dostoevsky",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0077",
+    "titulo": "Crimen y castigo - Fyodor Dostoevsky",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0227",
+    "titulo": "En busca del tiempo perdido - Julio Cortázar",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0100",
+    "titulo": "El señor de los anillos - Frank Herbert",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0935",
+    "titulo": "La casa de los espíritus - Fyodor Dostoevsky",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0240",
+    "titulo": "El código Da Vinci - Carlos Fuentes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0894",
+    "titulo": "Crimen y castigo - Isabel Allende",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0755",
+    "titulo": "El túnel - Roberto Bolaño",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0461",
+    "titulo": "Moby Dick - J.R.R. Tolkien",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0583",
+    "titulo": "El código Da Vinci - Harper Lee",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0971",
+    "titulo": "Anna Karenina - George Orwell",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0990",
+    "titulo": "Los detectives salvajes - Isabel Allende",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0086",
+    "titulo": "El código Da Vinci - George Orwell",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0204",
+    "titulo": "Rayuela - Isabel Allende",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0433",
+    "titulo": "Conversación en La Catedral - Leo Tolstoy",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0047",
+    "titulo": "Ulises - James Joyce",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0690",
+    "titulo": "Fahrenheit 451 - J.R.R. Tolkien",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0425",
+    "titulo": "El gran Gatsby - F. Scott Fitzgerald",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0105",
+    "titulo": "Pedro Páramo - Leo Tolstoy",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0353",
+    "titulo": "Las aventuras de Huckleberry Finn - Ernesto Sábato",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0792",
+    "titulo": "El amor en los tiempos del cólera - Leo Tolstoy",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0929",
+    "titulo": "El amor en los tiempos del cólera - J.D. Salinger",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0837",
+    "titulo": "Crimen y castigo - Julio Cortázar",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0123",
+    "titulo": "La ciudad y los perros - Harper Lee",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0155",
+    "titulo": "Orgullo y prejuicio - Dan Brown",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0305",
+    "titulo": "Ulises - Mario Vargas Llosa",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0332",
+    "titulo": "Conversación en La Catedral - Isabel Allende",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0939",
+    "titulo": "Dune - Roberto Bolaño",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0432",
+    "titulo": "El gran Gatsby - Ray Bradbury",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0580",
+    "titulo": "Ulises - Dan Brown",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0211",
+    "titulo": "El amor en los tiempos del cólera - Paulo Coelho",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0685",
+    "titulo": "Crimen y castigo - Julio Cortázar",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0355",
+    "titulo": "Fahrenheit 451 - James Joyce",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0722",
+    "titulo": "Las aventuras de Huckleberry Finn - Jane Austen",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0568",
+    "titulo": "El señor de los anillos - Mario Vargas Llosa",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0653",
+    "titulo": "Conversación en La Catedral - Dan Brown",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0405",
+    "titulo": "La casa de los espíritus - Miguel de Cervantes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0097",
+    "titulo": "El túnel - J.D. Salinger",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0248",
+    "titulo": "El alquimista - Juan Rulfo",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0991",
+    "titulo": "Conversación en La Catedral - Miguel de Cervantes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0368",
+    "titulo": "1984 - James Joyce",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0315",
+    "titulo": "La casa de los espíritus - James Joyce",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0892",
+    "titulo": "Moby Dick - Ernesto Sábato",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0012",
+    "titulo": "Los detectives salvajes - Jane Austen",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0106",
+    "titulo": "Orgullo y prejuicio - Marcel Proust",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0072",
+    "titulo": "Anna Karenina - Frank Herbert",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0852",
+    "titulo": "La casa de los espíritus - J.K. Rowling",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0545",
+    "titulo": "Rayuela - Paulo Coelho",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0347",
+    "titulo": "Cien años de soledad - Marcel Proust",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0337",
+    "titulo": "Ulises - Marcel Proust",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0407",
+    "titulo": "En busca del tiempo perdido - Juan Rulfo",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0127",
+    "titulo": "El gran Gatsby - Mario Vargas Llosa",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0842",
+    "titulo": "Moby Dick - Suzanne Collins",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0963",
+    "titulo": "Harry Potter - Miguel de Cervantes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0593",
+    "titulo": "Anna Karenina - Fyodor Dostoevsky",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0862",
+    "titulo": "Moby Dick - Herman Melville",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0218",
+    "titulo": "Los juegos del hambre - Isabel Allende",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0917",
+    "titulo": "Los juegos del hambre - Marcel Proust",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0277",
+    "titulo": "El guardián entre el centeno - Paulo Coelho",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0890",
+    "titulo": "La ciudad y los perros - Mario Vargas Llosa",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0556",
+    "titulo": "Moby Dick - J.K. Rowling",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0874",
+    "titulo": "La ciudad y los perros - Isabel Allende",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0479",
+    "titulo": "El código Da Vinci - George Orwell",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0992",
+    "titulo": "El alquimista - Suzanne Collins",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0393",
+    "titulo": "Los detectives salvajes - Carlos Fuentes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0657",
+    "titulo": "Matar a un ruiseñor - Ernesto Sábato",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0292",
+    "titulo": "La ciudad y los perros - Carlos Fuentes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0341",
+    "titulo": "El código Da Vinci - Isabel Allende",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0506",
+    "titulo": "Orgullo y prejuicio - Ray Bradbury",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0757",
+    "titulo": "Matar a un ruiseñor - George Orwell",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0271",
+    "titulo": "Conversación en La Catedral - Leo Tolstoy",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0646",
+    "titulo": "Pedro Páramo - Mark Twain",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0531",
+    "titulo": "Dune - Frank Herbert",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0861",
+    "titulo": "Cien años de soledad - Harper Lee",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0667",
+    "titulo": "El túnel - Paulo Coelho",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0940",
+    "titulo": "El guardián entre el centeno - Dan Brown",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0744",
+    "titulo": "Cien años de soledad - Isabel Allende",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0825",
+    "titulo": "Las aventuras de Huckleberry Finn - Frank Herbert",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0396",
+    "titulo": "El código Da Vinci - Paulo Coelho",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0586",
+    "titulo": "El gran Gatsby - J.D. Salinger",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0177",
+    "titulo": "Crimen y castigo - Juan Rulfo",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0221",
+    "titulo": "Harry Potter - Paulo Coelho",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0610",
+    "titulo": "1984 - James Joyce",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0576",
+    "titulo": "1984 - Marcel Proust",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0387",
+    "titulo": "La ciudad y los perros - Carlos Fuentes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0776",
+    "titulo": "El túnel - Roberto Bolaño",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0740",
+    "titulo": "Los detectives salvajes - Frank Herbert",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0567",
+    "titulo": "Dune - Mark Twain",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0928",
+    "titulo": "El Quijote - Ernesto Sábato",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0009",
+    "titulo": "Crimen y castigo - Frank Herbert",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0402",
+    "titulo": "Rayuela - George Orwell",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0666",
+    "titulo": "Harry Potter - Gabriel García Márquez",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0317",
+    "titulo": "Los detectives salvajes - Carlos Fuentes",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0803",
+    "titulo": "2666 - Roberto Bolaño",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0096",
+    "titulo": "Matar a un ruiseñor - J.K. Rowling",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0503",
+    "titulo": "Cien años de soledad - J.D. Salinger",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0782",
+    "titulo": "El amor en los tiempos del cólera - Carlos Fuentes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0087",
+    "titulo": "Los juegos del hambre - J.D. Salinger",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0726",
+    "titulo": "2666 - Carlos Fuentes",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0906",
+    "titulo": "El código Da Vinci - J.K. Rowling",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0982",
+    "titulo": "Cien años de soledad - Frank Herbert",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0716",
+    "titulo": "Moby Dick - J.R.R. Tolkien",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0498",
+    "titulo": "El gran Gatsby - Suzanne Collins",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0727",
+    "titulo": "Orgullo y prejuicio - Ray Bradbury",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0173",
+    "titulo": "El túnel - Harper Lee",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0681",
+    "titulo": "La ciudad y los perros - Mark Twain",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0885",
+    "titulo": "El túnel - J.R.R. Tolkien",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0977",
+    "titulo": "El alquimista - Mario Vargas Llosa",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0859",
+    "titulo": "En busca del tiempo perdido - Herman Melville",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0748",
+    "titulo": "Orgullo y prejuicio - Roberto Bolaño",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0389",
+    "titulo": "Fahrenheit 451 - Mario Vargas Llosa",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0178",
+    "titulo": "Ulises - Harper Lee",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0980",
+    "titulo": "Los juegos del hambre - Frank Herbert",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0384",
+    "titulo": "Harry Potter - Julio Cortázar",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0853",
+    "titulo": "Cien años de soledad - Julio Cortázar",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0537",
+    "titulo": "La casa de los espíritus - Julio Cortázar",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0944",
+    "titulo": "Crimen y castigo - Julio Cortázar",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0446",
+    "titulo": "Cien años de soledad - J.R.R. Tolkien",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0335",
+    "titulo": "Cien años de soledad - Ernesto Sábato",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0220",
+    "titulo": "Matar a un ruiseñor - George Orwell",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0126",
+    "titulo": "Cien años de soledad - Ray Bradbury",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0943",
+    "titulo": "Los detectives salvajes - Roberto Bolaño",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0288",
+    "titulo": "1984 - Harper Lee",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0536",
+    "titulo": "Orgullo y prejuicio - J.K. Rowling",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0886",
+    "titulo": "El código Da Vinci - J.K. Rowling",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0262",
+    "titulo": "1984 - James Joyce",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0351",
+    "titulo": "Moby Dick - Gabriel García Márquez",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0770",
+    "titulo": "La casa de los espíritus - Marcel Proust",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0422",
+    "titulo": "Matar a un ruiseñor - Julio Cortázar",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0490",
+    "titulo": "El túnel - Frank Herbert",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0070",
+    "titulo": "Fahrenheit 451 - Gabriel García Márquez",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0871",
+    "titulo": "El Quijote - F. Scott Fitzgerald",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0948",
+    "titulo": "Pedro Páramo - Miguel de Cervantes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0988",
+    "titulo": "La casa de los espíritus - Harper Lee",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0601",
+    "titulo": "Ulises - J.D. Salinger",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0879",
+    "titulo": "El guardián entre el centeno - Paulo Coelho",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0484",
+    "titulo": "Cien años de soledad - Carlos Fuentes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0687",
+    "titulo": "El guardián entre el centeno - J.R.R. Tolkien",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0008",
+    "titulo": "Anna Karenina - J.R.R. Tolkien",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0816",
+    "titulo": "2666 - James Joyce",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0258",
+    "titulo": "Harry Potter - George Orwell",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0889",
+    "titulo": "Dune - J.K. Rowling",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0975",
+    "titulo": "Crimen y castigo - Marcel Proust",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0108",
+    "titulo": "Matar a un ruiseñor - Marcel Proust",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0052",
+    "titulo": "Ulises - Isabel Allende",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0584",
+    "titulo": "Cien años de soledad - James Joyce",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0003",
+    "titulo": "Los juegos del hambre - Juan Rulfo",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0145",
+    "titulo": "Ulises - J.K. Rowling",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0063",
+    "titulo": "El Quijote - Mario Vargas Llosa",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0535",
+    "titulo": "El túnel - Ray Bradbury",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0686",
+    "titulo": "Fahrenheit 451 - Marcel Proust",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0745",
+    "titulo": "El señor de los anillos - Isabel Allende",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0649",
+    "titulo": "1984 - Jane Austen",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0314",
+    "titulo": "Los juegos del hambre - Miguel de Cervantes",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0628",
+    "titulo": "La casa de los espíritus - J.D. Salinger",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0835",
+    "titulo": "1984 - Ray Bradbury",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0702",
+    "titulo": "El Quijote - Dan Brown",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0327",
+    "titulo": "El gran Gatsby - Carlos Fuentes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0297",
+    "titulo": "Fahrenheit 451 - Suzanne Collins",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0365",
+    "titulo": "Conversación en La Catedral - Ray Bradbury",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0738",
+    "titulo": "Pedro Páramo - Miguel de Cervantes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0510",
+    "titulo": "El alquimista - Harper Lee",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0198",
+    "titulo": "El alquimista - Marcel Proust",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0493",
+    "titulo": "Orgullo y prejuicio - George Orwell",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0904",
+    "titulo": "El amor en los tiempos del cólera - J.K. Rowling",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0618",
+    "titulo": "Dune - James Joyce",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0800",
+    "titulo": "Cien años de soledad - Mark Twain",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0338",
+    "titulo": "El alquimista - Julio Cortázar",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0410",
+    "titulo": "En busca del tiempo perdido - Miguel de Cervantes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0246",
+    "titulo": "En busca del tiempo perdido - Harper Lee",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0921",
+    "titulo": "Dune - Jane Austen",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0659",
+    "titulo": "Las aventuras de Huckleberry Finn - Carlos Fuentes",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0645",
+    "titulo": "El alquimista - J.K. Rowling",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0882",
+    "titulo": "Cien años de soledad - J.D. Salinger",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0421",
+    "titulo": "Cien años de soledad - J.D. Salinger",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0197",
+    "titulo": "Moby Dick - Fyodor Dostoevsky",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0030",
+    "titulo": "El túnel - Ray Bradbury",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0774",
+    "titulo": "El gran Gatsby - Dan Brown",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0019",
+    "titulo": "El túnel - Frank Herbert",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0555",
+    "titulo": "En busca del tiempo perdido - Suzanne Collins",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0316",
+    "titulo": "Los detectives salvajes - George Orwell",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0411",
+    "titulo": "Los juegos del hambre - Mario Vargas Llosa",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0634",
+    "titulo": "La casa de los espíritus - Mario Vargas Llosa",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0622",
+    "titulo": "Ulises - Ernesto Sábato",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0775",
+    "titulo": "Las aventuras de Huckleberry Finn - J.K. Rowling",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0388",
+    "titulo": "Pedro Páramo - Marcel Proust",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0976",
+    "titulo": "Cien años de soledad - Julio Cortázar",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0589",
+    "titulo": "Matar a un ruiseñor - Mark Twain",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0379",
+    "titulo": "1984 - Miguel de Cervantes",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0860",
+    "titulo": "Moby Dick - Carlos Fuentes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0719",
+    "titulo": "Dune - Julio Cortázar",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0968",
+    "titulo": "En busca del tiempo perdido - Herman Melville",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0832",
+    "titulo": "La ciudad y los perros - Paulo Coelho",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0169",
+    "titulo": "Rayuela - J.R.R. Tolkien",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0130",
+    "titulo": "Los juegos del hambre - Mark Twain",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0983",
+    "titulo": "El alquimista - Leo Tolstoy",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0778",
+    "titulo": "Las aventuras de Huckleberry Finn - Herman Melville",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0608",
+    "titulo": "Fahrenheit 451 - Roberto Bolaño",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0157",
+    "titulo": "Orgullo y prejuicio - Ray Bradbury",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0281",
+    "titulo": "El alquimista - J.R.R. Tolkien",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0611",
+    "titulo": "Crimen y castigo - Dan Brown",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0043",
+    "titulo": "La casa de los espíritus - Suzanne Collins",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0552",
+    "titulo": "Ulises - Harper Lee",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0831",
+    "titulo": "Ulises - J.D. Salinger",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0629",
+    "titulo": "El Quijote - Mark Twain",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0771",
+    "titulo": "Los detectives salvajes - Isabel Allende",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0598",
+    "titulo": "Ulises - Gabriel García Márquez",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0858",
+    "titulo": "Fahrenheit 451 - Fyodor Dostoevsky",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0949",
+    "titulo": "Ulises - Herman Melville",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0760",
+    "titulo": "Conversación en La Catedral - J.D. Salinger",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0857",
+    "titulo": "Cien años de soledad - Herman Melville",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0039",
+    "titulo": "El túnel - Gabriel García Márquez",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0922",
+    "titulo": "El Quijote - Ray Bradbury",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0751",
+    "titulo": "Fahrenheit 451 - Roberto Bolaño",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0272",
+    "titulo": "El gran Gatsby - Gabriel García Márquez",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0357",
+    "titulo": "Crimen y castigo - Suzanne Collins",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0454",
+    "titulo": "El amor en los tiempos del cólera - Julio Cortázar",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0062",
+    "titulo": "Harry Potter - J.K. Rowling",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0560",
+    "titulo": "La casa de los espíritus - Fyodor Dostoevsky",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0866",
+    "titulo": "Matar a un ruiseñor - Isabel Allende",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0260",
+    "titulo": "La ciudad y los perros - Juan Rulfo",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0714",
+    "titulo": "Anna Karenina - James Joyce",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0109",
+    "titulo": "Rayuela - Isabel Allende",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0131",
+    "titulo": "Conversación en La Catedral - Frank Herbert",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0036",
+    "titulo": "El señor de los anillos - Herman Melville",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0294",
+    "titulo": "Crimen y castigo - George Orwell",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0448",
+    "titulo": "En busca del tiempo perdido - Mark Twain",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0475",
+    "titulo": "El túnel - Juan Rulfo",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0767",
+    "titulo": "El gran Gatsby - Carlos Fuentes",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0286",
+    "titulo": "Cien años de soledad - Ernesto Sábato",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0662",
+    "titulo": "El código Da Vinci - Mario Vargas Llosa",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0152",
+    "titulo": "Anna Karenina - Miguel de Cervantes",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0252",
+    "titulo": "Pedro Páramo - Fyodor Dostoevsky",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0815",
+    "titulo": "Los juegos del hambre - Harper Lee",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0515",
+    "titulo": "1984 - Paulo Coelho",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0382",
+    "titulo": "Crimen y castigo - Frank Herbert",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0516",
+    "titulo": "El amor en los tiempos del cólera - Harper Lee",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0132",
+    "titulo": "En busca del tiempo perdido - Leo Tolstoy",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0194",
+    "titulo": "Anna Karenina - Juan Rulfo",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0193",
+    "titulo": "2666 - J.D. Salinger",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0998",
+    "titulo": "El Quijote - Miguel de Cervantes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0612",
+    "titulo": "El gran Gatsby - F. Scott Fitzgerald",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0095",
+    "titulo": "Dune - Frank Herbert",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0675",
+    "titulo": "El Quijote - Frank Herbert",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0199",
+    "titulo": "El guardián entre el centeno - J.R.R. Tolkien",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0737",
+    "titulo": "Los juegos del hambre - Ernesto Sábato",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0460",
+    "titulo": "Conversación en La Catedral - Miguel de Cervantes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0946",
+    "titulo": "La ciudad y los perros - Marcel Proust",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0936",
+    "titulo": "El señor de los anillos - F. Scott Fitzgerald",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0481",
+    "titulo": "El señor de los anillos - Julio Cortázar",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0058",
+    "titulo": "El señor de los anillos - J.R.R. Tolkien",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0212",
+    "titulo": "Las aventuras de Huckleberry Finn - Roberto Bolaño",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0641",
+    "titulo": "Orgullo y prejuicio - Ernesto Sábato",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0451",
+    "titulo": "Anna Karenina - Leo Tolstoy",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0898",
+    "titulo": "Anna Karenina - Mario Vargas Llosa",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0438",
+    "titulo": "1984 - Marcel Proust",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0426",
+    "titulo": "Las aventuras de Huckleberry Finn - Gabriel García Márquez",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0999",
+    "titulo": "Orgullo y prejuicio - Gabriel García Márquez",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0851",
+    "titulo": "El código Da Vinci - J.D. Salinger",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0179",
+    "titulo": "Los juegos del hambre - Ray Bradbury",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0677",
+    "titulo": "El señor de los anillos - Paulo Coelho",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0730",
+    "titulo": "Cien años de soledad - Ernesto Sábato",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0644",
+    "titulo": "El amor en los tiempos del cólera - Mario Vargas Llosa",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0473",
+    "titulo": "Ulises - Frank Herbert",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0120",
+    "titulo": "Cien años de soledad - Carlos Fuentes",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0029",
+    "titulo": "Conversación en La Catedral - Juan Rulfo",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0663",
+    "titulo": "La ciudad y los perros - Mario Vargas Llosa",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0651",
+    "titulo": "Pedro Páramo - Paulo Coelho",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0881",
+    "titulo": "El gran Gatsby - Ray Bradbury",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0352",
+    "titulo": "Cien años de soledad - Herman Melville",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0270",
+    "titulo": "Moby Dick - Marcel Proust",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0400",
+    "titulo": "Ulises - Miguel de Cervantes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0090",
+    "titulo": "Cien años de soledad - Fyodor Dostoevsky",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0113",
+    "titulo": "El alquimista - Mario Vargas Llosa",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0312",
+    "titulo": "Fahrenheit 451 - Mario Vargas Llosa",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0542",
+    "titulo": "Orgullo y prejuicio - J.R.R. Tolkien",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0116",
+    "titulo": "Harry Potter - F. Scott Fitzgerald",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0987",
+    "titulo": "El código Da Vinci - Juan Rulfo",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0182",
+    "titulo": "El alquimista - Juan Rulfo",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0974",
+    "titulo": "2666 - Herman Melville",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0235",
+    "titulo": "Anna Karenina - Suzanne Collins",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0415",
+    "titulo": "2666 - Paulo Coelho",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0148",
+    "titulo": "Matar a un ruiseñor - Jane Austen",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0224",
+    "titulo": "El señor de los anillos - Suzanne Collins",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0041",
+    "titulo": "Pedro Páramo - J.R.R. Tolkien",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0202",
+    "titulo": "Rayuela - Ray Bradbury",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0186",
+    "titulo": "Cien años de soledad - Suzanne Collins",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0868",
+    "titulo": "Anna Karenina - Jane Austen",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0443",
+    "titulo": "El señor de los anillos - Gabriel García Márquez",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0692",
+    "titulo": "El alquimista - Gabriel García Márquez",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0143",
+    "titulo": "El Quijote - Suzanne Collins",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0985",
+    "titulo": "Moby Dick - Herman Melville",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0135",
+    "titulo": "El túnel - Suzanne Collins",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0245",
+    "titulo": "El código Da Vinci - Carlos Fuentes",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0624",
+    "titulo": "Moby Dick - Suzanne Collins",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0053",
+    "titulo": "Las aventuras de Huckleberry Finn - Marcel Proust",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0660",
+    "titulo": "El túnel - James Joyce",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0170",
+    "titulo": "Conversación en La Catedral - Harper Lee",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0276",
+    "titulo": "Conversación en La Catedral - Harper Lee",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0497",
+    "titulo": "Moby Dick - Jane Austen",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0463",
+    "titulo": "1984 - Dan Brown",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0142",
+    "titulo": "El señor de los anillos - Suzanne Collins",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0818",
+    "titulo": "Moby Dick - Carlos Fuentes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0342",
+    "titulo": "Dune - George Orwell",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0865",
+    "titulo": "El Quijote - J.R.R. Tolkien",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0122",
+    "titulo": "Los detectives salvajes - Ernesto Sábato",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0078",
+    "titulo": "Matar a un ruiseñor - Suzanne Collins",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0328",
+    "titulo": "Crimen y castigo - James Joyce",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0291",
+    "titulo": "Los juegos del hambre - Dan Brown",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0206",
+    "titulo": "Cien años de soledad - Suzanne Collins",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0798",
+    "titulo": "El Quijote - Frank Herbert",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0924",
+    "titulo": "1984 - Mark Twain",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0938",
+    "titulo": "Los detectives salvajes - Ray Bradbury",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0282",
+    "titulo": "El guardián entre el centeno - Dan Brown",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0870",
+    "titulo": "2666 - J.D. Salinger",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0023",
+    "titulo": "La ciudad y los perros - Frank Herbert",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0249",
+    "titulo": "Orgullo y prejuicio - Ernesto Sábato",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0682",
+    "titulo": "La ciudad y los perros - J.K. Rowling",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0823",
+    "titulo": "En busca del tiempo perdido - F. Scott Fitzgerald",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0500",
+    "titulo": "Cien años de soledad - Miguel de Cervantes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0746",
+    "titulo": "El guardián entre el centeno - Julio Cortázar",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0290",
+    "titulo": "Crimen y castigo - J.D. Salinger",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0255",
+    "titulo": "Anna Karenina - J.D. Salinger",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0563",
+    "titulo": "El alquimista - Julio Cortázar",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0311",
+    "titulo": "Cien años de soledad - Jane Austen",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0216",
+    "titulo": "El señor de los anillos - J.K. Rowling",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0191",
+    "titulo": "La casa de los espíritus - Roberto Bolaño",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0038",
+    "titulo": "El túnel - Dan Brown",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0002",
+    "titulo": "La casa de los espíritus - Paulo Coelho",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0512",
+    "titulo": "En busca del tiempo perdido - Gabriel García Márquez",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0809",
+    "titulo": "Los juegos del hambre - Herman Melville",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0487",
+    "titulo": "Fahrenheit 451 - James Joyce",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0635",
+    "titulo": "Orgullo y prejuicio - Jane Austen",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0888",
+    "titulo": "Crimen y castigo - F. Scott Fitzgerald",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0068",
+    "titulo": "Orgullo y prejuicio - George Orwell",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0279",
+    "titulo": "Anna Karenina - Jane Austen",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0588",
+    "titulo": "El gran Gatsby - Roberto Bolaño",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0718",
+    "titulo": "Conversación en La Catedral - Leo Tolstoy",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0094",
+    "titulo": "Orgullo y prejuicio - Fyodor Dostoevsky",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0621",
+    "titulo": "2666 - Roberto Bolaño",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0071",
+    "titulo": "En busca del tiempo perdido - Gabriel García Márquez",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0518",
+    "titulo": "Dune - J.D. Salinger",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0930",
+    "titulo": "El código Da Vinci - Marcel Proust",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0495",
+    "titulo": "Pedro Páramo - Ernesto Sábato",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0114",
+    "titulo": "Cien años de soledad - Carlos Fuentes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0872",
+    "titulo": "El gran Gatsby - Isabel Allende",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0802",
+    "titulo": "Matar a un ruiseñor - Harper Lee",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0925",
+    "titulo": "Cien años de soledad - Gabriel García Márquez",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0192",
+    "titulo": "En busca del tiempo perdido - Carlos Fuentes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0181",
+    "titulo": "La ciudad y los perros - J.D. Salinger",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0129",
+    "titulo": "Dune - Carlos Fuentes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0304",
+    "titulo": "Fahrenheit 451 - Miguel de Cervantes",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0381",
+    "titulo": "Conversación en La Catedral - Juan Rulfo",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0670",
+    "titulo": "Cien años de soledad - Fyodor Dostoevsky",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0691",
+    "titulo": "Las aventuras de Huckleberry Finn - James Joyce",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0345",
+    "titulo": "Dune - Dan Brown",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0678",
+    "titulo": "Los detectives salvajes - Marcel Proust",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0725",
+    "titulo": "Cien años de soledad - Suzanne Collins",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0397",
+    "titulo": "Cien años de soledad - Paulo Coelho",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0565",
+    "titulo": "El alquimista - F. Scott Fitzgerald",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0773",
+    "titulo": "1984 - J.R.R. Tolkien",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0085",
+    "titulo": "El código Da Vinci - Frank Herbert",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0579",
+    "titulo": "Rayuela - F. Scott Fitzgerald",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0091",
+    "titulo": "Los detectives salvajes - J.K. Rowling",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0956",
+    "titulo": "En busca del tiempo perdido - Isabel Allende",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0762",
+    "titulo": "El amor en los tiempos del cólera - Mario Vargas Llosa",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0080",
+    "titulo": "1984 - Harper Lee",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0753",
+    "titulo": "El código Da Vinci - Miguel de Cervantes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0520",
+    "titulo": "El gran Gatsby - Dan Brown",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0507",
+    "titulo": "Los juegos del hambre - J.D. Salinger",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0200",
+    "titulo": "La casa de los espíritus - James Joyce",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0632",
+    "titulo": "Fahrenheit 451 - James Joyce",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0011",
+    "titulo": "Cien años de soledad - Herman Melville",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0759",
+    "titulo": "Los detectives salvajes - George Orwell",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0293",
+    "titulo": "Matar a un ruiseñor - Dan Brown",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0676",
+    "titulo": "Crimen y castigo - J.K. Rowling",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0508",
+    "titulo": "En busca del tiempo perdido - Frank Herbert",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0444",
+    "titulo": "Moby Dick - Gabriel García Márquez",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0250",
+    "titulo": "Conversación en La Catedral - Miguel de Cervantes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0254",
+    "titulo": "Pedro Páramo - Marcel Proust",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0149",
+    "titulo": "En busca del tiempo perdido - Isabel Allende",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0045",
+    "titulo": "El túnel - Suzanne Collins",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0783",
+    "titulo": "Harry Potter - F. Scott Fitzgerald",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0160",
+    "titulo": "El Quijote - Suzanne Collins",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0445",
+    "titulo": "El amor en los tiempos del cólera - Gabriel García Márquez",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0101",
+    "titulo": "El gran Gatsby - Leo Tolstoy",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0380",
+    "titulo": "El código Da Vinci - Juan Rulfo",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0360",
+    "titulo": "Moby Dick - Jane Austen",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0434",
+    "titulo": "Conversación en La Catedral - Paulo Coelho",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0188",
+    "titulo": "Orgullo y prejuicio - Julio Cortázar",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0016",
+    "titulo": "El Quijote - Mark Twain",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0578",
+    "titulo": "Moby Dick - Dan Brown",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0201",
+    "titulo": "Orgullo y prejuicio - Dan Brown",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0273",
+    "titulo": "Ulises - Herman Melville",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0021",
+    "titulo": "Orgullo y prejuicio - F. Scott Fitzgerald",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0483",
+    "titulo": "El Quijote - Marcel Proust",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0331",
+    "titulo": "El alquimista - Paulo Coelho",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0937",
+    "titulo": "Crimen y castigo - Julio Cortázar",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0630",
+    "titulo": "Pedro Páramo - Harper Lee",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0934",
+    "titulo": "La casa de los espíritus - Ray Bradbury",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0828",
+    "titulo": "Matar a un ruiseñor - Paulo Coelho",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0242",
+    "titulo": "Los juegos del hambre - James Joyce",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0884",
+    "titulo": "Los detectives salvajes - Juan Rulfo",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0547",
+    "titulo": "Cien años de soledad - Harper Lee",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0905",
+    "titulo": "El código Da Vinci - Suzanne Collins",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0236",
+    "titulo": "Fahrenheit 451 - George Orwell",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0427",
+    "titulo": "Harry Potter - George Orwell",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0001",
+    "titulo": "Ulises - J.D. Salinger",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0187",
+    "titulo": "Los juegos del hambre - Dan Brown",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0309",
+    "titulo": "En busca del tiempo perdido - Fyodor Dostoevsky",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0703",
+    "titulo": "Las aventuras de Huckleberry Finn - Jane Austen",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0054",
+    "titulo": "Fahrenheit 451 - Mark Twain",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0146",
+    "titulo": "Fahrenheit 451 - Leo Tolstoy",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0519",
+    "titulo": "La ciudad y los perros - J.R.R. Tolkien",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0672",
+    "titulo": "Fahrenheit 451 - James Joyce",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0190",
+    "titulo": "El amor en los tiempos del cólera - Leo Tolstoy",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0528",
+    "titulo": "Harry Potter - Mario Vargas Llosa",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0075",
+    "titulo": "El amor en los tiempos del cólera - Ray Bradbury",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0452",
+    "titulo": "El guardián entre el centeno - Leo Tolstoy",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0007",
+    "titulo": "2666 - Dan Brown",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0639",
+    "titulo": "Moby Dick - Carlos Fuentes",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0671",
+    "titulo": "El señor de los anillos - James Joyce",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0557",
+    "titulo": "1984 - Miguel de Cervantes",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0640",
+    "titulo": "Fahrenheit 451 - Herman Melville",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0541",
+    "titulo": "Harry Potter - Harper Lee",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0082",
+    "titulo": "Cien años de soledad - Mario Vargas Llosa",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0701",
+    "titulo": "Los detectives salvajes - J.R.R. Tolkien",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0955",
+    "titulo": "Cien años de soledad - J.R.R. Tolkien",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0920",
+    "titulo": "Los juegos del hambre - J.R.R. Tolkien",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0822",
+    "titulo": "El alquimista - Jane Austen",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0125",
+    "titulo": "La casa de los espíritus - Herman Melville",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0289",
+    "titulo": "El Quijote - Jane Austen",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0462",
+    "titulo": "El código Da Vinci - Harper Lee",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0471",
+    "titulo": "Crimen y castigo - Miguel de Cervantes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0900",
+    "titulo": "El código Da Vinci - Frank Herbert",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0707",
+    "titulo": "El señor de los anillos - Gabriel García Márquez",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0367",
+    "titulo": "Dune - George Orwell",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0950",
+    "titulo": "El alquimista - Frank Herbert",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0650",
+    "titulo": "Orgullo y prejuicio - J.D. Salinger",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0066",
+    "titulo": "El Quijote - Roberto Bolaño",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0419",
+    "titulo": "El Quijote - J.D. Salinger",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0350",
+    "titulo": "El Quijote - Frank Herbert",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0790",
+    "titulo": "La casa de los espíritus - Marcel Proust",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0742",
+    "titulo": "Ulises - Frank Herbert",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0926",
+    "titulo": "El amor en los tiempos del cólera - Isabel Allende",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0055",
+    "titulo": "Cien años de soledad - Herman Melville",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0320",
+    "titulo": "El código Da Vinci - Ernesto Sábato",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0209",
+    "titulo": "1984 - J.D. Salinger",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0485",
+    "titulo": "Dune - James Joyce",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0696",
+    "titulo": "Rayuela - Isabel Allende",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0995",
+    "titulo": "El guardián entre el centeno - Mario Vargas Llosa",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0841",
+    "titulo": "Ulises - Fyodor Dostoevsky",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0401",
+    "titulo": "Conversación en La Catedral - Harper Lee",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0732",
+    "titulo": "El señor de los anillos - Jane Austen",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0911",
+    "titulo": "Cien años de soledad - Dan Brown",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0283",
+    "titulo": "El túnel - Harper Lee",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0480",
+    "titulo": "Los juegos del hambre - Leo Tolstoy",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0217",
+    "titulo": "Crimen y castigo - Leo Tolstoy",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0633",
+    "titulo": "El código Da Vinci - Paulo Coelho",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0110",
+    "titulo": "Fahrenheit 451 - F. Scott Fitzgerald",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0638",
+    "titulo": "En busca del tiempo perdido - Mario Vargas Llosa",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0278",
+    "titulo": "En busca del tiempo perdido - Ernesto Sábato",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0024",
+    "titulo": "El alquimista - Ray Bradbury",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0364",
+    "titulo": "Moby Dick - Ernesto Sábato",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0006",
+    "titulo": "Las aventuras de Huckleberry Finn - George Orwell",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0658",
+    "titulo": "Matar a un ruiseñor - Harper Lee",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0450",
+    "titulo": "El guardián entre el centeno - James Joyce",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0406",
+    "titulo": "El alquimista - Frank Herbert",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0978",
+    "titulo": "El gran Gatsby - Isabel Allende",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0972",
+    "titulo": "Los detectives salvajes - James Joyce",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0171",
+    "titulo": "En busca del tiempo perdido - Ray Bradbury",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0989",
+    "titulo": "Pedro Páramo - Carlos Fuentes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0464",
+    "titulo": "2666 - Ray Bradbury",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0361",
+    "titulo": "Fahrenheit 451 - Leo Tolstoy",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0391",
+    "titulo": "Orgullo y prejuicio - Harper Lee",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0720",
+    "titulo": "Los juegos del hambre - Juan Rulfo",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0128",
+    "titulo": "Dune - Suzanne Collins",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0014",
+    "titulo": "En busca del tiempo perdido - Frank Herbert",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0575",
+    "titulo": "El Quijote - F. Scott Fitzgerald",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0756",
+    "titulo": "En busca del tiempo perdido - Carlos Fuentes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0251",
+    "titulo": "El señor de los anillos - Mark Twain",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0176",
+    "titulo": "Cien años de soledad - Mario Vargas Llosa",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0614",
+    "titulo": "Harry Potter - Harper Lee",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0247",
+    "titulo": "Pedro Páramo - Herman Melville",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0863",
+    "titulo": "Pedro Páramo - Julio Cortázar",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0849",
+    "titulo": "Pedro Páramo - Leo Tolstoy",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0239",
+    "titulo": "Moby Dick - Herman Melville",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0268",
+    "titulo": "Cien años de soledad - Ernesto Sábato",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0789",
+    "titulo": "Las aventuras de Huckleberry Finn - Paulo Coelho",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0154",
+    "titulo": "El código Da Vinci - Ray Bradbury",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0138",
+    "titulo": "Rayuela - Carlos Fuentes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0533",
+    "titulo": "El alquimista - Dan Brown",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0362",
+    "titulo": "Rayuela - Julio Cortázar",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0076",
+    "titulo": "Las aventuras de Huckleberry Finn - Gabriel García Márquez",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0027",
+    "titulo": "Cien años de soledad - Harper Lee",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0969",
+    "titulo": "Orgullo y prejuicio - J.K. Rowling",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0603",
+    "titulo": "Dune - F. Scott Fitzgerald",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0559",
+    "titulo": "El señor de los anillos - J.D. Salinger",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0704",
+    "titulo": "Los detectives salvajes - Juan Rulfo",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0028",
+    "titulo": "Rayuela - Juan Rulfo",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0908",
+    "titulo": "Dune - F. Scott Fitzgerald",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0895",
+    "titulo": "El alquimista - F. Scott Fitzgerald",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0430",
+    "titulo": "Pedro Páramo - Carlos Fuentes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0616",
+    "titulo": "Pedro Páramo - Julio Cortázar",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0923",
+    "titulo": "El alquimista - Carlos Fuentes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0613",
+    "titulo": "Matar a un ruiseñor - Marcel Proust",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0779",
+    "titulo": "El código Da Vinci - George Orwell",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0648",
+    "titulo": "1984 - Miguel de Cervantes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0015",
+    "titulo": "La ciudad y los perros - Carlos Fuentes",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0231",
+    "titulo": "Los detectives salvajes - Leo Tolstoy",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0808",
+    "titulo": "Dune - Gabriel García Márquez",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0941",
+    "titulo": "Harry Potter - Mario Vargas Llosa",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0903",
+    "titulo": "En busca del tiempo perdido - Carlos Fuentes",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0010",
+    "titulo": "Anna Karenina - Fyodor Dostoevsky",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0964",
+    "titulo": "El Quijote - James Joyce",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0404",
+    "titulo": "Matar a un ruiseñor - Roberto Bolaño",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0967",
+    "titulo": "Rayuela - Paulo Coelho",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0587",
+    "titulo": "La ciudad y los perros - Herman Melville",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0505",
+    "titulo": "Harry Potter - Leo Tolstoy",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0551",
+    "titulo": "El Quijote - J.K. Rowling",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0164",
+    "titulo": "En busca del tiempo perdido - Miguel de Cervantes",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0174",
+    "titulo": "El amor en los tiempos del cólera - J.R.R. Tolkien",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0417",
+    "titulo": "La casa de los espíritus - Miguel de Cervantes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0428",
+    "titulo": "1984 - James Joyce",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0092",
+    "titulo": "Cien años de soledad - Mark Twain",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0958",
+    "titulo": "Anna Karenina - Carlos Fuentes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0223",
+    "titulo": "Matar a un ruiseñor - Jane Austen",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0511",
+    "titulo": "Anna Karenina - Miguel de Cervantes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0159",
+    "titulo": "La ciudad y los perros - Mark Twain",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0185",
+    "titulo": "Conversación en La Catedral - Miguel de Cervantes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0994",
+    "titulo": "Conversación en La Catedral - Dan Brown",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0558",
+    "titulo": "El Quijote - James Joyce",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0476",
+    "titulo": "Las aventuras de Huckleberry Finn - F. Scott Fitzgerald",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0530",
+    "titulo": "Cien años de soledad - J.R.R. Tolkien",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0153",
+    "titulo": "Conversación en La Catedral - Paulo Coelho",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0525",
+    "titulo": "Harry Potter - J.R.R. Tolkien",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0439",
+    "titulo": "1984 - Leo Tolstoy",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0423",
+    "titulo": "En busca del tiempo perdido - Fyodor Dostoevsky",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0655",
+    "titulo": "Cien años de soledad - George Orwell",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0465",
+    "titulo": "Matar a un ruiseñor - Juan Rulfo",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0705",
+    "titulo": "El amor en los tiempos del cólera - Mark Twain",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0456",
+    "titulo": "Crimen y castigo - J.D. Salinger",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0205",
+    "titulo": "El túnel - Ray Bradbury",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0166",
+    "titulo": "El alquimista - Suzanne Collins",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0431",
+    "titulo": "Los juegos del hambre - Herman Melville",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0296",
+    "titulo": "Las aventuras de Huckleberry Finn - Herman Melville",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0069",
+    "titulo": "Ulises - Herman Melville",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0986",
+    "titulo": "El amor en los tiempos del cólera - J.D. Salinger",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0954",
+    "titulo": "La casa de los espíritus - Roberto Bolaño",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0643",
+    "titulo": "El Quijote - Jane Austen",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0150",
+    "titulo": "El código Da Vinci - Harper Lee",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0124",
+    "titulo": "Cien años de soledad - Mark Twain",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0942",
+    "titulo": "Los juegos del hambre - George Orwell",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0348",
+    "titulo": "El guardián entre el centeno - Gabriel García Márquez",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0910",
+    "titulo": "Harry Potter - Carlos Fuentes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0854",
+    "titulo": "El señor de los anillos - James Joyce",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0625",
+    "titulo": "Cien años de soledad - Dan Brown",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0175",
+    "titulo": "El señor de los anillos - Fyodor Dostoevsky",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0243",
+    "titulo": "Harry Potter - Mark Twain",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0735",
+    "titulo": "En busca del tiempo perdido - Ray Bradbury",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0961",
+    "titulo": "Fahrenheit 451 - Harper Lee",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0472",
+    "titulo": "La casa de los espíritus - Gabriel García Márquez",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0059",
+    "titulo": "Los juegos del hambre - Paulo Coelho",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0698",
+    "titulo": "Ulises - Marcel Proust",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0615",
+    "titulo": "El señor de los anillos - Roberto Bolaño",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0794",
+    "titulo": "Las aventuras de Huckleberry Finn - Roberto Bolaño",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0491",
+    "titulo": "En busca del tiempo perdido - Isabel Allende",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0927",
+    "titulo": "El gran Gatsby - Jane Austen",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0298",
+    "titulo": "Rayuela - Juan Rulfo",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0035",
+    "titulo": "Ulises - Roberto Bolaño",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0599",
+    "titulo": "Los juegos del hambre - Mark Twain",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0377",
+    "titulo": "El señor de los anillos - Paulo Coelho",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0979",
+    "titulo": "Dune - Dan Brown",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0378",
+    "titulo": "Fahrenheit 451 - Marcel Proust",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0764",
+    "titulo": "En busca del tiempo perdido - Dan Brown",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0022",
+    "titulo": "Crimen y castigo - J.K. Rowling",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0918",
+    "titulo": "Anna Karenina - Leo Tolstoy",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0750",
+    "titulo": "Los juegos del hambre - George Orwell",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0383",
+    "titulo": "Pedro Páramo - Gabriel García Márquez",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0791",
+    "titulo": "Rayuela - Jane Austen",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0811",
+    "titulo": "Ulises - Gabriel García Márquez",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0951",
+    "titulo": "El alquimista - Harper Lee",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0390",
+    "titulo": "El gran Gatsby - George Orwell",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0654",
+    "titulo": "Orgullo y prejuicio - Gabriel García Márquez",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0257",
+    "titulo": "El gran Gatsby - Fyodor Dostoevsky",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0284",
+    "titulo": "1984 - Herman Melville",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0724",
+    "titulo": "La ciudad y los perros - Ray Bradbury",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0482",
+    "titulo": "Dune - Miguel de Cervantes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0799",
+    "titulo": "Orgullo y prejuicio - Miguel de Cervantes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0363",
+    "titulo": "Pedro Páramo - George Orwell",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0492",
+    "titulo": "El túnel - Ernesto Sábato",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0572",
+    "titulo": "El alquimista - Gabriel García Márquez",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0501",
+    "titulo": "El túnel - J.R.R. Tolkien",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0843",
+    "titulo": "Pedro Páramo - Isabel Allende",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0683",
+    "titulo": "El señor de los anillos - Carlos Fuentes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0067",
+    "titulo": "Rayuela - Juan Rulfo",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0139",
+    "titulo": "El Quijote - James Joyce",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0661",
+    "titulo": "Cien años de soledad - Gabriel García Márquez",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0115",
+    "titulo": "Rayuela - Miguel de Cervantes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0459",
+    "titulo": "Matar a un ruiseñor - J.R.R. Tolkien",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0340",
+    "titulo": "El gran Gatsby - Carlos Fuentes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0144",
+    "titulo": "La casa de los espíritus - Roberto Bolaño",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0838",
+    "titulo": "Crimen y castigo - Harper Lee",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0763",
+    "titulo": "Matar a un ruiseñor - Dan Brown",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0344",
+    "titulo": "La ciudad y los perros - Julio Cortázar",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0203",
+    "titulo": "El guardián entre el centeno - J.K. Rowling",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0049",
+    "titulo": "Pedro Páramo - Julio Cortázar",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0156",
+    "titulo": "Matar a un ruiseñor - Juan Rulfo",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0103",
+    "titulo": "El Quijote - Ernesto Sábato",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0509",
+    "titulo": "Ulises - Mario Vargas Llosa",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0275",
+    "titulo": "Moby Dick - Ray Bradbury",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0013",
+    "titulo": "Cien años de soledad - Miguel de Cervantes",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0566",
+    "titulo": "Cien años de soledad - James Joyce",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0952",
+    "titulo": "Conversación en La Catedral - George Orwell",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0804",
+    "titulo": "Las aventuras de Huckleberry Finn - Mark Twain",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0356",
+    "titulo": "Cien años de soledad - Isabel Allende",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0768",
+    "titulo": "Las aventuras de Huckleberry Finn - George Orwell",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0962",
+    "titulo": "1984 - James Joyce",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0376",
+    "titulo": "Cien años de soledad - J.D. Salinger",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0595",
+    "titulo": "El alquimista - Suzanne Collins",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0914",
+    "titulo": "Pedro Páramo - Jane Austen",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0196",
+    "titulo": "1984 - Fyodor Dostoevsky",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0891",
+    "titulo": "El señor de los anillos - Dan Brown",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0478",
+    "titulo": "En busca del tiempo perdido - Leo Tolstoy",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0489",
+    "titulo": "El guardián entre el centeno - Ernesto Sábato",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0424",
+    "titulo": "Ulises - Marcel Proust",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0151",
+    "titulo": "Cien años de soledad - Dan Brown",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0004",
+    "titulo": "Rayuela - J.D. Salinger",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0830",
+    "titulo": "Ulises - Carlos Fuentes",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0754",
+    "titulo": "Matar a un ruiseñor - Ray Bradbury",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0299",
+    "titulo": "La ciudad y los perros - Isabel Allende",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0017",
+    "titulo": "El túnel - Leo Tolstoy",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0079",
+    "titulo": "Las aventuras de Huckleberry Finn - Suzanne Collins",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0826",
+    "titulo": "Conversación en La Catedral - Suzanne Collins",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0549",
+    "titulo": "El guardián entre el centeno - J.K. Rowling",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0098",
+    "titulo": "El código Da Vinci - Ray Bradbury",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0025",
+    "titulo": "Los juegos del hambre - Suzanne Collins",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0033",
+    "titulo": "El Quijote - J.R.R. Tolkien",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0513",
+    "titulo": "Pedro Páramo - Roberto Bolaño",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0532",
+    "titulo": "En busca del tiempo perdido - J.R.R. Tolkien",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0517",
+    "titulo": "Rayuela - Roberto Bolaño",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0867",
+    "titulo": "El Quijote - Dan Brown",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0264",
+    "titulo": "El amor en los tiempos del cólera - Julio Cortázar",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0897",
+    "titulo": "Fahrenheit 451 - Suzanne Collins",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0596",
+    "titulo": "Las aventuras de Huckleberry Finn - Harper Lee",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0793",
+    "titulo": "El guardián entre el centeno - Mario Vargas Llosa",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0455",
+    "titulo": "2666 - Gabriel García Márquez",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0693",
+    "titulo": "Anna Karenina - Mark Twain",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0626",
+    "titulo": "Ulises - Carlos Fuentes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0829",
+    "titulo": "El amor en los tiempos del cólera - J.R.R. Tolkien",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0323",
+    "titulo": "Matar a un ruiseñor - Frank Herbert",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0715",
+    "titulo": "Ulises - Mark Twain",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0708",
+    "titulo": "El alquimista - F. Scott Fitzgerald",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0134",
+    "titulo": "El código Da Vinci - Ray Bradbury",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0523",
+    "titulo": "Anna Karenina - James Joyce",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0233",
+    "titulo": "Orgullo y prejuicio - Mario Vargas Llosa",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0412",
+    "titulo": "Ulises - James Joyce",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0133",
+    "titulo": "Los juegos del hambre - Paulo Coelho",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0073",
+    "titulo": "Los juegos del hambre - James Joyce",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0295",
+    "titulo": "El guardián entre el centeno - J.D. Salinger",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0736",
+    "titulo": "Fahrenheit 451 - Ernesto Sábato",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0172",
+    "titulo": "Rayuela - Suzanne Collins",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0765",
+    "titulo": "El alquimista - Paulo Coelho",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0965",
+    "titulo": "Los detectives salvajes - Suzanne Collins",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0307",
+    "titulo": "1984 - Gabriel García Márquez",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0668",
+    "titulo": "Cien años de soledad - Ray Bradbury",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0669",
+    "titulo": "El gran Gatsby - James Joyce",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0957",
+    "titulo": "Los detectives salvajes - Suzanne Collins",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0913",
+    "titulo": "El amor en los tiempos del cólera - J.K. Rowling",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0785",
+    "titulo": "El guardián entre el centeno - Julio Cortázar",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0499",
+    "titulo": "Dune - Mark Twain",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0973",
+    "titulo": "En busca del tiempo perdido - Gabriel García Márquez",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0550",
+    "titulo": "Rayuela - Fyodor Dostoevsky",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0526",
+    "titulo": "El guardián entre el centeno - Leo Tolstoy",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0107",
+    "titulo": "Cien años de soledad - Mark Twain",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0931",
+    "titulo": "Crimen y castigo - Fyodor Dostoevsky",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0605",
+    "titulo": "Cien años de soledad - Herman Melville",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0301",
+    "titulo": "Cien años de soledad - J.K. Rowling",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0219",
+    "titulo": "Los juegos del hambre - Suzanne Collins",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0083",
+    "titulo": "El guardián entre el centeno - Herman Melville",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0619",
+    "titulo": "Cien años de soledad - Jane Austen",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0256",
+    "titulo": "La casa de los espíritus - Harper Lee",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0607",
+    "titulo": "Moby Dick - Suzanne Collins",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0876",
+    "titulo": "La casa de los espíritus - Ernesto Sábato",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0647",
+    "titulo": "1984 - Harper Lee",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0064",
+    "titulo": "El Quijote - Gabriel García Márquez",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0591",
+    "titulo": "Rayuela - James Joyce",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0226",
+    "titulo": "Fahrenheit 451 - Marcel Proust",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0970",
+    "titulo": "La ciudad y los perros - Leo Tolstoy",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0529",
+    "titulo": "Fahrenheit 451 - Ernesto Sábato",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0395",
+    "titulo": "El señor de los anillos - F. Scott Fitzgerald",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0214",
+    "titulo": "El amor en los tiempos del cólera - J.D. Salinger",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0020",
+    "titulo": "2666 - Ray Bradbury",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0375",
+    "titulo": "Cien años de soledad - Fyodor Dostoevsky",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0534",
+    "titulo": "Matar a un ruiseñor - Ernesto Sábato",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0477",
+    "titulo": "Ulises - Roberto Bolaño",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0183",
+    "titulo": "Cien años de soledad - Mario Vargas Llosa",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0594",
+    "titulo": "El gran Gatsby - Juan Rulfo",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0167",
+    "titulo": "Orgullo y prejuicio - Jane Austen",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0577",
+    "titulo": "La casa de los espíritus - Juan Rulfo",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0118",
+    "titulo": "El señor de los anillos - Ernesto Sábato",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0330",
+    "titulo": "Los juegos del hambre - Mario Vargas Llosa",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0713",
+    "titulo": "Matar a un ruiseñor - Leo Tolstoy",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0418",
+    "titulo": "Cien años de soledad - Leo Tolstoy",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0093",
+    "titulo": "En busca del tiempo perdido - Ernesto Sábato",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0441",
+    "titulo": "Las aventuras de Huckleberry Finn - J.D. Salinger",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0369",
+    "titulo": "Los detectives salvajes - F. Scott Fitzgerald",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0112",
+    "titulo": "El código Da Vinci - Ray Bradbury",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0280",
+    "titulo": "El Quijote - Frank Herbert",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0766",
+    "titulo": "El guardián entre el centeno - Juan Rulfo",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0680",
+    "titulo": "Fahrenheit 451 - Marcel Proust",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0266",
+    "titulo": "Matar a un ruiseñor - F. Scott Fitzgerald",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0469",
+    "titulo": "El señor de los anillos - Julio Cortázar",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0864",
+    "titulo": "El Quijote - Jane Austen",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0386",
+    "titulo": "El Quijote - Carlos Fuentes",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0222",
+    "titulo": "Fahrenheit 451 - Juan Rulfo",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0878",
+    "titulo": "Cien años de soledad - Ray Bradbury",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0031",
+    "titulo": "El gran Gatsby - Fyodor Dostoevsky",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0040",
+    "titulo": "El gran Gatsby - Roberto Bolaño",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0084",
+    "titulo": "Moby Dick - Jane Austen",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0788",
+    "titulo": "El Quijote - Julio Cortázar",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0287",
+    "titulo": "Rayuela - Mario Vargas Llosa",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0413",
+    "titulo": "Anna Karenina - J.R.R. Tolkien",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0919",
+    "titulo": "Cien años de soledad - Herman Melville",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0824",
+    "titulo": "2666 - J.D. Salinger",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0306",
+    "titulo": "El Quijote - Paulo Coelho",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0836",
+    "titulo": "El amor en los tiempos del cólera - Isabel Allende",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0325",
+    "titulo": "El túnel - Marcel Proust",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0494",
+    "titulo": "Orgullo y prejuicio - Gabriel García Márquez",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0848",
+    "titulo": "2666 - Jane Austen",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0373",
+    "titulo": "Moby Dick - Fyodor Dostoevsky",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0302",
+    "titulo": "Las aventuras de Huckleberry Finn - Julio Cortázar",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0467",
+    "titulo": "Los detectives salvajes - F. Scott Fitzgerald",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0665",
+    "titulo": "Cien años de soledad - George Orwell",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0435",
+    "titulo": "Moby Dick - Harper Lee",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0780",
+    "titulo": "Anna Karenina - Marcel Proust",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0761",
+    "titulo": "El alquimista - Frank Herbert",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0741",
+    "titulo": "Las aventuras de Huckleberry Finn - Leo Tolstoy",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0056",
+    "titulo": "La casa de los espíritus - Mark Twain",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0442",
+    "titulo": "La ciudad y los perros - Paulo Coelho",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0089",
+    "titulo": "El guardián entre el centeno - George Orwell",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0333",
+    "titulo": "Dune - Jane Austen",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0752",
+    "titulo": "Rayuela - Leo Tolstoy",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0074",
+    "titulo": "El guardián entre el centeno - Frank Herbert",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0564",
+    "titulo": "Fahrenheit 451 - Paulo Coelho",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0436",
+    "titulo": "Cien años de soledad - Suzanne Collins",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0617",
+    "titulo": "Rayuela - Gabriel García Márquez",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0896",
+    "titulo": "Cien años de soledad - Ray Bradbury",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0562",
+    "titulo": "El gran Gatsby - James Joyce",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0784",
+    "titulo": "Los juegos del hambre - Mark Twain",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0840",
+    "titulo": "Harry Potter - George Orwell",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0366",
+    "titulo": "Anna Karenina - George Orwell",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0877",
+    "titulo": "El túnel - F. Scott Fitzgerald",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0636",
+    "titulo": "Rayuela - J.D. Salinger",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0875",
+    "titulo": "Matar a un ruiseñor - Julio Cortázar",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0458",
+    "titulo": "Las aventuras de Huckleberry Finn - Paulo Coelho",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0168",
+    "titulo": "El túnel - Marcel Proust",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0000",
+    "titulo": "La casa de los espíritus - Marcel Proust",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0521",
+    "titulo": "Dune - J.D. Salinger",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0308",
+    "titulo": "Dune - Herman Melville",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0673",
+    "titulo": "El señor de los anillos - Gabriel García Márquez",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0787",
+    "titulo": "Anna Karenina - F. Scott Fitzgerald",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0821",
+    "titulo": "Ulises - Suzanne Collins",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0408",
+    "titulo": "Pedro Páramo - Leo Tolstoy",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0119",
+    "titulo": "En busca del tiempo perdido - Marcel Proust",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0210",
+    "titulo": "En busca del tiempo perdido - Herman Melville",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0447",
+    "titulo": "La ciudad y los perros - F. Scott Fitzgerald",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0504",
+    "titulo": "1984 - George Orwell",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0392",
+    "titulo": "Cien años de soledad - Miguel de Cervantes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0044",
+    "titulo": "Los juegos del hambre - Mark Twain",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0850",
+    "titulo": "Anna Karenina - Mark Twain",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0358",
+    "titulo": "El alquimista - Suzanne Collins",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0336",
+    "titulo": "Los detectives salvajes - Herman Melville",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0051",
+    "titulo": "Cien años de soledad - Harper Lee",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0606",
+    "titulo": "El Quijote - Leo Tolstoy",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0739",
+    "titulo": "En busca del tiempo perdido - Fyodor Dostoevsky",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0546",
+    "titulo": "Ulises - Juan Rulfo",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0916",
+    "titulo": "Crimen y castigo - Gabriel García Márquez",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0398",
+    "titulo": "Moby Dick - George Orwell",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0981",
+    "titulo": "Matar a un ruiseñor - J.K. Rowling",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0709",
+    "titulo": "Moby Dick - J.D. Salinger",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0747",
+    "titulo": "Ulises - James Joyce",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0026",
+    "titulo": "Cien años de soledad - Julio Cortázar",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0215",
+    "titulo": "Los juegos del hambre - Juan Rulfo",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0812",
+    "titulo": "Ulises - Miguel de Cervantes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0349",
+    "titulo": "Las aventuras de Huckleberry Finn - Gabriel García Márquez",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0321",
+    "titulo": "El gran Gatsby - Mark Twain",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0488",
+    "titulo": "Ulises - Suzanne Collins",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0600",
+    "titulo": "Crimen y castigo - Carlos Fuentes",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0136",
+    "titulo": "Ulises - Gabriel García Márquez",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0901",
+    "titulo": "Los juegos del hambre - Isabel Allende",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0561",
+    "titulo": "Pedro Páramo - Isabel Allende",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0869",
+    "titulo": "Pedro Páramo - Dan Brown",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0141",
+    "titulo": "Cien años de soledad - Jane Austen",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0104",
+    "titulo": "El gran Gatsby - Miguel de Cervantes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0933",
+    "titulo": "El código Da Vinci - Julio Cortázar",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0372",
+    "titulo": "Conversación en La Catedral - Mark Twain",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0470",
+    "titulo": "El Quijote - Mario Vargas Llosa",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0060",
+    "titulo": "Cien años de soledad - Isabel Allende",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0717",
+    "titulo": "Cien años de soledad - Marcel Proust",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0769",
+    "titulo": "El código Da Vinci - Ray Bradbury",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0502",
+    "titulo": "Cien años de soledad - Fyodor Dostoevsky",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0158",
+    "titulo": "El alquimista - Jane Austen",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0664",
+    "titulo": "En busca del tiempo perdido - Jane Austen",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0354",
+    "titulo": "Ulises - Dan Brown",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0180",
+    "titulo": "En busca del tiempo perdido - Fyodor Dostoevsky",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0394",
+    "titulo": "El alquimista - Jane Austen",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0048",
+    "titulo": "Conversación en La Catedral - J.K. Rowling",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0486",
+    "titulo": "El guardián entre el centeno - Ray Bradbury",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0313",
+    "titulo": "El Quijote - Suzanne Collins",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0915",
+    "titulo": "Pedro Páramo - Roberto Bolaño",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0544",
+    "titulo": "La casa de los espíritus - James Joyce",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0140",
+    "titulo": "Los detectives salvajes - J.K. Rowling",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0453",
+    "titulo": "Las aventuras de Huckleberry Finn - Carlos Fuentes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0729",
+    "titulo": "La casa de los espíritus - Ray Bradbury",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0656",
+    "titulo": "Ulises - Frank Herbert",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0873",
+    "titulo": "El guardián entre el centeno - Suzanne Collins",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0429",
+    "titulo": "Pedro Páramo - Harper Lee",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0796",
+    "titulo": "Harry Potter - Jane Austen",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0300",
+    "titulo": "Dune - Suzanne Collins",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0334",
+    "titulo": "Crimen y castigo - Leo Tolstoy",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0631",
+    "titulo": "Moby Dick - Dan Brown",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0346",
+    "titulo": "Las aventuras de Huckleberry Finn - Jane Austen",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0032",
+    "titulo": "El gran Gatsby - Isabel Allende",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0285",
+    "titulo": "Crimen y castigo - Herman Melville",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0723",
+    "titulo": "2666 - Carlos Fuentes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0269",
+    "titulo": "El alquimista - Frank Herbert",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0496",
+    "titulo": "1984 - J.D. Salinger",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0734",
+    "titulo": "El amor en los tiempos del cólera - Herman Melville",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0893",
+    "titulo": "Fahrenheit 451 - Miguel de Cervantes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0797",
+    "titulo": "Dune - J.K. Rowling",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0710",
+    "titulo": "Ulises - Harper Lee",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0161",
+    "titulo": "El gran Gatsby - Herman Melville",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0960",
+    "titulo": "El código Da Vinci - Herman Melville",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0274",
+    "titulo": "Moby Dick - J.D. Salinger",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0241",
+    "titulo": "El guardián entre el centeno - Gabriel García Márquez",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0947",
+    "titulo": "Los detectives salvajes - Jane Austen",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0184",
+    "titulo": "El Quijote - J.K. Rowling",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0207",
+    "titulo": "Crimen y castigo - J.R.R. Tolkien",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0758",
+    "titulo": "Ulises - James Joyce",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0468",
+    "titulo": "Los detectives salvajes - Dan Brown",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0688",
+    "titulo": "El amor en los tiempos del cólera - J.K. Rowling",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0050",
+    "titulo": "Ulises - Jane Austen",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0592",
+    "titulo": "Harry Potter - Isabel Allende",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0437",
+    "titulo": "El código Da Vinci - J.R.R. Tolkien",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0805",
+    "titulo": "Anna Karenina - Jane Austen",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0912",
+    "titulo": "Conversación en La Catedral - Leo Tolstoy",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0574",
+    "titulo": "El alquimista - Leo Tolstoy",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0259",
+    "titulo": "Conversación en La Catedral - J.R.R. Tolkien",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0267",
+    "titulo": "Cien años de soledad - Suzanne Collins",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0322",
+    "titulo": "El túnel - George Orwell",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0845",
+    "titulo": "Moby Dick - Mario Vargas Llosa",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0855",
+    "titulo": "Harry Potter - Jane Austen",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0409",
+    "titulo": "Crimen y castigo - J.R.R. Tolkien",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0637",
+    "titulo": "Crimen y castigo - George Orwell",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0543",
+    "titulo": "Harry Potter - Suzanne Collins",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0310",
+    "titulo": "Ulises - J.R.R. Tolkien",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0374",
+    "titulo": "Rayuela - J.K. Rowling",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0046",
+    "titulo": "Harry Potter - Gabriel García Márquez",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0213",
+    "titulo": "2666 - Leo Tolstoy",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0883",
+    "titulo": "Crimen y castigo - Gabriel García Márquez",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0847",
+    "titulo": "Los detectives salvajes - Harper Lee",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0548",
+    "titulo": "Moby Dick - Mario Vargas Llosa",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0827",
+    "titulo": "El Quijote - Suzanne Collins",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0806",
+    "titulo": "El túnel - George Orwell",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0371",
+    "titulo": "El Quijote - Miguel de Cervantes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0554",
+    "titulo": "El alquimista - Mario Vargas Llosa",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0514",
+    "titulo": "Moby Dick - Gabriel García Márquez",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0457",
+    "titulo": "Crimen y castigo - Dan Brown",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0844",
+    "titulo": "En busca del tiempo perdido - J.K. Rowling",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0602",
+    "titulo": "El gran Gatsby - Leo Tolstoy",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0225",
+    "titulo": "Dune - F. Scott Fitzgerald",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0570",
+    "titulo": "La casa de los espíritus - George Orwell",
+    "disponible": false
+  },
+  {
+    "codigo": "ISBN-0037",
+    "titulo": "Anna Karenina - Jane Austen",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0733",
+    "titulo": "La casa de los espíritus - Suzanne Collins",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0162",
+    "titulo": "Los detectives salvajes - Julio Cortázar",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0324",
+    "titulo": "La ciudad y los perros - Paulo Coelho",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0414",
+    "titulo": "Cien años de soledad - Miguel de Cervantes",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0907",
+    "titulo": "El gran Gatsby - J.K. Rowling",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0819",
+    "titulo": "En busca del tiempo perdido - Frank Herbert",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0932",
+    "titulo": "Ulises - Mark Twain",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0189",
+    "titulo": "Las aventuras de Huckleberry Finn - Jane Austen",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0627",
+    "titulo": "Los detectives salvajes - J.R.R. Tolkien",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0820",
+    "titulo": "El guardián entre el centeno - Ray Bradbury",
+    "disponible": true
+  },
+  {
+    "codigo": "ISBN-0585",
+    "titulo": "El amor en los tiempos del cólera - Mario Vargas Llosa",
+    "disponible": true
+  }
+]

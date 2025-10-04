@@ -1,0 +1,392 @@
+[
+  {
+    "codigo": "ISBN-0208",
+    "userId": "u-33",
+    "dueDate": "2025-09-29",
+    "renovaciones": 1
+  },
+  {
+    "codigo": "ISBN-0137",
+    "userId": "u-68",
+    "dueDate": "2025-10-04",
+    "renovaciones": 1
+  },
+  {
+    "codigo": "ISBN-0326",
+    "userId": "u-4",
+    "dueDate": "2025-10-13",
+    "renovaciones": 0
+  },
+  {
+    "codigo": "ISBN-0571",
+    "userId": "u-32",
+    "dueDate": "2025-10-09",
+    "renovaciones": 2
+  },
+  {
+    "codigo": "ISBN-0527",
+    "userId": "u-83",
+    "dueDate": "2025-10-15",
+    "renovaciones": 2
+  },
+  {
+    "codigo": "ISBN-0539",
+    "userId": "u-13",
+    "dueDate": "2025-10-15",
+    "renovaciones": 0
+  },
+  {
+    "codigo": "ISBN-0604",
+    "userId": "u-32",
+    "dueDate": "2025-10-13",
+    "renovaciones": 0
+  },
+  {
+    "codigo": "ISBN-0165",
+    "userId": "u-25",
+    "dueDate": "2025-10-05",
+    "renovaciones": 0
+  },
+  {
+    "codigo": "ISBN-0370",
+    "userId": "u-71",
+    "dueDate": "2025-10-08",
+    "renovaciones": 0
+  },
+  {
+    "codigo": "ISBN-0597",
+    "userId": "u-29",
+    "dueDate": "2025-10-18",
+    "renovaciones": 2
+  },
+  {
+    "codigo": "ISBN-0440",
+    "userId": "u-53",
+    "dueDate": "2025-10-08",
+    "renovaciones": 2
+  },
+  {
+    "codigo": "ISBN-0234",
+    "userId": "u-12",
+    "dueDate": "2025-10-18",
+    "renovaciones": 2
+  },
+  {
+    "codigo": "ISBN-0263",
+    "userId": "u-57",
+    "dueDate": "2025-09-30",
+    "renovaciones": 1
+  },
+  {
+    "codigo": "ISBN-0880",
+    "userId": "u-85",
+    "dueDate": "2025-10-09",
+    "renovaciones": 0
+  },
+  {
+    "codigo": "ISBN-0147",
+    "userId": "u-16",
+    "dueDate": "2025-10-02",
+    "renovaciones": 2
+  },
+  {
+    "codigo": "ISBN-0163",
+    "userId": "u-76",
+    "dueDate": "2025-10-10",
+    "renovaciones": 2
+  },
+  {
+    "codigo": "ISBN-0699",
+    "userId": "u-21",
+    "dueDate": "2025-10-10",
+    "renovaciones": 2
+  },
+  {
+    "codigo": "ISBN-0553",
+    "userId": "u-20",
+    "dueDate": "2025-10-12",
+    "renovaciones": 0
+  },
+  {
+    "codigo": "ISBN-0712",
+    "userId": "u-51",
+    "dueDate": "2025-10-18",
+    "renovaciones": 2
+  },
+  {
+    "codigo": "ISBN-0449",
+    "userId": "u-46",
+    "dueDate": "2025-10-13",
+    "renovaciones": 1
+  },
+  {
+    "codigo": "ISBN-0899",
+    "userId": "u-6",
+    "dueDate": "2025-10-02",
+    "renovaciones": 1
+  },
+  {
+    "codigo": "ISBN-0121",
+    "userId": "u-56",
+    "dueDate": "2025-10-07",
+    "renovaciones": 1
+  },
+  {
+    "codigo": "ISBN-0728",
+    "userId": "u-69",
+    "dueDate": "2025-10-10",
+    "renovaciones": 0
+  },
+  {
+    "codigo": "ISBN-0620",
+    "userId": "u-90",
+    "dueDate": "2025-10-14",
+    "renovaciones": 2
+  },
+  {
+    "codigo": "ISBN-0984",
+    "userId": "u-61",
+    "dueDate": "2025-09-28",
+    "renovaciones": 2
+  },
+  {
+    "codigo": "ISBN-0474",
+    "userId": "u-13",
+    "dueDate": "2025-10-18",
+    "renovaciones": 1
+  },
+  {
+    "codigo": "ISBN-0623",
+    "userId": "u-48",
+    "dueDate": "2025-10-10",
+    "renovaciones": 0
+  },
+  {
+    "codigo": "ISBN-0229",
+    "userId": "u-29",
+    "dueDate": "2025-10-10",
+    "renovaciones": 0
+  },
+  {
+    "codigo": "ISBN-0839",
+    "userId": "u-8",
+    "dueDate": "2025-10-01",
+    "renovaciones": 0
+  },
+  {
+    "codigo": "ISBN-0042",
+    "userId": "u-15",
+    "dueDate": "2025-10-11",
+    "renovaciones": 1
+  },
+  {
+    "codigo": "ISBN-0195",
+    "userId": "u-51",
+    "dueDate": "2025-10-07",
+    "renovaciones": 2
+  },
+  {
+    "codigo": "ISBN-0524",
+    "userId": "u-14",
+    "dueDate": "2025-10-01",
+    "renovaciones": 1
+  },
+  {
+    "codigo": "ISBN-0253",
+    "userId": "u-6",
+    "dueDate": "2025-10-12",
+    "renovaciones": 0
+  },
+  {
+    "codigo": "ISBN-0945",
+    "userId": "u-62",
+    "dueDate": "2025-10-08",
+    "renovaciones": 0
+  },
+  {
+    "codigo": "ISBN-0081",
+    "userId": "u-37",
+    "dueDate": "2025-10-07",
+    "renovaciones": 1
+  },
+  {
+    "codigo": "ISBN-0731",
+    "userId": "u-52",
+    "dueDate": "2025-10-03",
+    "renovaciones": 0
+  },
+  {
+    "codigo": "ISBN-0420",
+    "userId": "u-3",
+    "dueDate": "2025-09-29",
+    "renovaciones": 1
+  },
+  {
+    "codigo": "ISBN-0117",
+    "userId": "u-1",
+    "dueDate": "2025-10-09",
+    "renovaciones": 2
+  },
+  {
+    "codigo": "ISBN-0265",
+    "userId": "u-88",
+    "dueDate": "2025-10-01",
+    "renovaciones": 2
+  },
+  {
+    "codigo": "ISBN-0749",
+    "userId": "u-71",
+    "dueDate": "2025-09-28",
+    "renovaciones": 0
+  },
+  {
+    "codigo": "ISBN-0609",
+    "userId": "u-66",
+    "dueDate": "2025-10-08",
+    "renovaciones": 0
+  },
+  {
+    "codigo": "ISBN-0303",
+    "userId": "u-86",
+    "dueDate": "2025-10-16",
+    "renovaciones": 1
+  },
+  {
+    "codigo": "ISBN-0997",
+    "userId": "u-33",
+    "dueDate": "2025-09-30",
+    "renovaciones": 1
+  },
+  {
+    "codigo": "ISBN-0706",
+    "userId": "u-42",
+    "dueDate": "2025-10-17",
+    "renovaciones": 2
+  },
+  {
+    "codigo": "ISBN-0403",
+    "userId": "u-33",
+    "dueDate": "2025-10-04",
+    "renovaciones": 1
+  },
+  {
+    "codigo": "ISBN-0795",
+    "userId": "u-4",
+    "dueDate": "2025-10-16",
+    "renovaciones": 1
+  },
+  {
+    "codigo": "ISBN-0689",
+    "userId": "u-67",
+    "dueDate": "2025-10-03",
+    "renovaciones": 2
+  },
+  {
+    "codigo": "ISBN-0834",
+    "userId": "u-66",
+    "dueDate": "2025-10-09",
+    "renovaciones": 1
+  },
+  {
+    "codigo": "ISBN-0582",
+    "userId": "u-13",
+    "dueDate": "2025-10-02",
+    "renovaciones": 2
+  },
+  {
+    "codigo": "ISBN-0329",
+    "userId": "u-17",
+    "dueDate": "2025-10-18",
+    "renovaciones": 1
+  },
+  {
+    "codigo": "ISBN-0002",
+    "userId": "u-manual-ap",
+    "dueDate": "2025-10-18",
+    "renovaciones": 0
+  },
+  {
+    "codigo": "ISBN-0003",
+    "userId": "u-manual-ga",
+    "dueDate": "2025-10-18",
+    "renovaciones": 0
+  },
+  {
+    "codigo": "ISBN-0001",
+    "userId": "u-1",
+    "dueDate": "2025-10-18",
+    "renovaciones": 0
+  },
+  {
+    "codigo": "ISBN-0004",
+    "userId": "u-4",
+    "dueDate": "2025-10-18",
+    "renovaciones": 0
+  },
+  {
+    "codigo": "ISBN-0006",
+    "userId": "u-6",
+    "dueDate": "2025-10-18",
+    "renovaciones": 0
+  },
+  {
+    "codigo": "ISBN-0008",
+    "userId": "u-8",
+    "dueDate": "2025-10-18",
+    "renovaciones": 0
+  },
+  {
+    "codigo": "ISBN-0009",
+    "userId": "u-9",
+    "dueDate": "2025-10-18",
+    "renovaciones": 0
+  },
+  {
+    "codigo": "ISBN-0010",
+    "userId": "u-10",
+    "dueDate": "2025-10-18",
+    "renovaciones": 0
+  },
+  {
+    "codigo": "ISBN-0011",
+    "userId": "u-11",
+    "dueDate": "2025-10-18",
+    "renovaciones": 0
+  },
+  {
+    "codigo": "ISBN-0013",
+    "userId": "u-13",
+    "dueDate": "2025-10-18",
+    "renovaciones": 0
+  },
+  {
+    "codigo": "ISBN-0016",
+    "userId": "u-16",
+    "dueDate": "2025-10-18",
+    "renovaciones": 0
+  },
+  {
+    "codigo": "ISBN-0017",
+    "userId": "u-17",
+    "dueDate": "2025-10-18",
+    "renovaciones": 0
+  },
+  {
+    "codigo": "ISBN-0018",
+    "userId": "u-18",
+    "dueDate": "2025-10-18",
+    "renovaciones": 0
+  },
+  {
+    "codigo": "ISBN-0019",
+    "userId": "u-19",
+    "dueDate": "2025-10-18",
+    "renovaciones": 0
+  },
+  {
+    "codigo": "ISBN-0020",
+    "userId": "u-20",
+    "dueDate": "2025-10-18",
+    "renovaciones": 0
+  }
+]

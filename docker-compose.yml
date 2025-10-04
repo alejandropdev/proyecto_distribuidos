@@ -23,7 +23,7 @@ services:
     volumes:
       - ./data:/app/data
       - ./metrics:/app/metrics
-    command: ["python", "-m", "gestor_central.server", "--mode", "serial", "--mock-ap", "--pretty"]
+    command: ["python", "-m", "gestor_central.server", "--mode", "serial", "--pretty"]
     depends_on:
       - sitio-b
 
@@ -38,16 +38,29 @@ services:
       - "5557:5557"  # AP REQ/REP
       - "5560:5560"  # GA_A
       - "5561:5561"  # GA_B
+      - "5562:5562"  # GA_A Replication PUB
+      - "5563:5563"  # GA_B Replication PUB
+      - "5564:5564"  # GA Health REP
+      - "5565:5565"  # GA Heartbeat PUB
     environment:
       - GC_PUB_CONNECT=tcp://sitio-a:5556
       - AP_REP_BIND=tcp://0.0.0.0:5557
-      - GA_A_REP_BIND=tcp://0.0.0.0:5560
-      - GA_B_REP_BIND=tcp://0.0.0.0:5561
+      - GA_REP_BIND=tcp://0.0.0.0:5560
+      - GA_HEALTH_REP_BIND=tcp://0.0.0.0:5564
+      - GA_HEARTBEAT_PUB_BIND=tcp://0.0.0.0:5565
+      - GA_HEARTBEAT_INTERVAL_MS=2000
+      - GA_REPL_PUB_BIND=tcp://0.0.0.0:5562
+      - GA_REPL_SUB_CONNECT=tcp://sitio-b:5563
+      - GA_DATA_DIR=/app/data/siteA
+      - BOOKS_FILE=books.json
+      - LOANS_FILE=loans.json
+      - OPLOG_FILE=oplog.json
+      - APPLIED_INDEX_FILE=applied_index.json
+      - SNAPSHOT_INTERVAL_OPS=500
     volumes:
       - ./data:/app/data
       - ./metrics:/app/metrics
-    # Placeholder command - Sebastián will replace this
-    command: ["python", "-c", "print('Site B - Sebastián\\'s components'); import time; time.sleep(3600)"]
+    command: ["sh", "-c", "python -m actors.prestamo --pretty & python -m ga.server --data-dir /app/data/siteA --node-id A --pretty"]
 
   # Load Generator - Alejandro's PS clients
   load-generator:
