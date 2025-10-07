@@ -18,30 +18,31 @@ participant "Sistema de\nLogs" as LOG
 
 == Flujo de Renovación de Libro ==
 
-PS -> PS : leer_solicitudes()
-PS -> PS : parsear_linea("RENOVACION L002 U002")
+PS -> PS : leer_solicitudes("data/solicitudes.txt")
+PS -> PS : parsear_linea("RENOVACION L002 U002 SEDE_1")
 PS -> PS : crear_mensaje_json()
 
 note over PS
 **Solicitud preparada**
 Operación: RENOVACION
-Libro: L002, Usuario: U002
+Libro: L002, Usuario: U002, Sede: SEDE_1
 end note
 
 == Comunicación REQ/REP (Síncrona) ==
 
-PS -> GC : send(solicitud_json) [REQ]
+PS -> GC : req_socket.send(solicitud_json) [REQ]
 note right of PS
 **Puerto 5001**
 Patrón REQ/REP
 Comunicación síncrona
 end note
 
-GC -> GC : recv(solicitud_json) [REP]
+GC -> GC : rep_socket.recv(zmq.NOBLOCK) [REP]
 GC -> GC : procesar_solicitud()
+GC -> GC : json.loads(mensaje_json)
 GC -> GC : validar_operacion("RENOVACION")
-GC -> GC : calcular_nueva_fecha_devolucion()
-GC -> GC : crear_evento_renovacion()
+GC -> GC : datetime.utcnow().isoformat()
+GC -> GC : (datetime.now() + timedelta(days=7)).strftime('%Y-%m-%d')
 
 note over GC
 **Evento creado**
@@ -49,8 +50,9 @@ Timestamp: 2025-01-XX
 Nueva fecha: +7 días
 end note
 
-GC -> PS : send(respuesta_ok) [REP]
-PS -> PS : procesar_respuesta()
+GC -> PS : rep_socket.send(respuesta_json) [REP]
+PS -> PS : req_socket.recv()
+PS -> PS : json.loads(respuesta_str)
 PS -> LOG : log("Solicitud de renovación enviada")
 
 note over PS
@@ -62,22 +64,22 @@ end note
 == Comunicación PUB/SUB (Asíncrona) ==
 
 GC -> GC : enviar_evento_a_actores()
-GC -> AR : publish("renovacion", evento) [PUB]
+GC -> AR : pub_socket.send_multipart([b"renovacion", evento_json]) [PUB]
 note right of GC
 **Puerto 5002**
 Patrón PUB/SUB
 Topic: "renovacion"
 end note
 
-AR -> AR : recv_multipart() [SUB]
-AR -> AR : parsear_evento()
+AR -> AR : sub_socket.recv_multipart(zmq.NOBLOCK) [SUB]
+AR -> AR : json.loads(datos_json)
 AR -> LOG : log("Evento de renovación recibido")
 
 == Procesamiento de Renovación ==
 
 AR -> AR : procesar_renovacion(evento)
 AR -> BD : cargar_libros()
-BD --> AR : return(libros_json)
+BD --> AR : return(base_datos)
 
 note over AR
 **Base de datos cargada**
@@ -85,13 +87,12 @@ Estado actual de libros
 Lista para modificar
 end note
 
-AR -> AR : buscar_libro("L002")
-AR -> AR : verificar_libro_existe()
+AR -> AR : buscar_libro_en_ejemplares("L002")
+AR -> AR : verificar_ejemplar_prestado()
 
-alt Si libro existe
-  AR -> AR : obtener_fecha_actual()
+alt Si ejemplar encontrado
   AR -> AR : actualizar_fecha_devolucion()
-  AR -> AR : aplicar_nueva_fecha()
+  AR -> AR : ejemplar['fecha_devolucion'] = nueva_fecha
 
   note over AR
   **Fecha actualizada**
@@ -99,8 +100,8 @@ alt Si libro existe
   +7 días de renovación
   end note
 
-  AR -> BD : crear_backup()
-  AR -> BD : guardar_libros(libros_actualizados)
+  AR -> BD : shutil.copy2(archivo, backup)
+  AR -> BD : guardar_libros(base_datos)
   AR -> LOG : log("Renovación procesada exitosamente")
 
   note over BD
@@ -109,9 +110,9 @@ alt Si libro existe
   Nueva fecha persistida
   end note
 
-else Si libro no existe
-  AR -> LOG : log("ERROR: Libro L002 no encontrado")
-  AR -> AR : incrementar_contador_errores()
+else Si ejemplar no encontrado
+  AR -> LOG : log("WARNING: No se encontró ejemplar prestado")
+  AR -> AR : return(False)
 end
 
 == Cálculo de Fecha de Renovación ==

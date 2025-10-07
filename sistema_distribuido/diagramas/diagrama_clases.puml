@@ -6,39 +6,17 @@ skinparam class {
   BackgroundColor LightBlue
   BorderColor DarkBlue
 }
-skinparam interface {
-  BackgroundColor LightGreen
-  BorderColor DarkGreen
-}
-skinparam enum {
+skinparam note {
   BackgroundColor LightYellow
   BorderColor Orange
 }
 
-' ===================== Clases e Interfaces =====================
-
-abstract class BaseActor {
-  - context: Context
-  - sub_socket: Socket
-  - archivo_libros: str
-  - contador_operaciones: int
-  - running: bool
-  --
-  + __init__(archivo_libros: str)
-  + conectar_gestor_carga(): void
-  + cargar_libros(): List<Dict>
-  + guardar_libros(libros: List<Dict>): void
-  + escuchar_eventos(): void
-  + iniciar(): void
-  + detener(): void
-  --
-  {abstract} + procesar_evento(evento: Dict): bool
-}
+' ===================== Clases Principales =====================
 
 class GestorCarga {
-  - context: Context
-  - rep_socket: Socket
-  - pub_socket: Socket
+  - context: zmq.Context
+  - rep_socket: zmq.Socket
+  - pub_socket: zmq.Socket
   - contador_operaciones: int
   - running: bool
   --
@@ -49,184 +27,163 @@ class GestorCarga {
   + manejar_solicitudes(): void
   + iniciar(): void
   + detener(): void
-  --
-  - _validar_operacion(operacion: str): bool
-  - _crear_evento(datos: Dict): Dict
-  - _calcular_fecha_renovacion(): str
 }
 
 class ProcesoSolicitante {
-  - context: Context
-  - req_socket: Socket
+  - context: zmq.Context
+  - req_socket: zmq.Socket
   - contador_solicitudes: int
   - contador_exitosos: int
   - contador_errores: int
   --
   + __init__()
   + conectar_gestor_carga(): void
-  + leer_solicitudes(archivo: str): List<Dict>
+  + leer_solicitudes(archivo_solicitudes: str): List[Dict]
   + enviar_solicitud(solicitud: Dict): bool
-  + procesar_solicitudes(archivo: str): void
+  + procesar_solicitudes(archivo_solicitudes: str): void
   + mostrar_estadisticas(): void
-  + iniciar(archivo: str): void
+  + iniciar(archivo_solicitudes: str): void
   + detener(): void
-  --
-  - _parsear_linea(linea: str): Dict
-  - _crear_mensaje_json(solicitud: Dict): str
-  - _procesar_respuesta(respuesta: Dict): bool
 }
 
 class ActorDevolucion {
-  + procesar_devolucion(evento: Dict): bool
+  - context: zmq.Context
+  - sub_socket: zmq.Socket
+  - archivo_libros: str
+  - contador_devoluciones: int
+  - running: bool
   --
-  - _incrementar_ejemplares(libro: Dict): void
-  - _buscar_libro(libros: List<Dict], libro_id: str): Dict
+  + __init__(archivo_libros: str)
+  + conectar_gestor_carga(): void
+  + cargar_libros(): Dict
+  + guardar_libros(libros: Dict): void
+  + procesar_devolucion(evento: Dict): bool
+  + escuchar_eventos(): void
+  + iniciar(): void
+  + detener(): void
 }
 
 class ActorRenovacion {
+  - context: zmq.Context
+  - sub_socket: zmq.Socket
+  - archivo_libros: str
+  - contador_renovaciones: int
+  - running: bool
+  --
+  + __init__(archivo_libros: str)
+  + conectar_gestor_carga(): void
+  + cargar_libros(): Dict
+  + guardar_libros(libros: Dict): void
   + procesar_renovacion(evento: Dict): bool
-  --
-  - _actualizar_fecha_devolucion(libro: Dict, nueva_fecha: str): void
-  - _buscar_libro(libros: List<Dict], libro_id: str): Dict
+  + escuchar_eventos(): void
+  + iniciar(): void
+  + detener(): void
 }
 
-class Solicitud {
-  + op: str
-  + libro_id: str
-  + usuario_id: str
-  + sede: str
-  + linea: int
-  --
-  + __init__(op: str, libro_id: str, usuario_id: str, sede: str, linea: int)
-  + to_dict(): Dict
-}
+' ===================== Estructuras de Datos =====================
 
-class Evento {
-  + operacion: str
-  + libro_id: str
-  + usuario_id: str
-  + sede: str
-  + timestamp: str
-  + nueva_fecha_devolucion: str
-  --
-  + __init__(operacion: str, libro_id: str, usuario_id: str, sede: str)
-  + to_dict(): Dict
+note as SolicitudData
+**Estructura de Solicitud (Dict)**
+{
+  "op": "RENOVACION|DEVOLUCION",
+  "libro_id": "string",
+  "usuario_id": "string", 
+  "sede": "string",
+  "linea": int
 }
+end note
 
-class Libro {
-  + libro_id: str
-  + titulo: str
-  + ejemplares_disponibles: int
-  + fecha_devolucion: str
-  --
-  + __init__(libro_id: str, titulo: str, ejemplares: int, fecha: str)
-  + incrementar_ejemplares(): void
-  + actualizar_fecha_devolucion(nueva_fecha: str): void
-  + to_dict(): Dict
+note as EventoData
+**Estructura de Evento (Dict)**
+{
+  "operacion": "RENOVACION|DEVOLUCION",
+  "libro_id": "string",
+  "usuario_id": "string",
+  "sede": "string",
+  "timestamp": "string",
+  "nueva_fecha_devolucion": "string" (solo renovación)
 }
+end note
 
-class Respuesta {
-  + status: str
-  + message: str
-  + operacion: str
-  + libro_id: str
-  --
-  + __init__(status: str, message: str, operacion: str = "", libro_id: str = "")
-  + is_ok(): bool
-  + to_dict(): Dict
+note as RespuestaData
+**Estructura de Respuesta (Dict)**
+{
+  "status": "OK|ERROR",
+  "message": "string",
+  "operacion": "string",
+  "libro_id": "string"
 }
+end note
 
-enum TipoOperacion {
-  RENOVACION
-  DEVOLUCION
+note as LibroData
+**Estructura de Libro (JSON)**
+{
+  "libro_id": "string",
+  "titulo": "string",
+  "total_ejemplares": int,
+  "ejemplares_disponibles": int,
+  "ejemplares_prestados": int,
+  "ejemplares": [
+    {
+      "ejemplar_id": "string",
+      "estado": "disponible|prestado",
+      "fecha_devolucion": "string|null",
+      "usuario_prestamo": "string|null",
+      "sede": "string|null"
+    }
+  ]
 }
-
-enum EstadoSolicitud {
-  PENDIENTE
-  PROCESANDO
-  COMPLETADA
-  ERROR
-}
-
-enum TipoSocket {
-  REQ
-  REP
-  PUB
-  SUB
-}
-
-interface IProcesadorEventos {
-  + procesar_evento(evento: Evento): bool
-}
-
-interface IComunicador {
-  + conectar(): void
-  + enviar(mensaje: str): void
-  + recibir(): str
-  + desconectar(): void
-}
-
-interface IRepositorioDatos {
-  + cargar(): List<Dict>
-  + guardar(datos: List<Dict>): void
-  + crear_backup(): void
-}
+end note
 
 ' ===================== Relaciones =====================
 
-' Herencia
-BaseActor <|-- ActorDevolucion
-BaseActor <|-- ActorRenovacion
+' Comunicación entre componentes
+ProcesoSolicitante --> GestorCarga : REQ/REP
+GestorCarga --> ActorDevolucion : PUB/SUB (topic: devolucion)
+GestorCarga --> ActorRenovacion : PUB/SUB (topic: renovacion)
 
-' Implementación de interfaces
-ActorDevolucion ..|> IProcesadorEventos
-ActorRenovacion ..|> IProcesadorEventos
-GestorCarga ..|> IComunicador
-ProcesoSolicitante ..|> IComunicador
-ActorDevolucion ..|> IRepositorioDatos
-ActorRenovacion ..|> IRepositorioDatos
+' Uso de estructuras de datos
+ProcesoSolicitante ..> SolicitudData : creates
+GestorCarga ..> EventoData : creates
+GestorCarga ..> RespuestaData : generates
+ActorDevolucion ..> LibroData : updates
+ActorRenovacion ..> LibroData : updates
 
-' Composición / agregación de uso de objetos de dominio
-GestorCarga *-- Solicitud : processes
-GestorCarga *-- Evento : creates
-GestorCarga *-- Respuesta : generates
-ProcesoSolicitante *-- Solicitud : creates
-ActorDevolucion *-- Libro : updates
-ActorRenovacion *-- Libro : updates
-
-' Dependencias (uso de tipos)
-Solicitud --> TipoOperacion : uses
-Evento --> TipoOperacion : uses
-Respuesta --> EstadoSolicitud : uses
-GestorCarga --> TipoSocket : uses
-ProcesoSolicitante --> TipoSocket : uses
+' Acceso a archivos
+ActorDevolucion --> LibroData : reads/writes JSON
+ActorRenovacion --> LibroData : reads/writes JSON
 
 ' Notas
-note right of BaseActor
-**Clase base abstracta**
-Funcionalidad común de actores
-end note
-
 note right of GestorCarga
 **Componente central**
-REQ/REP y PUB/SUB
-Coordina el sistema
+- REQ/REP para solicitudes síncronas
+- PUB/SUB para eventos asíncronos
+- Coordina todo el sistema
+- Puerto 5001 (REP), 5002 (PUB)
 end note
 
 note right of ProcesoSolicitante
 **Cliente del sistema**
-Lee archivo y envía solicitudes
-Comunicación síncrona
+- Lee archivo de solicitudes
+- Envía solicitudes síncronas
+- Conecta a puerto 5001
+- Maneja estadísticas
 end note
 
 note right of ActorDevolucion
 **Procesador de devoluciones**
-Incrementa ejemplares y guarda
+- Suscribe a topic "devolucion"
+- Actualiza ejemplares disponibles
+- Guarda cambios en JSON
+- Conecta a puerto 5002
 end note
 
 note right of ActorRenovacion
 **Procesador de renovaciones**
-Actualiza fechas y guarda
+- Suscribe a topic "renovacion"
+- Actualiza fechas de devolución
+- Guarda cambios en JSON
+- Conecta a puerto 5002
 end note
 
 @enduml

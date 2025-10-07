@@ -6,54 +6,59 @@ skinparam component {
   BackgroundColor LightBlue
   BorderColor DarkBlue
 }
-skinparam interface {
-  BackgroundColor LightGreen
-  BorderColor DarkGreen
-}
 skinparam package {
   BackgroundColor LightYellow
   BorderColor Orange
 }
 
-' ====================== Interfaces ======================
-interface "REQ/REP Interface" as REQREP
-interface "PUB/SUB Interface" as PUBSUB
-interface "File Interface" as FILE
+' ====================== Componentes Principales ======================
 
-' ====================== Gestor de Carga ======================
 package "Gestor de Carga (GC)" {
-  [Socket Manager] as SocketMgr
-  [Request Processor] as ReqProcessor
-  [Event Publisher] as EventPub
-  [JSON Parser] as JSONParser
-  [Operation Counter] as OpCounter
+  [GestorCarga] as GC
+  note right of GC
+  **Funcionalidades:**
+  • REQ/REP en puerto 5001
+  • PUB/SUB en puerto 5002
+  • Procesamiento de solicitudes
+  • Creación de eventos
+  • Validación de operaciones
+  end note
 }
 
-' ====================== Proceso Solicitante ======================
 package "Proceso Solicitante (PS)" {
-  [Request Sender] as ReqSender
-  [File Reader] as FileReader
-  [Response Handler] as RespHandler
-  [Statistics Manager] as StatsMgr
+  [ProcesoSolicitante] as PS
+  note right of PS
+  **Funcionalidades:**
+  • Lectura de archivo solicitudes
+  • Envío de solicitudes REQ/REP
+  • Manejo de estadísticas
+  • Procesamiento de respuestas
+  end note
 }
 
-' ====================== Actor Devolución ======================
 package "Actor de Devolución" {
-  [Event Subscriber Dev] as EventSubDev
-  [Devolución Processor] as DevProcessor
-  [Database Manager Dev] as DBManagerDev
-  [Backup Manager Dev] as BackupMgrDev
+  [ActorDevolucion] as AD
+  note right of AD
+  **Funcionalidades:**
+  • Suscripción a topic "devolucion"
+  • Procesamiento de devoluciones
+  • Actualización de ejemplares
+  • Gestión de archivos JSON
+  end note
 }
 
-' ====================== Actor Renovación ======================
 package "Actor de Renovación" {
-  [Event Subscriber Ren] as EventSubRen
-  [Renovación Processor] as RenProcessor
-  [Database Manager Ren] as DBManagerRen
-  [Backup Manager Ren] as BackupMgrRen
+  [ActorRenovacion] as AR
+  note right of AR
+  **Funcionalidades:**
+  • Suscripción a topic "renovacion"
+  • Procesamiento de renovaciones
+  • Actualización de fechas
+  • Gestión de archivos JSON
+  end note
 }
 
-' ====================== Data Layer ======================
+' ====================== Capa de Datos ======================
 package "Capa de Datos" {
   [libros.json] as LibrosDB
   [solicitudes.txt] as SolicitudesFile
@@ -62,85 +67,70 @@ package "Capa de Datos" {
 
 ' ====================== Infraestructura ======================
 package "Infraestructura" {
-  [ZeroMQ Context] as ZMQContext
+  [ZeroMQ] as ZMQ
   [Docker Network] as DockerNet
-  [Logging System] as Logging
+  [Logging] as LOG
 }
 
 ' ====================== Relaciones ======================
 
 ' --- Comunicación REQ/REP ---
-ReqSender --> REQREP : usa
-REQREP --> ReqProcessor : recibe solicitud
-ReqProcessor --> EventPub : dispara evento
-EventPub --> PUBSUB : publica
+PS --> GC : REQ/REP (puerto 5001)
+note right of PS
+**Comunicación síncrona**
+Request-Response
+Solicitudes inmediatas
+end note
 
 ' --- Comunicación PUB/SUB ---
-PUBSUB --> EventSubDev : topic "devolucion"
-PUBSUB --> EventSubRen : topic "renovacion"
+GC --> AD : PUB/SUB (puerto 5002, topic: devolucion)
+GC --> AR : PUB/SUB (puerto 5002, topic: renovacion)
+note right of GC
+**Comunicación asíncrona**
+Publisher-Subscriber
+Eventos distribuidos
+end note
 
-' --- Procesamiento ---
-EventSubDev --> DevProcessor : procesa evento
-EventSubRen --> RenProcessor : procesa evento
-
-' --- Acceso a Base de Datos ---
-DevProcessor --> DBManagerDev : actualiza
-RenProcessor --> DBManagerRen : actualiza
-DBManagerDev --> LibrosDB : lee/escribe
-DBManagerRen --> LibrosDB : lee/escribe
-
-' --- Archivos de Solicitudes ---
-FileReader --> FILE : lee
-FILE --> SolicitudesFile : accede
-
-' --- Backups ---
-DBManagerDev --> BackupMgrDev : crea backup
-DBManagerRen --> BackupMgrRen : crea backup
-BackupMgrDev --> BackupFiles : almacena
-BackupMgrRen --> BackupFiles : almacena
+' --- Acceso a Archivos ---
+PS --> SolicitudesFile : lee
+AD --> LibrosDB : lee/escribe
+AR --> LibrosDB : lee/escribe
+AD --> BackupFiles : crea backup
+AR --> BackupFiles : crea backup
 
 ' --- Infraestructura ---
-SocketMgr --> ZMQContext : usa
-EventPub --> ZMQContext : usa
-EventSubDev --> ZMQContext : usa
-EventSubRen --> ZMQContext : usa
-ReqSender --> ZMQContext : usa
-ZMQContext --> DockerNet : comunica a través de
+GC --> ZMQ : usa
+PS --> ZMQ : usa
+AD --> ZMQ : usa
+AR --> ZMQ : usa
+ZMQ --> DockerNet : comunica a través de
 
 ' --- Logging ---
-ReqProcessor --> Logging : logs
-EventPub --> Logging : logs
-DevProcessor --> Logging : logs
-RenProcessor --> Logging : logs
+GC --> LOG : registra eventos
+PS --> LOG : registra solicitudes
+AD --> LOG : registra devoluciones
+AR --> LOG : registra renovaciones
 
 ' ====================== Notas ======================
-note right of REQREP
-**Síncrono**
-Request-Response
-Puerto 5001
-end note
-
-note right of PUBSUB
-**Asíncrono**
-Publisher-Subscriber
-Puerto 5002
-end note
-
-note right of FILE
-**Acceso a archivos**
-Volúmenes Docker compartidos
-end note
-
 note bottom of LibrosDB
 **Estado compartido**
 Actualizado por ambos actores
 Control de concurrencia básico
+Archivo JSON con backup automático
 end note
 
-note top of ZMQContext
+note top of ZMQ
 **ZeroMQ**
 Librería de mensajería
 Comunicación distribuida
+Patrones REQ/REP y PUB/SUB
+end note
+
+note right of DockerNet
+**Red Docker**
+Bridge network
+Comunicación entre contenedores
+Nombres de host: gc, actor_dev, actor_ren, ps
 end note
 
 @enduml

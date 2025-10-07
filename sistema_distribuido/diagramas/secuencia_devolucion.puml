@@ -18,29 +18,30 @@ participant "Sistema de\nLogs" as LOG
 
 == Flujo de Devolución de Libro ==
 
-PS -> PS : leer_solicitudes()
-PS -> PS : parsear_linea("DEVOLUCION L001 U001")
+PS -> PS : leer_solicitudes("data/solicitudes.txt")
+PS -> PS : parsear_linea("DEVOLUCION L001 U001 SEDE_1")
 PS -> PS : crear_mensaje_json()
 
 note over PS
 **Solicitud preparada**
 Operación: DEVOLUCION
-Libro: L001, Usuario: U001
+Libro: L001, Usuario: U001, Sede: SEDE_1
 end note
 
 == Comunicación REQ/REP (Síncrona) ==
 
-PS -> GC : send(solicitud_json) [REQ]
+PS -> GC : req_socket.send(solicitud_json) [REQ]
 note right of PS
 **Puerto 5001**
 Patrón REQ/REP
 Comunicación síncrona
 end note
 
-GC -> GC : recv(solicitud_json) [REP]
+GC -> GC : rep_socket.recv(zmq.NOBLOCK) [REP]
 GC -> GC : procesar_solicitud()
+GC -> GC : json.loads(mensaje_json)
 GC -> GC : validar_operacion("DEVOLUCION")
-GC -> GC : crear_evento_devolucion()
+GC -> GC : datetime.utcnow().isoformat()
 
 note over GC
 **Evento creado**
@@ -48,8 +49,9 @@ Timestamp: 2025-01-XX
 Operación: DEVOLUCION
 end note
 
-GC -> PS : send(respuesta_ok) [REP]
-PS -> PS : procesar_respuesta()
+GC -> PS : rep_socket.send(respuesta_json) [REP]
+PS -> PS : req_socket.recv()
+PS -> PS : json.loads(respuesta_str)
 PS -> LOG : log("Solicitud enviada exitosamente")
 
 note over PS
@@ -61,22 +63,22 @@ end note
 == Comunicación PUB/SUB (Asíncrona) ==
 
 GC -> GC : enviar_evento_a_actores()
-GC -> AD : publish("devolucion", evento) [PUB]
+GC -> AD : pub_socket.send_multipart([b"devolucion", evento_json]) [PUB]
 note right of GC
 **Puerto 5002**
 Patrón PUB/SUB
 Topic: "devolucion"
 end note
 
-AD -> AD : recv_multipart() [SUB]
-AD -> AD : parsear_evento()
+AD -> AD : sub_socket.recv_multipart(zmq.NOBLOCK) [SUB]
+AD -> AD : json.loads(datos_json)
 AD -> LOG : log("Evento de devolución recibido")
 
 == Procesamiento de Devolución ==
 
 AD -> AD : procesar_devolucion(evento)
 AD -> BD : cargar_libros()
-BD --> AD : return(libros_json)
+BD --> AD : return(base_datos)
 
 note over AD
 **Base de datos cargada**
@@ -84,22 +86,23 @@ Estado actual de libros
 Lista para modificar
 end note
 
-AD -> AD : buscar_libro("L001")
-AD -> AD : verificar_libro_existe()
+AD -> AD : buscar_libro_en_ejemplares("L001")
+AD -> AD : verificar_ejemplar_prestado()
 
-alt Si libro existe
-  AD -> AD : obtener_ejemplares_actuales()
-  AD -> AD : incrementar_ejemplares()
-  AD -> AD : actualizar_libro()
+alt Si ejemplar encontrado
+  AD -> AD : marcar_ejemplar_disponible()
+  AD -> AD : ejemplar['estado'] = 'disponible'
+  AD -> AD : incrementar_ejemplares_disponibles()
+  AD -> AD : decrementar_ejemplares_prestados()
 
   note over AD
-  **Ejemplares incrementados**
-  L001: 8 → 9 ejemplares
-  Estado actualizado
+  **Ejemplar devuelto**
+  L001: ejemplar disponible
+  Contadores actualizados
   end note
 
-  AD -> BD : crear_backup()
-  AD -> BD : guardar_libros(libros_actualizados)
+  AD -> BD : shutil.copy2(archivo, backup)
+  AD -> BD : guardar_libros(base_datos)
   AD -> LOG : log("Devolución procesada exitosamente")
 
   note over BD
@@ -108,9 +111,9 @@ alt Si libro existe
   Cambios persistidos
   end note
 
-else Si libro no existe
-  AD -> LOG : log("ERROR: Libro L001 no encontrado")
-  AD -> AD : incrementar_contador_errores()
+else Si ejemplar no encontrado
+  AD -> LOG : log("WARNING: No se encontró ejemplar prestado")
+  AD -> AD : return(False)
 end
 
 == Finalización ==
