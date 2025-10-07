@@ -1,10 +1,10 @@
 # Plan de Pruebas - Sistema Distribuido de Préstamo de Libros
 
-## 📋 Objetivo
+## Objetivo
 
 Validar que el sistema distribuido cumple con todos los requisitos de la **Entrega #1** del proyecto de sistemas distribuidos, incluyendo comunicación ZeroMQ, distribución de procesos y operaciones end-to-end.
 
-## 🧪 Tests Implementados
+## Tests Implementados
 
 ### 1. Test End-to-End Básico (`test_end_to_end.py`)
 
@@ -51,7 +51,7 @@ Validar que el sistema distribuido cumple con todos los requisitos de la **Entre
 - Análisis de logs de PS y GC
 - Verificación de cambios en `libros.json`
 
-## ✅ Checklist de Aceptación
+## Checklist de Aceptación
 
 ### Requisitos de Distribución
 - [ ] **≥3 procesos en ≥2 computadores**: Verificado por `show_ips.sh` - debe mostrar al menos 2 IPs distintas
@@ -74,7 +74,7 @@ Validar que el sistema distribuido cumple con todos los requisitos de la **Entre
 - [ ] **Contadores de operaciones**: Implementados en GC y PS
 - [ ] **Métricas de rendimiento**: Latencia ACK medida en tests
 
-## 🚀 Cómo Ejecutar las Pruebas
+## Cómo Ejecutar las Pruebas
 
 ### Opción 1: Suite Completa (Recomendado)
 ```bash
@@ -106,7 +106,7 @@ docker compose --profile demo up -d ps
 docker compose run --rm tester python -m pytest -v tests/test_file_workload.py
 ```
 
-## 📊 Criterios de Éxito
+## Criterios de Éxito
 
 ### Test End-to-End
 - ✅ ACK recibido en < 500ms para todas las operaciones
@@ -126,7 +126,7 @@ docker compose run --rm tester python -m pytest -v tests/test_file_workload.py
 - ✅ Publicaciones por tema correctas
 - ✅ Cambios en base de datos detectados
 
-## 🔍 Interpretación de Resultados
+## Interpretación de Resultados
 
 ### Logs de Pruebas
 - **Ubicación**: `logs/test_*.txt`
@@ -144,7 +144,7 @@ docker compose run --rm tester python -m pytest -v tests/test_file_workload.py
 - **Tasa de éxito**: Porcentaje de operaciones exitosas
 - **IPs únicas**: Número de "computadores" en el sistema
 
-## ⚠️ Troubleshooting
+## Troubleshooting
 
 ### Problemas Comunes
 
@@ -184,7 +184,7 @@ make logs
 docker compose run --rm tester python -c "import zmq; print('ZeroMQ OK')"
 ```
 
-## 📈 Métricas de Rendimiento
+## Métricas de Rendimiento
 
 ### Latencia Esperada
 - **ACK REQ/REP**: < 500ms
@@ -201,7 +201,7 @@ docker compose run --rm tester python -c "import zmq; print('ZeroMQ OK')"
 - **CPU**: Bajo uso (sistema I/O bound)
 - **Red**: Tráfico mínimo (mensajes JSON pequeños)
 
-## 🎯 Conclusión
+## Conclusión
 
 La suite de pruebas valida exhaustivamente todos los requisitos de la Entrega #1:
 

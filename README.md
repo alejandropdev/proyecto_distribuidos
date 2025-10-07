@@ -1,24 +1,24 @@
-# 📚 Sistema Distribuido de Préstamo de Libros
+# Sistema Distribuido de Préstamo de Libros
 
-## 🎯 Descripción del Proyecto
+## Descripción del Proyecto
 
 Este proyecto implementa un **sistema distribuido de préstamo de libros** usando **ZeroMQ** para la comunicación entre procesos y **Docker** para la distribución. El sistema soporta operaciones de **RENOVACIÓN** y **DEVOLUCIÓN** de libros con una arquitectura completamente distribuida.
 
-## 🏗️ Arquitectura del Sistema
+## Arquitectura del Sistema
 
 El sistema está compuesto por **4 contenedores Docker** que simulan computadoras independientes:
 
-- **🔄 Gestor de Carga (GC)**: Servicio central que recibe solicitudes y coordina eventos
-- **📤 Proceso Solicitante (PS)**: Cliente que envía solicitudes de renovación/devolución
-- **📚 Actor de Devolución**: Procesa eventos de devolución y actualiza ejemplares disponibles
-- **📅 Actor de Renovación**: Procesa eventos de renovación y actualiza fechas de devolución
+- **Gestor de Carga (GC)**: Servicio central que recibe solicitudes y coordina eventos
+- **Proceso Solicitante (PS)**: Cliente que envía solicitudes de renovación/devolución
+- **Actor de Devolución**: Procesa eventos de devolución y actualiza ejemplares disponibles
+- **Actor de Renovación**: Procesa eventos de renovación y actualiza fechas de devolución
 
-## 🔌 Patrones de Comunicación
+## Patrones de Comunicación
 
 - **REQ/REP (Síncrono)**: Comunicación entre PS y GC (puerto 5001)
 - **PUB/SUB (Asíncrono)**: Comunicación entre GC y los Actores (puerto 5002)
 
-## 🚀 Cómo Ejecutar el Sistema
+## Cómo Ejecutar el Sistema
 
 ### Opción 1: Demo Interactivo (Recomendado para presentaciones)
 
@@ -28,12 +28,12 @@ cd sistema_distribuido
 ```
 
 **Características:**
-- ✅ Menú interactivo con 8 opciones
-- ✅ Control total sobre cada paso
-- ✅ Análisis detallado de comunicación entre contenedores
-- ✅ Mostrar IPs de cada contenedor
-- ✅ Pausas entre pasos para explicar
-- ✅ Logs con colores para mejor visualización
+- Menú interactivo con 8 opciones
+- Control total sobre cada paso
+- Análisis detallado de comunicación entre contenedores
+- Mostrar IPs de cada contenedor
+- Pausas entre pasos para explicar
+- Logs con colores para mejor visualización
 
 ### Opción 2: Demo Rápido (Para demostraciones rápidas)
 
@@ -43,10 +43,10 @@ cd sistema_distribuido
 ```
 
 **Características:**
-- ✅ Ejecución automática completa
-- ✅ Análisis en tiempo real de comunicación
-- ✅ Resumen ejecutivo de todo el proceso
-- ✅ Ideal para demostraciones rápidas
+- Ejecución automática completa
+- Análisis en tiempo real de comunicación
+- Resumen ejecutivo de todo el proceso
+- Ideal para demostraciones rápidas
 
 ### Opción 3: Ejecución Manual
 
@@ -66,7 +66,7 @@ docker compose logs
 docker compose down
 ```
 
-## 📊 Flujo de Operaciones
+## Flujo de Operaciones
 
 1. **PS** lee solicitudes desde `data/solicitudes.txt`
 2. **PS** envía solicitudes JSON a **GC** vía REQ/REP
@@ -74,7 +74,7 @@ docker compose down
 4. **GC** publica eventos a los **Actores** vía PUB/SUB
 5. **Actores** procesan eventos y actualizan `data/libros.json`
 
-## 📁 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```
 proyecto_distribuidos/
@@ -95,20 +95,28 @@ proyecto_distribuidos/
     └── docker-compose.yml      # Configuración de contenedores
 ```
 
-## 📝 Formato de Solicitudes
+## Formato de Solicitudes
 
 Cada línea en `data/solicitudes.txt` debe tener el formato:
 ```
-OPERACION LIBRO_ID USUARIO_ID [SEDE]
+OPERACION LIBRO_ID USUARIO_ID SEDE
 ```
 
 **Ejemplo:**
 ```
-RENOVACION L001 U001
-DEVOLUCION L002 U002
+RENOVACION L0001 U0231 SEDE_1
+DEVOLUCION L0002 U0456 SEDE_2
 ```
 
-## 🔧 Configuración
+**Operaciones soportadas:**
+- `RENOVACION`: Extiende la fecha de devolución (+7 días)
+- `DEVOLUCION`: Marca el ejemplar como disponible
+
+**Sedes soportadas:**
+- `SEDE_1`: Primera sede (50 ejemplares prestados inicialmente)
+- `SEDE_2`: Segunda sede (150 ejemplares prestados inicialmente)
+
+## Configuración
 
 ### Puertos
 - **5001**: REQ/REP entre PS y GC
@@ -118,7 +126,7 @@ DEVOLUCION L002 U002
 - `data/libros.json`: Base de datos de libros con ejemplares y fechas
 - `data/solicitudes.txt`: Lista de operaciones a procesar
 
-## 📈 Monitoreo y Logs
+## Monitoreo y Logs
 
 Todos los servicios generan logs detallados con:
 - Timestamps UTC
@@ -127,60 +135,131 @@ Todos los servicios generan logs detallados con:
 - Errores y advertencias
 - Análisis de comunicación entre contenedores
 
-## 🧪 Datos de Prueba
+## Datos Iniciales
 
-El sistema incluye datos de prueba en `data/solicitudes.txt` con **6 operaciones mixtas**:
-- 3 renovaciones (L001, L003, L002)
-- 3 devoluciones (L002, L001, L003)
+El sistema incluye una **base de datos completa** con datos iniciales según los requerimientos:
 
-## 📊 Ejemplo de Resultados
+### Base de Datos de Libros (`data/libros.json`)
+- **1000 libros** con títulos realistas
+- **7728 ejemplares** en total
+- **200 ejemplares prestados** distribuidos por sedes:
+  - **50 ejemplares** prestados en **SEDE_1**
+  - **150 ejemplares** prestados en **SEDE_2**
+- **7528 ejemplares disponibles**
+- **102 libros** con un único ejemplar
+- **898 libros** con múltiples ejemplares
 
-**Estado inicial:**
+### Archivo de Solicitudes (`data/solicitudes.txt`)
+- **21 solicitudes** de prueba con formato completo
+- Operaciones de **RENOVACIÓN** y **DEVOLUCIÓN**
+- Solicitudes para ambas sedes (**SEDE_1** y **SEDE_2**)
+- Pruebas de casos de error (libros no existentes, usuarios sin préstamos)
+
+## Estructura de Datos
+
+### Base de Datos (`data/libros.json`)
 ```json
-[
-  {"libro_id": "L001", "ejemplares_disponibles": 6},
-  {"libro_id": "L002", "ejemplares_disponibles": 4},
-  {"libro_id": "L003", "ejemplares_disponibles": 8}
-]
+{
+  "metadata": {
+    "total_libros": 1000,
+    "total_ejemplares": 7728,
+    "ejemplares_disponibles": 7528,
+    "ejemplares_prestados_sede_1": 50,
+    "ejemplares_prestados_sede_2": 150
+  },
+  "libros": [
+    {
+      "libro_id": "L0001",
+      "titulo": "El Quijote",
+      "total_ejemplares": 2,
+      "ejemplares_disponibles": 0,
+      "ejemplares_prestados": 2,
+      "ejemplares": [
+        {
+          "ejemplar_id": "L0001-E001",
+          "libro_id": "L0001",
+          "titulo": "El Quijote",
+          "estado": "prestado",
+          "fecha_devolucion": "2025-10-20",
+          "usuario_prestamo": "U0231",
+          "sede": "SEDE_1"
+        }
+      ]
+    }
+  ]
+}
 ```
 
-**Estado final (después de procesar):**
-```json
-[
-  {"libro_id": "L001", "ejemplares_disponibles": 7},  // +1 devolución
-  {"libro_id": "L002", "ejemplares_disponibles": 5},  // +1 devolución
-  {"libro_id": "L003", "ejemplares_disponibles": 9}   // +1 devolución
-]
+### Ejemplo de Operación
+**Antes de devolución:**
+- Ejemplar `L0001-E001` está prestado por usuario `U0231` en `SEDE_1`
+- Fecha de devolución: `2025-10-20`
+
+**Después de devolución:**
+- Ejemplar `L0001-E001` está disponible
+- Contador de disponibles: `0 → 1`
+- Contador de prestados: `2 → 1`
+
+## Scripts de Verificación
+
+### Verificación Completa
+```bash
+cd sistema_distribuido
+python verificar_sistema.py
 ```
+Verifica que todos los datos iniciales cumplen con los requerimientos del enunciado.
 
-## 🔍 Verificación del Sistema
+### Prueba Rápida
+```bash
+cd sistema_distribuido
+python prueba_rapida.py
+```
+Prueba las funcionalidades básicas del sistema sin usar Docker.
 
-Para verificar que el sistema funciona correctamente:
+### Generación de Datos
+```bash
+cd sistema_distribuido
+python generar_datos_iniciales.py
+```
+Regenera los datos iniciales con 1000 libros y 200 ejemplares prestados.
 
-1. Ejecutar `./demo_interactivo.sh` o `./demo_rapido.sh`
-2. Observar los logs de cada contenedor
-3. Verificar que `data/libros.json` se actualiza correctamente
-4. Confirmar que todas las operaciones se procesan exitosamente
-5. Analizar la comunicación entre contenedores
+## Cumplimiento de Requerimientos
 
-## 🛠️ Requisitos
+### Datos Iniciales ✅
+- ✅ **1000 libros** en la base de datos
+- ✅ **200 ejemplares prestados** (50 en SEDE_1, 150 en SEDE_2)
+- ✅ **Separación por sedes** implementada
+- ✅ **Sistema de ejemplares individuales** con fechas de devolución
+- ✅ **Libros con un único ejemplar** (102 libros)
+- ✅ **Copia idéntica** de la BD en ambas sedes
+
+### Funcionalidades Implementadas ✅
+- ✅ **Solicitud de operaciones** de devolución y renovación desde PS hasta Actores
+- ✅ **3 procesos** ubicados en al menos dos computadoras distintas (Docker)
+- ✅ **Mecanismo para generar requerimientos** (lectura de archivo)
+- ✅ **Comunicación distribuida** con ZeroMQ
+- ✅ **Patrones REQ/REP y PUB/SUB** implementados correctamente
+
+## Requisitos del Sistema
 
 - **Docker** y **Docker Compose**
-- **Python 3** (para formatear JSON)
+- **Python 3** (para scripts de verificación y generación de datos)
 - **Terminal** con soporte para colores
 
-## 📋 Características Técnicas
+## Características Técnicas
 
-- ✅ Comunicación TCP entre contenedores
-- ✅ Manejo de errores robusto
-- ✅ Logs detallados con timestamps
-- ✅ Base de datos JSON persistente
-- ✅ Sistema completamente distribuido
-- ✅ Patrones ZeroMQ implementados correctamente
-- ✅ Configuración Docker optimizada
-- ✅ Scripts de demostración interactivos
+- **Comunicación TCP** entre contenedores
+- **Manejo de errores** robusto
+- **Logs detallados** con timestamps
+- **Base de datos JSON** persistente con estructura completa
+- **Sistema completamente distribuido** con 4 contenedores
+- **Patrones ZeroMQ** implementados correctamente (REQ/REP y PUB/SUB)
+- **Configuración Docker** optimizada
+- **Scripts de demostración** interactivos
+- **Sistema de ejemplares individuales** con fechas de devolución
+- **Separación por sedes** con contadores independientes
 
-## 🎯 Puntos Clave para Demostración
+## Puntos Clave para Demostración
 
 1. **Comunicación distribuida** entre contenedores
 2. **Patrones ZeroMQ** (REQ/REP y PUB/SUB) implementados correctamente
@@ -189,7 +268,7 @@ Para verificar que el sistema funciona correctamente:
 5. **Logs detallados** con análisis de comunicación
 6. **Arquitectura escalable** y robusta
 
-## 🚨 Notas Importantes
+## Notas Importantes
 
 - Los scripts limpian el entorno antes de ejecutar
 - Se muestran las IPs reales de los contenedores

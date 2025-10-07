@@ -1,10 +1,10 @@
 # Plantilla de Evidencias - Sistema Distribuido de Préstamo de Libros
 
-## 📋 Instrucciones
+## Instrucciones
 
 Esta plantilla debe completarse con las evidencias recolectadas durante la ejecución de la suite de pruebas. Todas las capturas y reportes deben pegarse en las secciones correspondientes.
 
-## 🐳 Estado de Contenedores
+## Estado de Contenedores
 
 ### Docker PS
 ```bash
@@ -24,7 +24,7 @@ docker compose ps
 [PEGAR SALIDA DE docker compose ps]
 ```
 
-## 🌐 IPs Internas por Contenedor
+## IPs Internas por Contenedor
 
 ### Comando ejecutado
 ```bash
@@ -38,7 +38,7 @@ docker compose ps
 
 **Verificación**: ¿Se detectaron ≥2 IPs distintas? [ ] SÍ [ ] NO
 
-## 📝 Logs de Servicios
+## Logs de Servicios
 
 ### Gestor de Carga (GC)
 ```bash
@@ -76,7 +76,7 @@ docker logs ps --tail=50
 [PEGAR LOGS DEL PS]
 ```
 
-## 📊 Diferencias en Base de Datos
+## Diferencias en Base de Datos
 
 ### Estado Inicial (libros_before.json)
 ```json
@@ -97,7 +97,7 @@ cat logs/evidence/libros.diff
 [PEGAR DIFERENCIAS]
 ```
 
-## 🧪 Resultados de Tests
+## Resultados de Tests
 
 ### Test End-to-End
 ```bash
@@ -132,7 +132,7 @@ docker compose run --rm tester python -m pytest -v tests/test_file_workload.py
 
 **Estado**: [ ] PASSED [ ] FAILED
 
-## 📈 Métricas del Sistema
+## Métricas del Sistema
 
 ### Archivo de Métricas
 ```bash
@@ -152,7 +152,7 @@ cat logs/resumen_pruebas.txt
 [PEGAR RESUMEN]
 ```
 
-## 🔍 Análisis de Comunicación
+## Análisis de Comunicación
 
 ### Secuencia REQ/REP (PS → GC)
 **Ejemplo de solicitud:**
@@ -201,7 +201,7 @@ cat logs/resumen_pruebas.txt
 }
 ```
 
-## 📋 Checklist de Verificación
+## Checklist de Verificación
 
 ### Requisitos de Distribución
 - [ ] **≥3 procesos**: Confirmado por `docker ps` (GC + 2 Actores + PS)
@@ -224,7 +224,7 @@ cat logs/resumen_pruebas.txt
 - [ ] **Contadores presentes**: Confirmado en logs de GC y PS
 - [ ] **Métricas recolectadas**: Confirmado en archivo de métricas
 
-## 🎯 Resumen Ejecutivo
+## Resumen Ejecutivo
 
 ### Estado General
 - **Tests ejecutados**: _____ / 3
@@ -252,7 +252,7 @@ cat logs/resumen_pruebas.txt
 [ESCRIBIR RECOMENDACIONES PARA MEJORAS]
 ```
 
-## 📁 Archivos de Evidencia
+## Archivos de Evidencia
 
 ### Ubicación de Evidencias
 - **Directorio principal**: `logs/evidence/`
@@ -274,7 +274,7 @@ cat logs/resumen_pruebas.txt
 - [ ] `metricas.txt`
 - [ ] `resumen.txt`
 
-## ✅ Conclusión
+## Conclusión
 
 **¿Se cumplen todos los requisitos de la Entrega #1?**
 [ ] SÍ - Sistema distribuido funcional y completo

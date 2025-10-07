@@ -36,7 +36,7 @@ class TestPubSubVisibility:
     
     def test_pubsub_devolucion_visibility(self):
         """Test de visibilidad de eventos de devolución"""
-        print("\n🔄 Test: Visibilidad PUB/SUB - Devolución")
+        print("\nTest: Visibilidad PUB/SUB - Devolución")
         
         # 1. Configurar subscriber ANTES de enviar
         subscriber = SubscriberTester(self.gc_pub_endpoint)
@@ -54,15 +54,15 @@ class TestPubSubVisibility:
             "sede": "SEDE_PUBSUB"
         }
         
-        print(f"📤 Enviando solicitud de devolución: {payload}")
+        print(f"Enviando solicitud de devolución: {payload}")
         status, ack_ms = TestUtils.send_req(self.gc_endpoint, payload)
         
         # 3. Validar ACK
         assert status == "OK", f"ACK debe ser OK, obtuvo: {status}"
-        print(f"✅ ACK recibido en {ack_ms:.2f}ms")
+        print(f"ACK recibido en {ack_ms:.2f}ms")
         
         # 4. Esperar evento con timeout
-        print("⏳ Esperando evento de devolución...")
+        print("Esperando evento de devolución...")
         time.sleep(3)  # Dar tiempo para procesamiento asíncrono
         
         # 5. Validar recepción de evento
@@ -70,7 +70,7 @@ class TestPubSubVisibility:
         assert len(eventos_devolucion) > 0, "No se recibió evento de devolución"
         
         evento = eventos_devolucion[0]
-        print(f"📨 Evento recibido: {evento}")
+        print(f"Evento recibido: {evento}")
         
         # 6. Validar estructura del evento
         data = evento['data']
@@ -87,7 +87,7 @@ class TestPubSubVisibility:
         diff_seconds = abs((now - evento_time).total_seconds())
         assert diff_seconds < 10, f"Timestamp muy antiguo: {timestamp}"
         
-        print("✅ Evento de devolución válido")
+        print("Evento de devolución válido")
         
         # Limpiar
         subscriber.detener()
@@ -97,7 +97,7 @@ class TestPubSubVisibility:
     
     def test_pubsub_renovacion_visibility(self):
         """Test de visibilidad de eventos de renovación"""
-        print("\n🔄 Test: Visibilidad PUB/SUB - Renovación")
+        print("\nTest: Visibilidad PUB/SUB - Renovación")
         
         # 1. Configurar subscriber ANTES de enviar
         subscriber = SubscriberTester(self.gc_pub_endpoint)
@@ -115,15 +115,15 @@ class TestPubSubVisibility:
             "sede": "SEDE_PUBSUB"
         }
         
-        print(f"📤 Enviando solicitud de renovación: {payload}")
+        print(f"Enviando solicitud de renovación: {payload}")
         status, ack_ms = TestUtils.send_req(self.gc_endpoint, payload)
         
         # 3. Validar ACK
         assert status == "OK", f"ACK debe ser OK, obtuvo: {status}"
-        print(f"✅ ACK recibido en {ack_ms:.2f}ms")
+        print(f"ACK recibido en {ack_ms:.2f}ms")
         
         # 4. Esperar evento con timeout
-        print("⏳ Esperando evento de renovación...")
+        print("Esperando evento de renovación...")
         time.sleep(3)  # Dar tiempo para procesamiento asíncrono
         
         # 5. Validar recepción de evento
@@ -131,7 +131,7 @@ class TestPubSubVisibility:
         assert len(eventos_renovacion) > 0, "No se recibió evento de renovación"
         
         evento = eventos_renovacion[0]
-        print(f"📨 Evento recibido: {evento}")
+        print(f"Evento recibido: {evento}")
         
         # 6. Validar estructura del evento
         data = evento['data']
@@ -153,7 +153,7 @@ class TestPubSubVisibility:
         diff_seconds = abs((now - evento_time).total_seconds())
         assert diff_seconds < 10, f"Timestamp muy antiguo: {timestamp}"
         
-        print("✅ Evento de renovación válido")
+        print("Evento de renovación válido")
         
         # Limpiar
         subscriber.detener()
@@ -163,7 +163,7 @@ class TestPubSubVisibility:
     
     def test_pubsub_multiple_topics(self):
         """Test de suscripción a múltiples topics"""
-        print("\n🔄 Test: Suscripción a múltiples topics")
+        print("\nTest: Suscripción a múltiples topics")
         
         # 1. Configurar subscriber para ambos topics
         subscriber = SubscriberTester(self.gc_pub_endpoint)
@@ -181,7 +181,7 @@ class TestPubSubVisibility:
             "sede": "SEDE_MULTI"
         }
         
-        print(f"📤 Enviando devolución: {payload_dev}")
+        print(f"Enviando devolución: {payload_dev}")
         status, ack_ms = TestUtils.send_req(self.gc_endpoint, payload_dev)
         assert status == "OK", f"ACK devolución debe ser OK, obtuvo: {status}"
         
@@ -193,19 +193,19 @@ class TestPubSubVisibility:
             "sede": "SEDE_MULTI"
         }
         
-        print(f"📤 Enviando renovación: {payload_ren}")
+        print(f"Enviando renovación: {payload_ren}")
         status, ack_ms = TestUtils.send_req(self.gc_endpoint, payload_ren)
         assert status == "OK", f"ACK renovación debe ser OK, obtuvo: {status}"
         
         # 4. Esperar eventos
-        print("⏳ Esperando eventos...")
+        print("Esperando eventos...")
         time.sleep(3)
         
         # 5. Validar recepción de ambos eventos
         eventos_devolucion = subscriber.obtener_eventos("DEVOLUCION")
         eventos_renovacion = subscriber.obtener_eventos("RENOVACION")
         
-        print(f"📊 Eventos recibidos - Devolución: {len(eventos_devolucion)}, Renovación: {len(eventos_renovacion)}")
+        print(f"Eventos recibidos - Devolución: {len(eventos_devolucion)}, Renovación: {len(eventos_renovacion)}")
         
         assert len(eventos_devolucion) > 0, "No se recibió evento de devolución"
         assert len(eventos_renovacion) > 0, "No se recibió evento de renovación"
@@ -217,7 +217,7 @@ class TestPubSubVisibility:
         assert dev_evento['data']['libro_id'] == payload_dev['libro_id'], "Libro ID de devolución incorrecto"
         assert ren_evento['data']['libro_id'] == payload_ren['libro_id'], "Libro ID de renovación incorrecto"
         
-        print("✅ Ambos eventos recibidos correctamente")
+        print("Ambos eventos recibidos correctamente")
         
         # Limpiar
         subscriber.detener()
@@ -248,7 +248,7 @@ class TestPubSubVisibility:
             self.logs_path
         )
         
-        print(f"\n📊 Test completado:")
+        print(f"\nTest completado:")
         print(f"   Eventos devolución recibidos: {self.resultados['eventos_devolucion_recibidos']}")
         print(f"   Eventos renovación recibidos: {self.resultados['eventos_renovacion_recibidos']}")
         print(f"   Tasa de recepción: {self.resultados['tasa_recepcion']:.1f}%")

@@ -1,10 +1,10 @@
 # Arquitectura del Sistema Distribuido de Préstamo de Libros
 
-## 🏗️ Visión General
+## Visión General
 
 El sistema implementa una arquitectura distribuida basada en microservicios, donde cada componente ejecuta en un contenedor Docker independiente, simulando computadoras separadas en una red privada.
 
-## 🐳 Despliegue de Contenedores
+## Despliegue de Contenedores
 
 ### Red Docker
 - **Nombre**: `red_distribuida`
@@ -63,7 +63,7 @@ El sistema implementa una arquitectura distribuida basada en microservicios, don
   - `./data:/app/data` (acceso a datos)
   - `./logs:/app/logs` (escritura de logs)
 
-## 🌐 Distribución de IPs
+## Distribución de IPs
 
 ### Criterio "≥2 Computadores"
 El sistema cumple el requisito de distribución mediante:
@@ -83,7 +83,7 @@ tester IP: 172.20.0.6
 
 **Verificación**: `./scripts/show_ips.sh` confirma ≥2 IPs distintas
 
-## 🔌 Patrones de Comunicación
+## Patrones de Comunicación
 
 ### REQ/REP (Request-Reply)
 - **Componentes**: PS ↔ GC
@@ -108,7 +108,7 @@ tester IP: 172.20.0.6
   - Fire-and-forget
   - No garantiza entrega
 
-## 📁 Estructura de Archivos
+## Estructura de Archivos
 
 ### Directorio Raíz
 ```
@@ -149,7 +149,7 @@ sistema_distribuido/
 - **`./logs`**: Logs de todos los servicios
 - **`./`** (tester): Código fuente completo para pruebas
 
-## 🔧 Configuración de Red
+## Configuración de Red
 
 ### Docker Compose Network
 ```yaml
@@ -169,7 +169,7 @@ Los contenedores se comunican usando nombres de servicio:
 - **Puertos expuestos**: Solo GC (5001, 5002)
 - **Acceso externo**: Solo a través de puertos mapeados
 
-## 📊 Flujo de Datos
+## Flujo de Datos
 
 ### 1. Inicialización
 ```
@@ -186,7 +186,7 @@ PS → Lee archivo → Envía REQ → GC → Responde ACK → Publica evento →
 Actor → Lee libros.json → Modifica datos → Escribe libros.json → Logs evento
 ```
 
-## 🛡️ Consideraciones de Seguridad
+## Consideraciones de Seguridad
 
 ### Aislamiento de Contenedores
 - **Namespaces**: Cada contenedor tiene su propio namespace
@@ -203,7 +203,7 @@ Actor → Lee libros.json → Modifica datos → Escribe libros.json → Logs ev
 - **Autenticación**: Ninguna (red interna)
 - **Cifrado**: Ninguno (red privada)
 
-## 📈 Escalabilidad
+## Escalabilidad
 
 ### Escalado Horizontal
 - **Actores**: Múltiples instancias pueden suscribirse al mismo topic
@@ -220,7 +220,7 @@ Actor → Lee libros.json → Modifica datos → Escribe libros.json → Logs ev
 - **GC**: Cuello de botella (una sola instancia)
 - **Red**: Ancho de banda de Docker
 
-## 🔍 Monitoreo y Observabilidad
+## Monitoreo y Observabilidad
 
 ### Logs Centralizados
 - **Ubicación**: `./logs/`
@@ -237,7 +237,7 @@ Actor → Lee libros.json → Modifica datos → Escribe libros.json → Logs ev
 - **Aplicación**: Verificación de conectividad ZeroMQ
 - **Datos**: Verificación de acceso a archivos
 
-## 🚀 Despliegue
+## Despliegue
 
 ### Desarrollo Local
 ```bash
@@ -275,7 +275,7 @@ docker compose ps
 docker compose logs -f
 ```
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### Problemas de Red
 ```bash
@@ -315,7 +315,7 @@ cat data/solicitudes.txt
 docker compose run --rm tester ls -la /app/data/
 ```
 
-## 📋 Checklist de Arquitectura
+## Checklist de Arquitectura
 
 ### Requisitos Cumplidos
 - [ ] **≥3 procesos**: GC + 2 Actores + PS = 4 procesos

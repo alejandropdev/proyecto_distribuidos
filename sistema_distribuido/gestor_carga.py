@@ -34,18 +34,18 @@ class GestorCarga:
             # Socket REP para recibir solicitudes del Proceso Solicitante
             self.rep_socket = self.context.socket(zmq.REP)
             self.rep_socket.bind("tcp://0.0.0.0:5001")
-            logger.info("✅ Socket REP inicializado en tcp://0.0.0.0:5001")
+            logger.info("Socket REP inicializado en tcp://0.0.0.0:5001")
             
             # Socket PUB para enviar eventos a los actores
             self.pub_socket = self.context.socket(zmq.PUB)
             self.pub_socket.bind("tcp://0.0.0.0:5002")
-            logger.info("✅ Socket PUB inicializado en tcp://0.0.0.0:5002")
+            logger.info("Socket PUB inicializado en tcp://0.0.0.0:5002")
             
             # Pequeña pausa para asegurar que los sockets estén listos
             time.sleep(1)
             
         except Exception as e:
-            logger.error(f"❌ Error inicializando sockets: {e}")
+            logger.error(f"Error inicializando sockets: {e}")
             raise
     
     def procesar_solicitud(self, mensaje_json):
@@ -82,7 +82,7 @@ class GestorCarga:
             self.enviar_evento_a_actores(evento)
             
             self.contador_operaciones += 1
-            logger.info(f"📝 Operación #{self.contador_operaciones} procesada: {operacion} - Libro {libro_id} - Usuario {usuario_id}")
+            logger.info(f"Operación #{self.contador_operaciones} procesada: {operacion} - Libro {libro_id} - Usuario {usuario_id}")
             
             return {
                 "status": "OK",
@@ -92,13 +92,13 @@ class GestorCarga:
             }
             
         except json.JSONDecodeError as e:
-            logger.error(f"❌ Error parseando JSON: {e}")
+            logger.error(f"Error parseando JSON: {e}")
             return {
                 "status": "ERROR",
                 "message": "Formato JSON inválido"
             }
         except Exception as e:
-            logger.error(f"❌ Error procesando solicitud: {e}")
+            logger.error(f"Error procesando solicitud: {e}")
             return {
                 "status": "ERROR",
                 "message": f"Error interno: {str(e)}"
@@ -116,14 +116,14 @@ class GestorCarga:
             # Enviar con el topic correspondiente
             self.pub_socket.send_multipart([topic.encode('utf-8'), mensaje_evento.encode('utf-8')])
             
-            logger.info(f"📡 Evento enviado a actores - Topic: {topic} - Evento: {evento}")
+            logger.info(f"Evento enviado a actores - Topic: {topic} - Evento: {evento}")
             
         except Exception as e:
-            logger.error(f"❌ Error enviando evento a actores: {e}")
+            logger.error(f"Error enviando evento a actores: {e}")
     
     def manejar_solicitudes(self):
         """Maneja las solicitudes entrantes del Proceso Solicitante"""
-        logger.info("🔄 Iniciando manejo de solicitudes...")
+        logger.info("Iniciando manejo de solicitudes...")
         
         while self.running:
             try:
@@ -131,7 +131,7 @@ class GestorCarga:
                 mensaje = self.rep_socket.recv(zmq.NOBLOCK)
                 mensaje_str = mensaje.decode('utf-8')
                 
-                logger.info(f"📨 Solicitud recibida: {mensaje_str}")
+                logger.info(f"Solicitud recibida: {mensaje_str}")
                 
                 # Procesar solicitud
                 respuesta = self.procesar_solicitud(mensaje_str)
@@ -140,34 +140,34 @@ class GestorCarga:
                 respuesta_json = json.dumps(respuesta, ensure_ascii=False)
                 self.rep_socket.send(respuesta_json.encode('utf-8'))
                 
-                logger.info(f"📤 Respuesta enviada: {respuesta_json}")
+                logger.info(f"Respuesta enviada: {respuesta_json}")
                 
             except zmq.Again:
                 # No hay mensajes disponibles, continuar
                 time.sleep(0.1)
                 continue
             except Exception as e:
-                logger.error(f"❌ Error manejando solicitudes: {e}")
+                logger.error(f"Error manejando solicitudes: {e}")
                 time.sleep(1)
     
     def iniciar(self):
         """Inicia el Gestor de Carga"""
         try:
-            logger.info("🚀 Iniciando Gestor de Carga...")
+            logger.info("Iniciando Gestor de Carga...")
             self.inicializar_sockets()
             
-            logger.info("✅ Gestor de Carga iniciado correctamente")
-            logger.info("📊 Esperando solicitudes en puerto 5001...")
-            logger.info("📡 Listo para publicar eventos en puerto 5002...")
+            logger.info("Gestor de Carga iniciado correctamente")
+            logger.info("Esperando solicitudes en puerto 5001...")
+            logger.info("Listo para publicar eventos en puerto 5002...")
             
             # Iniciar manejo de solicitudes
             self.manejar_solicitudes()
             
         except KeyboardInterrupt:
-            logger.info("🛑 Deteniendo Gestor de Carga...")
+            logger.info("Deteniendo Gestor de Carga...")
             self.detener()
         except Exception as e:
-            logger.error(f"❌ Error fatal en Gestor de Carga: {e}")
+            logger.error(f"Error fatal en Gestor de Carga: {e}")
             self.detener()
     
     def detener(self):
@@ -181,8 +181,8 @@ class GestorCarga:
         if self.context:
             self.context.term()
         
-        logger.info(f"📊 Total de operaciones procesadas: {self.contador_operaciones}")
-        logger.info("✅ Gestor de Carga detenido")
+        logger.info(f"Total de operaciones procesadas: {self.contador_operaciones}")
+        logger.info("Gestor de Carga detenido")
 
 def main():
     """Función principal"""

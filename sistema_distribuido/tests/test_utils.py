@@ -24,7 +24,7 @@ class TestUtils:
         """
         Espera para el 'slow joiner' de ZeroMQ SUB sockets
         """
-        logger.info(f"⏳ Esperando {sleep_time}s para slow joiner de ZeroMQ...")
+        logger.info(f"Esperando {sleep_time}s para slow joiner de ZeroMQ...")
         time.sleep(sleep_time)
     
     @staticmethod
@@ -54,8 +54,8 @@ class TestUtils:
             ack_ms = (end_time - start_time) * 1000
             response = json.loads(response_bytes.decode('utf-8'))
             
-            logger.info(f"📤 REQ enviado: {payload}")
-            logger.info(f"📥 RES recibida: {response} (took {ack_ms:.2f}ms)")
+            logger.info(f"REQ enviado: {payload}")
+            logger.info(f"RES recibida: {response} (took {ack_ms:.2f}ms)")
             
             return response.get('status', 'UNKNOWN'), ack_ms
             
@@ -78,10 +78,10 @@ class TestUtils:
             with open(path, 'r', encoding='utf-8') as f:
                 return json.load(f)
         except FileNotFoundError:
-            logger.warning(f"⚠️ Archivo no encontrado: {path}")
+            logger.warning(f"Archivo no encontrado: {path}")
             return {}
         except json.JSONDecodeError as e:
-            logger.error(f"❌ Error parseando JSON {path}: {e}")
+            logger.error(f"Error parseando JSON {path}: {e}")
             return {}
     
     @staticmethod
@@ -98,7 +98,7 @@ class TestUtils:
         Returns:
             True si el cambio ocurrió dentro del timeout
         """
-        logger.info(f"⏳ Esperando cambio en {path} (timeout: {timeout}s)")
+        logger.info(f"Esperando cambio en {path} (timeout: {timeout}s)")
         
         start_time = time.time()
         initial_content = TestUtils.read_json(path)
@@ -108,14 +108,14 @@ class TestUtils:
             
             if current_content != initial_content:
                 if predicate(current_content):
-                    logger.info(f"✅ Cambio detectado en {path} y condición cumplida")
+                    logger.info(f"Cambio detectado en {path} y condición cumplida")
                     return True
                 else:
-                    logger.info(f"📝 Cambio detectado en {path} pero condición no cumplida")
+                    logger.info(f"Cambio detectado en {path} pero condición no cumplida")
             
             time.sleep(0.1)
         
-        logger.warning(f"⏰ Timeout esperando cambio en {path}")
+        logger.warning(f"Timeout esperando cambio en {path}")
         return False
     
     @staticmethod
@@ -131,9 +131,9 @@ class TestUtils:
             libros = TestUtils.read_json(path)
             with open(snapshot_path, 'w', encoding='utf-8') as f:
                 json.dump(libros, f, ensure_ascii=False, indent=2)
-            logger.info(f"📸 Snapshot creado: {snapshot_path}")
+            logger.info(f"Snapshot creado: {snapshot_path}")
         except Exception as e:
-            logger.error(f"❌ Error creando snapshot: {e}")
+            logger.error(f"Error creando snapshot: {e}")
     
     @staticmethod
     def contar_operaciones_en_logs(logs: str, operacion: str) -> int:
@@ -174,7 +174,7 @@ class TestUtils:
             return diferencia <= 1
             
         except Exception as e:
-            logger.error(f"❌ Error validando fecha {fecha_str}: {e}")
+            logger.error(f"Error validando fecha {fecha_str}: {e}")
             return False
     
     @staticmethod
@@ -198,10 +198,10 @@ class TestUtils:
                 
                 f.write(f"\nEstado: {'PASSED' if resultados.get('passed', False) else 'FAILED'}\n")
             
-            logger.info(f"📊 Reporte guardado: {log_path}")
+            logger.info(f"Reporte guardado: {log_path}")
             
         except Exception as e:
-            logger.error(f"❌ Error generando reporte: {e}")
+            logger.error(f"Error generando reporte: {e}")
 
 class SubscriberTester:
     """Helper para testing de PUB/SUB"""
@@ -220,7 +220,7 @@ class SubscriberTester:
         
         for topic in topics:
             self.socket.setsockopt(zmq.SUBSCRIBE, topic.encode('utf-8'))
-            logger.info(f"📡 Suscrito a topic: {topic}")
+            logger.info(f"Suscrito a topic: {topic}")
         
         # Esperar slow joiner
         TestUtils.esperar_slow_joiner()
@@ -230,7 +230,7 @@ class SubscriberTester:
         self.running = True
         self.thread = threading.Thread(target=self._escuchar)
         self.thread.start()
-        logger.info("🔄 Iniciada escucha de eventos")
+        logger.info("Iniciada escucha de eventos")
     
     def _escuchar(self) -> None:
         """Loop de escucha de eventos"""
@@ -248,12 +248,12 @@ class SubscriberTester:
                     }
                     
                     self.events_received.append(evento)
-                    logger.info(f"📨 Evento recibido: {topic} - {datos.get('operacion', 'N/A')}")
+                    logger.info(f"Evento recibido: {topic} - {datos.get('operacion', 'N/A')}")
                 
             except zmq.Again:
                 time.sleep(0.01)
             except Exception as e:
-                logger.error(f"❌ Error en escucha: {e}")
+                logger.error(f"Error en escucha: {e}")
                 break
     
     def detener(self) -> None:
@@ -264,7 +264,7 @@ class SubscriberTester:
         
         self.socket.close()
         self.context.term()
-        logger.info("🛑 Escucha detenida")
+        logger.info("Escucha detenida")
     
     def obtener_eventos(self, operacion: str = None) -> list:
         """Obtiene eventos recibidos, opcionalmente filtrados por operación"""

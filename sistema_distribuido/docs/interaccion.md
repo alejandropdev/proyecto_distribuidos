@@ -1,12 +1,12 @@
 # Secuencias de Interacción - Sistema Distribuido de Préstamo de Libros
 
-## 🔄 Flujo General del Sistema
+## Flujo General del Sistema
 
 El sistema sigue un patrón de comunicación híbrido:
 1. **Síncrono**: PS ↔ GC (REQ/REP) para confirmación inmediata
 2. **Asíncrono**: GC → Actores (PUB/SUB) para procesamiento distribuido
 
-## 📤 Secuencia: RENOVACIÓN de Libro
+## Secuencia: RENOVACIÓN de Libro
 
 ### 1. Inicio de Operación
 ```
@@ -87,7 +87,7 @@ GC (PUB) ──────────────────► Actor Renovac
 }
 ```
 
-## 📥 Secuencia: DEVOLUCIÓN de Libro
+## Secuencia: DEVOLUCIÓN de Libro
 
 ### 1. Inicio de Operación
 ```
@@ -166,7 +166,7 @@ GC (PUB) ──────────────────► Actor Devoluc
 }
 ```
 
-## ❌ Secuencia: Operación Inválida
+## Secuencia: Operación Inválida
 
 ### 1. Solicitud Inválida
 ```
@@ -206,7 +206,7 @@ PS (REQ) ──────────────────► GC (REP)
 - ✅ No se actualiza BD
 - ✅ GC no crashea
 
-## 🔄 Flujo Completo con Múltiples Operaciones
+## Flujo Completo con Múltiples Operaciones
 
 ### Archivo de Solicitudes
 ```
@@ -254,7 +254,7 @@ T+7s    PS termina procesamiento
 ]
 ```
 
-## 🔍 Puntos de Observación
+## Puntos de Observación
 
 ### Logs del PS
 ```
@@ -284,7 +284,7 @@ T+7s    PS termina procesamiento
 2025-01-27 10:30:02 - ACTOR_DEV - INFO - ✅ Devolución procesada exitosamente (#1)
 ```
 
-## ⚡ Optimizaciones de Rendimiento
+## Optimizaciones de Rendimiento
 
 ### Paralelización
 - **REQ/REP**: Síncrono, no paralelizable
@@ -302,7 +302,7 @@ T+7s    PS termina procesamiento
 - **Logs continuos**: Todos los servicios
 - **Métricas**: Latencia, throughput, errores
 
-## 🚨 Casos de Error
+## Casos de Error
 
 ### GC No Disponible
 ```
@@ -344,7 +344,7 @@ Actor ─────────────────────► libros.
 
 **Manejo**: Actor registra error, operación falla
 
-## 📊 Métricas de Interacción
+## Métricas de Interacción
 
 ### Latencia por Componente
 - **PS → GC**: < 500ms

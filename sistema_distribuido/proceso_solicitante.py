@@ -33,13 +33,13 @@ class ProcesoSolicitante:
         try:
             self.req_socket = self.context.socket(zmq.REQ)
             self.req_socket.connect("tcp://gc:5001")
-            logger.info("✅ Conectado al Gestor de Carga en tcp://gc:5001")
+            logger.info("Conectado al Gestor de Carga en tcp://gc:5001")
             
             # Pequeña pausa para asegurar la conexión
             time.sleep(2)
             
         except Exception as e:
-            logger.error(f"❌ Error conectando al Gestor de Carga: {e}")
+            logger.error(f"Error conectando al Gestor de Carga: {e}")
             raise
     
     def leer_solicitudes(self, archivo_solicitudes):
@@ -48,7 +48,7 @@ class ProcesoSolicitante:
         
         try:
             if not os.path.exists(archivo_solicitudes):
-                logger.error(f"❌ Archivo de solicitudes no encontrado: {archivo_solicitudes}")
+                logger.error(f"Archivo de solicitudes no encontrado: {archivo_solicitudes}")
                 return solicitudes
             
             with open(archivo_solicitudes, 'r', encoding='utf-8') as f:
@@ -74,13 +74,13 @@ class ProcesoSolicitante:
                         }
                         solicitudes.append(solicitud)
                     else:
-                        logger.warning(f"⚠️ Línea {numero_linea} mal formateada: {linea}")
+                        logger.warning(f"Línea {numero_linea} mal formateada: {linea}")
             
-            logger.info(f"📖 Leídas {len(solicitudes)} solicitudes desde {archivo_solicitudes}")
+            logger.info(f"Leídas {len(solicitudes)} solicitudes desde {archivo_solicitudes}")
             return solicitudes
             
         except Exception as e:
-            logger.error(f"❌ Error leyendo archivo de solicitudes: {e}")
+            logger.error(f"Error leyendo archivo de solicitudes: {e}")
             return solicitudes
     
     def enviar_solicitud(self, solicitud):
@@ -98,71 +98,71 @@ class ProcesoSolicitante:
             
             # Enviar solicitud
             self.req_socket.send(mensaje_json.encode('utf-8'))
-            logger.info(f"📤 Solicitud #{self.contador_solicitudes + 1} enviada: {mensaje_json}")
+            logger.info(f"Solicitud #{self.contador_solicitudes + 1} enviada: {mensaje_json}")
             
             # Recibir respuesta
             respuesta_bytes = self.req_socket.recv()
             respuesta_str = respuesta_bytes.decode('utf-8')
             respuesta = json.loads(respuesta_str)
             
-            logger.info(f"📥 Respuesta recibida: {respuesta_str}")
+            logger.info(f"Respuesta recibida: {respuesta_str}")
             
             # Procesar respuesta
             if respuesta.get("status") == "OK":
                 self.contador_exitosos += 1
-                logger.info(f"✅ Solicitud procesada exitosamente")
+                logger.info(f"Solicitud procesada exitosamente")
             else:
                 self.contador_errores += 1
-                logger.error(f"❌ Error en solicitud: {respuesta.get('message', 'Error desconocido')}")
+                logger.error(f"Error en solicitud: {respuesta.get('message', 'Error desconocido')}")
             
             self.contador_solicitudes += 1
             return True
             
         except json.JSONDecodeError as e:
-            logger.error(f"❌ Error parseando respuesta JSON: {e}")
+            logger.error(f"Error parseando respuesta JSON: {e}")
             self.contador_errores += 1
             return False
         except Exception as e:
-            logger.error(f"❌ Error enviando solicitud: {e}")
+            logger.error(f"Error enviando solicitud: {e}")
             self.contador_errores += 1
             return False
     
     def procesar_solicitudes(self, archivo_solicitudes):
         """Procesa todas las solicitudes del archivo"""
-        logger.info("🔄 Iniciando procesamiento de solicitudes...")
+        logger.info("Iniciando procesamiento de solicitudes...")
         
         # Leer solicitudes
         solicitudes = self.leer_solicitudes(archivo_solicitudes)
         
         if not solicitudes:
-            logger.warning("⚠️ No hay solicitudes para procesar")
+            logger.warning("No hay solicitudes para procesar")
             return
         
-        logger.info(f"📊 Procesando {len(solicitudes)} solicitudes...")
+        logger.info(f"Procesando {len(solicitudes)} solicitudes...")
         
         # Procesar cada solicitud
         for i, solicitud in enumerate(solicitudes, 1):
             try:
-                logger.info(f"🔄 Procesando solicitud {i}/{len(solicitudes)}: {solicitud['op']} - {solicitud['libro_id']} - {solicitud['usuario_id']}")
+                logger.info(f"Procesando solicitud {i}/{len(solicitudes)}: {solicitud['op']} - {solicitud['libro_id']} - {solicitud['usuario_id']}")
                 
                 # Enviar solicitud
                 exito = self.enviar_solicitud(solicitud)
                 
                 if exito:
-                    logger.info(f"✅ Solicitud {i} completada")
+                    logger.info(f"Solicitud {i} completada")
                 else:
-                    logger.error(f"❌ Solicitud {i} falló")
+                    logger.error(f"Solicitud {i} falló")
                 
                 # Pausa entre solicitudes (simular carga de trabajo real)
                 if i < len(solicitudes):  # No pausar después de la última solicitud
-                    logger.info("⏳ Esperando 1 segundo antes de la siguiente solicitud...")
+                    logger.info("Esperando 1 segundo antes de la siguiente solicitud...")
                     time.sleep(1)
                 
             except KeyboardInterrupt:
-                logger.info("🛑 Interrupción detectada, deteniendo procesamiento...")
+                logger.info("Interrupción detectada, deteniendo procesamiento...")
                 break
             except Exception as e:
-                logger.error(f"❌ Error procesando solicitud {i}: {e}")
+                logger.error(f"Error procesando solicitud {i}: {e}")
                 self.contador_errores += 1
                 continue
         
@@ -171,21 +171,21 @@ class ProcesoSolicitante:
     
     def mostrar_estadisticas(self):
         """Muestra estadísticas del procesamiento"""
-        logger.info("📊 ===== ESTADÍSTICAS FINALES =====")
-        logger.info(f"📤 Total de solicitudes enviadas: {self.contador_solicitudes}")
-        logger.info(f"✅ Solicitudes exitosas: {self.contador_exitosos}")
-        logger.info(f"❌ Solicitudes con error: {self.contador_errores}")
+        logger.info("===== ESTADÍSTICAS FINALES =====")
+        logger.info(f"Total de solicitudes enviadas: {self.contador_solicitudes}")
+        logger.info(f"Solicitudes exitosas: {self.contador_exitosos}")
+        logger.info(f"Solicitudes con error: {self.contador_errores}")
         
         if self.contador_solicitudes > 0:
             porcentaje_exito = (self.contador_exitosos / self.contador_solicitudes) * 100
-            logger.info(f"📈 Porcentaje de éxito: {porcentaje_exito:.1f}%")
+            logger.info(f"Porcentaje de éxito: {porcentaje_exito:.1f}%")
         
-        logger.info("📊 ================================")
+        logger.info("================================")
     
     def iniciar(self, archivo_solicitudes="data/solicitudes.txt"):
         """Inicia el Proceso Solicitante"""
         try:
-            logger.info("🚀 Iniciando Proceso Solicitante...")
+            logger.info("Iniciando Proceso Solicitante...")
             
             # Conectar al Gestor de Carga
             self.conectar_gestor_carga()
@@ -194,9 +194,9 @@ class ProcesoSolicitante:
             self.procesar_solicitudes(archivo_solicitudes)
             
         except KeyboardInterrupt:
-            logger.info("🛑 Deteniendo Proceso Solicitante...")
+            logger.info("Deteniendo Proceso Solicitante...")
         except Exception as e:
-            logger.error(f"❌ Error fatal en Proceso Solicitante: {e}")
+            logger.error(f"Error fatal en Proceso Solicitante: {e}")
         finally:
             self.detener()
     
@@ -207,7 +207,7 @@ class ProcesoSolicitante:
         if self.context:
             self.context.term()
         
-        logger.info("✅ Proceso Solicitante detenido")
+        logger.info("Proceso Solicitante detenido")
 
 def main():
     """Función principal"""

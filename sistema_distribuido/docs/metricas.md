@@ -1,6 +1,6 @@
 # Métricas del Sistema Distribuido de Préstamo de Libros
 
-## 📊 Definición de Métricas
+## Definición de Métricas
 
 ### Métricas de Rendimiento
 
@@ -62,7 +62,7 @@
 - **Valor esperado**: Depende del archivo de solicitudes
 - **Medición**: Conteo en logs de actores
 
-## 🔧 Cómo Se Recolectan las Métricas
+## Cómo Se Recolectan las Métricas
 
 ### Automatización
 Las métricas se recolectan automáticamente mediante:
@@ -124,7 +124,7 @@ docker logs --timestamps gc
 docker network inspect red_distribuida
 ```
 
-## 📈 Análisis de Métricas
+## Análisis de Métricas
 
 ### Latencia ACK
 ```bash
@@ -166,7 +166,7 @@ echo "Tasa de éxito: $tasa_exito%"
 - 95-99%: Aceptable
 - < 95%: Requiere investigación
 
-## 📊 Dashboard de Métricas
+## Dashboard de Métricas
 
 ### Métricas en Tiempo Real
 ```bash
@@ -193,7 +193,7 @@ if [ $(grep -c "IP:" logs/evidence/ips.txt) -lt 2 ]; then
 fi
 ```
 
-## 🎯 Objetivos de Rendimiento
+## Objetivos de Rendimiento
 
 ### Objetivos Primarios
 - **Latencia ACK**: < 500ms (100% de operaciones)
@@ -213,7 +213,7 @@ fi
 - **Pérdida de eventos**: > 0% (crítico)
 - **Crashes**: > 0 (crítico)
 
-## 📋 Checklist de Métricas
+## Checklist de Métricas
 
 ### Antes de la Prueba
 - [ ] Servicios levantados correctamente
@@ -233,7 +233,7 @@ fi
 - [ ] Reporte generado
 - [ ] Objetivos verificados
 
-## 🔍 Troubleshooting de Métricas
+## Troubleshooting de Métricas
 
 ### Latencia Alta
 **Posibles causas**:
@@ -268,7 +268,7 @@ fi
 - Verificar suscripciones
 - Revisar logs de GC
 
-## 📈 Mejoras Futuras
+## Mejoras Futuras
 
 ### Métricas Adicionales
 - Latencia p50, p95, p99

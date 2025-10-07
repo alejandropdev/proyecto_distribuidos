@@ -1,0 +1,27 @@
+# Archivo de solicitudes de prueba con usuarios que realmente tienen préstamos
+# Formato: OPERACION LIBRO_ID USUARIO_ID SEDE
+
+# Renovaciones con usuarios que tienen préstamos reales
+RENOVACION L0001 U0231 SEDE_1
+RENOVACION L0002 U0403 SEDE_1
+RENOVACION L0002 U0227 SEDE_1
+
+# Devoluciones con usuarios que tienen préstamos reales
+DEVOLUCION L0001 U0231 SEDE_1
+DEVOLUCION L0002 U0403 SEDE_1
+
+# Más operaciones mixtas
+RENOVACION L0003 U0789 SEDE_1
+DEVOLUCION L0003 U0789 SEDE_1
+
+# Operaciones en SEDE_2 (buscar usuarios reales)
+RENOVACION L0004 U1001 SEDE_2
+DEVOLUCION L0004 U1001 SEDE_2
+
+# Pruebas de error - libros no existentes
+RENOVACION L9999 U9999 SEDE_1
+DEVOLUCION L9998 U9998 SEDE_2
+
+# Pruebas de error - usuarios que no tienen libros prestados
+RENOVACION L0001 U9999 SEDE_1
+DEVOLUCION L0002 U9998 SEDE_1
