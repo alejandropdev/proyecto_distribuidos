@@ -1,4 +1,28 @@
 services:
+  # Gestor de Almacenamiento (GA) - Gestiona la base de datos con réplicas
+  ga:
+    build: .
+    container_name: ga
+    command: python gestor_almacenamiento.py
+    ports:
+      - "5003:5003"  # Puerto REP para operaciones de base de datos
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    networks:
+      - red_distribuida
+    restart: unless-stopped
+    environment:
+      - GA_HOST=0.0.0.0
+      - GA_PORT=5003
+      - GA_PRIMARY_PATH=data/primary/libros.json
+      - GA_SECONDARY_PATH=data/secondary/libros.json
+    healthcheck:
+      test: ["CMD", "python", "-c", "import zmq; print('GA healthy')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
   # Gestor de Carga - Servicio central que maneja las solicitudes
   gc:
     build: .
@@ -12,9 +36,46 @@ services:
       - ./logs:/app/logs
     networks:
       - red_distribuida
+    depends_on:
+      - ga
     restart: unless-stopped
+    environment:
+      - GC_HOST=0.0.0.0
+      - GC_REP_PORT=5001
+      - GC_PUB_PORT=5002
+      - ACTOR_PRESTAMO_HOST=actor_prestamo
+      - ACTOR_PRESTAMO_PORT=5004
+      - GA_HOST=ga
+      - GA_PORT=5003
     healthcheck:
       test: ["CMD", "python", "-c", "import zmq; print('GC healthy')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Actor de Préstamo - Procesa solicitudes de préstamo
+  actor_prestamo:
+    build: .
+    container_name: actor_prestamo
+    command: python actor_prestamo.py
+    ports:
+      - "5004:5004"  # Puerto REP para recibir solicitudes de GC
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    networks:
+      - red_distribuida
+    depends_on:
+      - gc
+      - ga
+    restart: unless-stopped
+    environment:
+      - GC_HOST=gc
+      - GC_ACTOR_PRESTAMO_PORT=5004
+      - GA_HOST=ga
+      - GA_PORT=5003
+    healthcheck:
+      test: ["CMD", "python", "-c", "import zmq; print('Actor Prestamo healthy')"]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -26,12 +87,18 @@ services:
     command: python actor_devolucion.py
     depends_on:
       - gc
+      - ga
     volumes:
       - ./data:/app/data
       - ./logs:/app/logs
     networks:
       - red_distribuida
     restart: unless-stopped
+    environment:
+      - GC_HOST=gc
+      - GC_PUB_PORT=5002
+      - GA_HOST=ga
+      - GA_PORT=5003
     healthcheck:
       test: ["CMD", "python", "-c", "import zmq; print('Actor Dev healthy')"]
       interval: 30s
@@ -45,12 +112,18 @@ services:
     command: python actor_renovacion.py
     depends_on:
       - gc
+      - ga
     volumes:
       - ./data:/app/data
       - ./logs:/app/logs
     networks:
       - red_distribuida
     restart: unless-stopped
+    environment:
+      - GC_HOST=gc
+      - GC_PUB_PORT=5002
+      - GA_HOST=ga
+      - GA_PORT=5003
     healthcheck:
       test: ["CMD", "python", "-c", "import zmq; print('Actor Ren healthy')"]
       interval: 30s
@@ -64,6 +137,7 @@ services:
     command: python proceso_solicitante.py
     depends_on:
       - gc
+      - actor_prestamo
       - actor_devolucion
       - actor_renovacion
     volumes:
@@ -73,6 +147,9 @@ services:
       - red_distribuida
     restart: "no"  # No reiniciar automáticamente, solo ejecutar una vez
     profiles: ["demo"]  # Solo ejecutar en perfil demo
+    environment:
+      - GC_HOST=gc
+      - GC_PORT=5001
 
   # Tester - Servicio para ejecutar pruebas
   tester:

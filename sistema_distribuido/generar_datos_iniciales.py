@@ -203,6 +203,36 @@ def guardar_datos(base_datos, archivo="data/libros.json"):
         print(f"Error guardando datos: {e}")
         return False
 
+def guardar_replicas(base_datos):
+    """Guarda los datos en las réplicas primaria y secundaria"""
+    import shutil
+    
+    # Guardar en archivo principal primero
+    if not guardar_datos(base_datos, "data/libros.json"):
+        return False
+    
+    # Crear directorios para réplicas
+    os.makedirs("data/primary", exist_ok=True)
+    os.makedirs("data/secondary", exist_ok=True)
+    
+    # Guardar en réplica primaria
+    primary_path = "data/primary/libros.json"
+    if not guardar_datos(base_datos, primary_path):
+        print("Error guardando réplica primaria")
+        return False
+    
+    # Copiar a réplica secundaria (idéntica a primaria)
+    secondary_path = "data/secondary/libros.json"
+    try:
+        shutil.copy2(primary_path, secondary_path)
+        print(f"Réplica secundaria creada: {secondary_path}")
+    except Exception as e:
+        print(f"Error copiando a réplica secundaria: {e}")
+        return False
+    
+    print("✅ Réplicas primaria y secundaria inicializadas correctamente")
+    return True
+
 def mostrar_estadisticas(base_datos):
     """Muestra estadísticas de los datos generados"""
     metadata = base_datos["metadata"]
@@ -234,10 +264,11 @@ def main():
     # Mostrar estadísticas
     mostrar_estadisticas(base_datos)
     
-    # Guardar datos
-    if guardar_datos(base_datos):
+    # Guardar datos en réplicas primaria y secundaria
+    if guardar_replicas(base_datos):
         print("\n✅ Datos iniciales generados exitosamente!")
         print("El sistema está listo para funcionar con los datos requeridos.")
+        print("Réplicas primaria y secundaria sincronizadas.")
     else:
         print("\n❌ Error generando datos iniciales")
 

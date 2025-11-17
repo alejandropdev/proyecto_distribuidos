@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 Proceso Solicitante (PS) - Sistema Distribuido de Préstamo de Libros
-Envía solicitudes de renovación y devolución al Gestor de Carga
+Envía solicitudes de préstamo, renovación y devolución al Gestor de Carga
 """
 
 import zmq
@@ -11,6 +11,7 @@ import time
 import os
 from datetime import datetime
 import logging
+from metricas import Metricas, obtener_timestamp_ms, medir_tiempo_respuesta
 
 # Configurar logging
 logging.basicConfig(
@@ -28,12 +29,20 @@ class ProcesoSolicitante:
         self.contador_exitosos = 0
         self.contador_errores = 0
         
+        # Leer variables de entorno
+        self.gc_host = os.getenv('GC_HOST', 'gc')
+        self.gc_port = int(os.getenv('GC_PORT', '5001'))
+        
+        # Inicializar sistema de métricas
+        self.metricas = Metricas()
+        
     def conectar_gestor_carga(self):
         """Conecta al Gestor de Carga usando REQ socket"""
         try:
             self.req_socket = self.context.socket(zmq.REQ)
-            self.req_socket.connect("tcp://gc:5001")
-            logger.info("Conectado al Gestor de Carga en tcp://gc:5001")
+            gc_address = f"tcp://{self.gc_host}:{self.gc_port}"
+            self.req_socket.connect(gc_address)
+            logger.info(f"Conectado al Gestor de Carga en {gc_address}")
             
             # Pequeña pausa para asegurar la conexión
             time.sleep(2)
@@ -57,19 +66,32 @@ class ProcesoSolicitante:
                     if not linea or linea.startswith('#'):
                         continue
                     
-                    # Parsear línea: OPERACION LIBRO_ID USUARIO_ID
+                    # Parsear línea: OPERACION LIBRO_ID USUARIO_ID [SEDE] [search_criteria]
+                    # Formatos soportados:
+                    # - PRESTAMO LIBRO_ID USUARIO_ID SEDE
+                    # - PRESTAMO LIBRO_ID USUARIO_ID SEDE titulo:TITULO
+                    # - RENOVACION LIBRO_ID USUARIO_ID SEDE
+                    # - DEVOLUCION LIBRO_ID USUARIO_ID SEDE
                     partes = linea.split()
                     if len(partes) >= 3:
                         operacion = partes[0].upper()
-                        libro_id = partes[1]
+                        libro_id = partes[1] if partes[1] != 'None' else None
                         usuario_id = partes[2]
-                        sede = partes[3] if len(partes) > 3 else "SEDE_1"
+                        sede = partes[3] if len(partes) > 3 and not partes[3].startswith('titulo:') else "SEDE_1"
+                        
+                        # Parsear search_criteria si existe
+                        search_criteria = None
+                        for parte in partes[3:]:
+                            if parte.startswith('titulo:'):
+                                search_criteria = {"titulo": parte.split(':', 1)[1]}
+                                break
                         
                         solicitud = {
                             "op": operacion,
                             "libro_id": libro_id,
                             "usuario_id": usuario_id,
                             "sede": sede,
+                            "search_criteria": search_criteria,
                             "linea": numero_linea
                         }
                         solicitudes.append(solicitud)
@@ -84,7 +106,7 @@ class ProcesoSolicitante:
             return solicitudes
     
     def enviar_solicitud(self, solicitud):
-        """Envía una solicitud al Gestor de Carga"""
+        """Envía una solicitud al Gestor de Carga y registra métricas si es préstamo"""
         try:
             # Crear mensaje JSON
             mensaje = {
@@ -94,7 +116,16 @@ class ProcesoSolicitante:
                 "sede": solicitud["sede"]
             }
             
+            # Agregar search_criteria si existe
+            if solicitud.get("search_criteria"):
+                mensaje["search_criteria"] = solicitud["search_criteria"]
+            
             mensaje_json = json.dumps(mensaje, ensure_ascii=False)
+            
+            # Medir tiempo de respuesta para préstamos
+            inicio_ms = None
+            if solicitud["op"] == "PRESTAMO":
+                inicio_ms = obtener_timestamp_ms()
             
             # Enviar solicitud
             self.req_socket.send(mensaje_json.encode('utf-8'))
@@ -106,6 +137,15 @@ class ProcesoSolicitante:
             respuesta = json.loads(respuesta_str)
             
             logger.info(f"Respuesta recibida: {respuesta_str}")
+            
+            # Registrar métricas para préstamos
+            if solicitud["op"] == "PRESTAMO" and inicio_ms:
+                fin_ms = obtener_timestamp_ms()
+                tiempo_respuesta_ms = medir_tiempo_respuesta(inicio_ms, fin_ms)
+                libro_id = respuesta.get("libro_id") or solicitud.get("libro_id") or "N/A"
+                exito = respuesta.get("status") == "OK"
+                self.metricas.registrar_prestamo(tiempo_respuesta_ms, libro_id, exito)
+                logger.info(f"Tiempo de respuesta: {tiempo_respuesta_ms:.2f} ms")
             
             # Procesar respuesta
             if respuesta.get("status") == "OK":
@@ -181,6 +221,9 @@ class ProcesoSolicitante:
             logger.info(f"Porcentaje de éxito: {porcentaje_exito:.1f}%")
         
         logger.info("================================")
+        
+        # Mostrar métricas de préstamos
+        self.metricas.mostrar_estadisticas()
     
     def iniciar(self, archivo_solicitudes="data/solicitudes.txt"):
         """Inicia el Proceso Solicitante"""

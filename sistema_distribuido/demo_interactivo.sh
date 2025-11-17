@@ -13,7 +13,8 @@ NC='\033[0m' # No Color
 # Función para mostrar header
 show_header() {
     echo -e "${CYAN}========================================${NC}"
-    echo -e "${WHITE}    SISTEMA DISTRIBUIDO DE LIBROS${NC}"
+    echo -e "${WHITE}  SISTEMA DISTRIBUIDO DE LIBROS${NC}"
+    echo -e "${WHITE}         ETAPA 2${NC}"
     echo -e "${CYAN}========================================${NC}"
     echo
 }
@@ -61,30 +62,102 @@ get_container_ips() {
     echo -e "${CYAN}Obteniendo IPs de los contenedores...${NC}"
     echo
     
-    # Obtener IPs
+    # Obtener IPs de todos los contenedores
+    GA_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ga 2>/dev/null)
     GC_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' gc 2>/dev/null)
     PS_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ps 2>/dev/null)
+    ACTOR_PRESTAMO_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' actor_prestamo 2>/dev/null)
     ACTOR_DEV_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' actor_dev 2>/dev/null)
     ACTOR_REN_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' actor_ren 2>/dev/null)
     
-    echo -e "${WHITE}IPs de los contenedores:${NC}"
-    echo -e "   ${GREEN}Gestor de Carga (GC):${NC} $GC_IP"
-    echo -e "   ${GREEN}Proceso Solicitante (PS):${NC} $PS_IP"
+    echo -e "${WHITE}IPs de los contenedores (6 servicios):${NC}"
+    echo -e "   ${GREEN}Gestor de Almacenamiento (GA):${NC} $GA_IP (puerto 5003)"
+    echo -e "   ${GREEN}Gestor de Carga (GC):${NC} $GC_IP (puertos 5001, 5002)"
+    echo -e "   ${GREEN}Actor Préstamo:${NC} $ACTOR_PRESTAMO_IP (puerto 5004)"
     echo -e "   ${GREEN}Actor Devolución:${NC} $ACTOR_DEV_IP"
     echo -e "   ${GREEN}Actor Renovación:${NC} $ACTOR_REN_IP"
+    echo -e "   ${GREEN}Proceso Solicitante (PS):${NC} $PS_IP"
     echo
+}
+
+# Función para verificar datos iniciales
+check_initial_data() {
+    show_info "Verificando datos iniciales..."
+    
+    if [ ! -f "data/libros.json" ]; then
+        show_error "No se encontró data/libros.json"
+        show_info "Generando datos iniciales..."
+        python generar_datos_iniciales.py
+        if [ $? -eq 0 ]; then
+            show_success "Datos iniciales generados"
+        else
+            show_error "Error generando datos iniciales"
+            return 1
+        fi
+    fi
+    
+    if [ ! -f "data/primary/libros.json" ] || [ ! -f "data/secondary/libros.json" ]; then
+        show_info "Réplicas no encontradas, inicializando..."
+        python generar_datos_iniciales.py
+        if [ $? -eq 0 ]; then
+            show_success "Réplicas inicializadas"
+        else
+            show_error "Error inicializando réplicas"
+            return 1
+        fi
+    fi
+    
+    return 0
 }
 
 # Función para mostrar estado inicial
 show_initial_state() {
     show_step "1" "Verificando estado inicial del sistema"
     
+    # Verificar datos iniciales
+    if ! check_initial_data; then
+        pause
+        return
+    fi
+    
     echo -e "${WHITE}Estado inicial de la base de datos:${NC}"
-    cat data/libros.json | python -m json.tool
+    echo -e "${CYAN}Metadata del sistema:${NC}"
+    python -c "
+import json
+with open('data/libros.json', 'r') as f:
+    data = json.load(f)
+    meta = data['metadata']
+    print(f'  Total libros: {meta[\"total_libros\"]}')
+    print(f'  Total ejemplares: {meta[\"total_ejemplares\"]}')
+    print(f'  Ejemplares disponibles: {meta[\"ejemplares_disponibles\"]}')
+    print(f'  Ejemplares prestados SEDE_1: {meta[\"ejemplares_prestados_sede_1\"]}')
+    print(f'  Ejemplares prestados SEDE_2: {meta[\"ejemplares_prestados_sede_2\"]}')
+"
+    echo
+    
+    echo -e "${WHITE}Verificando réplicas:${NC}"
+    if [ -f "data/primary/libros.json" ] && [ -f "data/secondary/libros.json" ]; then
+        if diff -q data/primary/libros.json data/secondary/libros.json > /dev/null 2>&1; then
+            show_success "Réplicas primaria y secundaria están sincronizadas"
+        else
+            show_error "Réplicas no están sincronizadas"
+        fi
+    else
+        show_error "Réplicas no encontradas"
+    fi
     echo
     
     echo -e "${WHITE}Solicitudes a procesar:${NC}"
-    cat data/solicitudes.txt
+    if [ -f "data/solicitudes.txt" ]; then
+        cat data/solicitudes.txt
+        echo
+        PRESTAMOS=$(grep -v '^#' data/solicitudes.txt | grep -i 'PRESTAMO' | wc -l)
+        RENOVACIONES=$(grep -v '^#' data/solicitudes.txt | grep -i 'RENOVACION' | wc -l)
+        DEVOLUCIONES=$(grep -v '^#' data/solicitudes.txt | grep -i 'DEVOLUCION' | wc -l)
+        echo -e "${CYAN}Resumen:${NC} $PRESTAMOS préstamos, $RENOVACIONES renovaciones, $DEVOLUCIONES devoluciones"
+    else
+        show_error "No se encontró data/solicitudes.txt"
+    fi
     echo
     
     pause
@@ -117,13 +190,20 @@ prepare_environment() {
 
 # Función para iniciar servicios
 start_services() {
-    show_step "3" "Iniciando servicios distribuidos"
+    show_step "3" "Iniciando servicios distribuidos (Etapa 2)"
     
-    show_info "Construyendo y levantando servicios principales..."
-    docker compose up --build -d gc actor_devolucion actor_renovacion
+    # Verificar datos iniciales
+    if ! check_initial_data; then
+        pause
+        return
+    fi
+    
+    show_info "Construyendo y levantando todos los servicios..."
+    show_info "Iniciando: GA, GC, Actor Préstamo, Actor Devolución, Actor Renovación"
+    docker compose up --build -d ga gc actor_prestamo actor_devolucion actor_renovacion
     
     if [ $? -eq 0 ]; then
-        show_success "Servicios principales iniciados correctamente"
+        show_success "Todos los servicios iniciados correctamente"
     else
         show_error "Error al iniciar los servicios"
         exit 1
@@ -131,7 +211,7 @@ start_services() {
     
     echo
     show_info "Esperando que los servicios estén listos..."
-    sleep 3
+    sleep 5
     
     # Mostrar estado de contenedores
     echo -e "${WHITE}Estado de los contenedores:${NC}"
@@ -143,10 +223,16 @@ start_services() {
     
     # Mostrar logs de inicialización
     echo -e "${WHITE}Logs de inicialización:${NC}"
-    echo -e "${CYAN}--- Gestor de Carga ---${NC}"
+    echo -e "${CYAN}--- Gestor de Almacenamiento (GA) ---${NC}"
+    docker compose logs ga | tail -5
+    echo
+    echo -e "${CYAN}--- Gestor de Carga (GC) ---${NC}"
     docker compose logs gc | tail -5
     echo
-    echo -e "${CYAN}--- Actores ---${NC}"
+    echo -e "${CYAN}--- Actor Préstamo ---${NC}"
+    docker compose logs actor_prestamo | tail -5
+    echo
+    echo -e "${CYAN}--- Actores (Devolución y Renovación) ---${NC}"
     docker compose logs actor_devolucion actor_renovacion | tail -5
     echo
     
@@ -158,25 +244,36 @@ run_requests() {
     show_step "4" "Ejecutando solicitudes del sistema"
     
     show_info "Iniciando Proceso Solicitante..."
-    echo -e "${WHITE}Enviando solicitudes al sistema...${NC}"
+    echo -e "${WHITE}Enviando solicitudes al sistema (PRESTAMO, RENOVACION, DEVOLUCION)...${NC}"
     echo
     
-    # Ejecutar PS y capturar output
+    # Ejecutar PS y capturar output con análisis mejorado
     docker compose run --rm ps 2>&1 | while IFS= read -r line; do
-        if [[ $line == *"Solicitud #"* ]]; then
-            show_communication "PS -> GC: $line"
+        if [[ $line == *"Solicitud #"* ]] || [[ $line == *"enviada:"* ]]; then
+            if [[ $line == *"PRESTAMO"* ]]; then
+                show_communication "PS -> GC: Solicitud de PRESTAMO"
+            else
+                show_communication "PS -> GC: $line"
+            fi
         elif [[ $line == *"Respuesta recibida"* ]]; then
-            show_communication "GC -> PS: $line"
+            show_communication "GC -> PS: Respuesta recibida"
+        elif [[ $line == *"Reenviando préstamo"* ]]; then
+            show_communication "GC -> Actor Préstamo: Reenvío de préstamo"
         elif [[ $line == *"Evento recibido"* ]]; then
-            show_communication "GC -> Actor: $line"
-        elif [[ $line == *"procesada exitosamente"* ]]; then
+            show_communication "GC -> Actor: Evento publicado"
+        elif [[ $line == *"Tiempo de respuesta"* ]]; then
             show_success "$line"
+        elif [[ $line == *"procesada exitosamente"* ]] || [[ $line == *"exitoso"* ]]; then
+            show_success "$line"
+        elif [[ $line == *"ERROR"* ]] || [[ $line == *"Error"* ]]; then
+            show_error "$line"
         else
             echo "$line"
         fi
     done
     
     echo
+    show_info "Métricas guardadas en logs/metricas.csv"
     pause
 }
 
@@ -184,25 +281,53 @@ run_requests() {
 show_detailed_logs() {
     show_step "5" "Mostrando comunicación detallada entre contenedores"
     
-    echo -e "${WHITE}Análisis de comunicación entre contenedores:${NC}"
+    echo -e "${WHITE}Análisis de comunicación entre contenedores (Etapa 2):${NC}"
+    echo
+    
+    # Mostrar logs del GA
+    echo -e "${CYAN}--- Gestor de Almacenamiento (GA) ---${NC}"
+    docker compose logs ga | grep -E "(Operación|Préstamo|Devolución|Renovación|réplica)" | tail -10 | while IFS= read -r line; do
+        if [[ $line == *"Préstamo realizado"* ]]; then
+            show_success "GA: $line"
+        elif [[ $line == *"réplica"* ]]; then
+            show_info "GA: $line"
+        else
+            echo "$line"
+        fi
+    done
     echo
     
     # Mostrar logs del GC con análisis
     echo -e "${CYAN}--- Gestor de Carga (Coordinador) ---${NC}"
-    docker compose logs gc | grep -E "(Solicitud recibida|Evento enviado|Respuesta enviada)" | while IFS= read -r line; do
+    docker compose logs gc | grep -E "(Solicitud recibida|Reenviando préstamo|Evento enviado|Respuesta enviada|Health check)" | tail -10 | while IFS= read -r line; do
         if [[ $line == *"Solicitud recibida"* ]]; then
             show_communication "PS -> GC: Solicitud recibida"
+        elif [[ $line == *"Reenviando préstamo"* ]]; then
+            show_communication "GC -> Actor Préstamo: Reenvío"
         elif [[ $line == *"Evento enviado"* ]]; then
-            show_communication "GC -> Actores: Evento publicado"
+            show_communication "GC -> Actores: Evento publicado (PUB/SUB)"
         elif [[ $line == *"Respuesta enviada"* ]]; then
             show_communication "GC -> PS: Respuesta enviada"
         fi
     done
     echo
     
+    # Mostrar logs de Actor Préstamo
+    echo -e "${CYAN}--- Actor Préstamo (REQ/REP) ---${NC}"
+    docker compose logs actor_prestamo | grep -E "(Solicitud recibida|Préstamo|exitoso|Error)" | tail -10 | while IFS= read -r line; do
+        if [[ $line == *"exitoso"* ]]; then
+            show_success "Actor Préstamo: $line"
+        elif [[ $line == *"Error"* ]]; then
+            show_error "Actor Préstamo: $line"
+        else
+            echo "$line"
+        fi
+    done
+    echo
+    
     # Mostrar logs de actores
-    echo -e "${CYAN}--- Actor de Renovación ---${NC}"
-    docker compose logs actor_renovacion | grep -E "(Evento recibido|procesada exitosamente)" | while IFS= read -r line; do
+    echo -e "${CYAN}--- Actor de Renovación (PUB/SUB) ---${NC}"
+    docker compose logs actor_renovacion | grep -E "(Evento recibido|procesada exitosamente|GA)" | tail -5 | while IFS= read -r line; do
         if [[ $line == *"Evento recibido"* ]]; then
             show_communication "GC -> Actor Ren: Evento de renovacion"
         elif [[ $line == *"procesada exitosamente"* ]]; then
@@ -211,8 +336,8 @@ show_detailed_logs() {
     done
     echo
     
-    echo -e "${CYAN}--- Actor de Devolución ---${NC}"
-    docker compose logs actor_devolucion | grep -E "(Evento recibido|procesada exitosamente)" | while IFS= read -r line; do
+    echo -e "${CYAN}--- Actor de Devolución (PUB/SUB) ---${NC}"
+    docker compose logs actor_devolucion | grep -E "(Evento recibido|procesada exitosamente|GA)" | tail -5 | while IFS= read -r line; do
         if [[ $line == *"Evento recibido"* ]]; then
             show_communication "GC -> Actor Dev: Evento de devolucion"
         elif [[ $line == *"procesada exitosamente"* ]]; then
@@ -249,21 +374,39 @@ for i, libro in enumerate(data['libros'][:10]):
 "
     echo
     
+    # Verificar réplicas
+    echo -e "${WHITE}Estado de réplicas:${NC}"
+    if [ -f "data/primary/libros.json" ] && [ -f "data/secondary/libros.json" ]; then
+        if diff -q data/primary/libros.json data/secondary/libros.json > /dev/null 2>&1; then
+            show_success "Réplicas primaria y secundaria están sincronizadas"
+        else
+            show_error "Réplicas no están sincronizadas"
+            show_info "Diferencias encontradas entre réplicas"
+        fi
+    else
+        show_error "Réplicas no encontradas"
+    fi
+    echo
+    
     # Generar información dinámica basada en datos reales
     echo -e "${WHITE}Análisis de solicitudes del sistema:${NC}"
     
     # Contar solicitudes reales del archivo
-    SOLICITUDES_TOTAL=$(grep -v '^#' data/solicitudes.txt | grep -v '^$' | wc -l)
-    RENOVACIONES=$(grep -v '^#' data/solicitudes.txt | grep 'RENOVACION' | wc -l)
-    DEVOLUCIONES=$(grep -v '^#' data/solicitudes.txt | grep 'DEVOLUCION' | wc -l)
-    SEDE_1=$(grep -v '^#' data/solicitudes.txt | grep 'SEDE_1' | wc -l)
-    SEDE_2=$(grep -v '^#' data/solicitudes.txt | grep 'SEDE_2' | wc -l)
-    
-    echo -e "   ${CYAN}Total de solicitudes en archivo:${NC} $SOLICITUDES_TOTAL"
-    echo -e "   ${YELLOW}Renovaciones:${NC} $RENOVACIONES"
-    echo -e "   ${YELLOW}Devoluciones:${NC} $DEVOLUCIONES"
-    echo -e "   ${BLUE}Sede 1:${NC} $SEDE_1 solicitudes"
-    echo -e "   ${BLUE}Sede 2:${NC} $SEDE_2 solicitudes"
+    if [ -f "data/solicitudes.txt" ]; then
+        SOLICITUDES_TOTAL=$(grep -v '^#' data/solicitudes.txt | grep -v '^$' | wc -l)
+        PRESTAMOS=$(grep -v '^#' data/solicitudes.txt | grep -i 'PRESTAMO' | wc -l)
+        RENOVACIONES=$(grep -v '^#' data/solicitudes.txt | grep -i 'RENOVACION' | wc -l)
+        DEVOLUCIONES=$(grep -v '^#' data/solicitudes.txt | grep -i 'DEVOLUCION' | wc -l)
+        SEDE_1=$(grep -v '^#' data/solicitudes.txt | grep 'SEDE_1' | wc -l)
+        SEDE_2=$(grep -v '^#' data/solicitudes.txt | grep 'SEDE_2' | wc -l)
+        
+        echo -e "   ${CYAN}Total de solicitudes en archivo:${NC} $SOLICITUDES_TOTAL"
+        echo -e "   ${GREEN}Préstamos:${NC} $PRESTAMOS"
+        echo -e "   ${YELLOW}Renovaciones:${NC} $RENOVACIONES"
+        echo -e "   ${YELLOW}Devoluciones:${NC} $DEVOLUCIONES"
+        echo -e "   ${BLUE}Sede 1:${NC} $SEDE_1 solicitudes"
+        echo -e "   ${BLUE}Sede 2:${NC} $SEDE_2 solicitudes"
+    fi
     echo
     
     # Verificar estado de pruebas si existen
@@ -296,27 +439,157 @@ for i, libro in enumerate(data['libros'][:10]):
     pause
 }
 
+# Función para mostrar métricas
+show_metrics() {
+    show_step "7" "Mostrando métricas de rendimiento"
+    
+    if [ ! -f "logs/metricas.csv" ]; then
+        show_error "No se encontró archivo de métricas. Ejecuta solicitudes primero."
+        pause
+        return
+    fi
+    
+    echo -e "${WHITE}Métricas de Préstamos:${NC}"
+    echo
+    
+    python3 -c "
+import csv
+import statistics
+import os
+
+if not os.path.exists('logs/metricas.csv'):
+    print('No hay métricas disponibles')
+    exit(0)
+
+with open('logs/metricas.csv', 'r') as f:
+    reader = csv.DictReader(f)
+    prestamos = [row for row in reader if row.get('operacion') == 'PRESTAMO']
+    
+    if not prestamos:
+        print('No hay préstamos registrados')
+        exit(0)
+    
+    tiempos = [float(row['tiempo_respuesta_ms']) for row in prestamos]
+    exitosos = [row for row in prestamos if row.get('exito') == 'SI']
+    
+    print(f'Total de préstamos procesados: {len(prestamos)}')
+    print(f'Préstamos exitosos: {len(exitosos)}')
+    print(f'Préstamos fallidos: {len(prestamos) - len(exitosos)}')
+    print()
+    print('Tiempos de respuesta:')
+    print(f'  Promedio: {statistics.mean(tiempos):.2f} ms')
+    if len(tiempos) > 1:
+        print(f'  Desviación estándar: {statistics.stdev(tiempos):.2f} ms')
+        print(f'  Mínimo: {min(tiempos):.2f} ms')
+        print(f'  Máximo: {max(tiempos):.2f} ms')
+    
+    # Últimos 2 minutos
+    if prestamos:
+        ultimo = prestamos[-1]
+        print()
+        print('Última ventana de 2 minutos:')
+        print(f'  Préstamos en ventana: {ultimo.get(\"total_prestamos_2min\", \"N/A\")}')
+        print(f'  Tiempo promedio: {ultimo.get(\"tiempo_promedio_ms\", \"N/A\")} ms')
+        print(f'  Desviación estándar: {ultimo.get(\"desviacion_estandar_ms\", \"N/A\")} ms')
+" 2>/dev/null || show_error "Error leyendo métricas"
+    
+    echo
+    pause
+}
+
+# Función para probar failover
+test_failover() {
+    show_step "8" "Prueba de Failover"
+    
+    echo -e "${WHITE}Esta prueba simula el fallo de GA y verifica la detección automática${NC}"
+    echo
+    
+    # Verificar que GA está corriendo
+    if ! docker compose ps ga | grep -q "running"; then
+        show_error "GA no está corriendo. Inicia los servicios primero (opción 3)."
+        pause
+        return
+    fi
+    
+    show_info "Estado actual de GA:"
+    docker compose ps ga
+    echo
+    
+    show_info "Mostrando health checks de actores..."
+    echo -e "${CYAN}--- Logs de Health Checks ---${NC}"
+    docker compose logs actor_prestamo actor_devolucion actor_renovacion | grep -i "health\|GA\|failover" | tail -10
+    echo
+    
+    echo -e "${YELLOW}¿Deseas simular el fallo de GA? (s/n)${NC}"
+    read -r respuesta
+    
+    if [[ "$respuesta" == "s" ]] || [[ "$respuesta" == "S" ]]; then
+        show_info "Deteniendo GA..."
+        docker compose stop ga
+        show_success "GA detenido"
+        echo
+        
+        show_info "Esperando 5 segundos para que los actores detecten el fallo..."
+        sleep 5
+        
+        show_info "Logs de actores después del fallo:"
+        docker compose logs actor_prestamo actor_devolucion actor_renovacion | grep -i "GA\|timeout\|error\|failover" | tail -10
+        echo
+        
+        echo -e "${YELLOW}¿Deseas recuperar GA? (s/n)${NC}"
+        read -r respuesta2
+        
+        if [[ "$respuesta2" == "s" ]] || [[ "$respuesta2" == "S" ]]; then
+            show_info "Reiniciando GA..."
+            docker compose start ga
+            sleep 3
+            show_success "GA reiniciado"
+            
+            show_info "Logs de reconexión:"
+            docker compose logs actor_prestamo | grep -i "GA\|conectado\|reconectar" | tail -5
+        fi
+    fi
+    
+    echo
+    pause
+}
+
 # Función para mostrar arquitectura
 show_architecture() {
-    show_step "7" "Explicando arquitectura del sistema"
+    show_step "9" "Explicando arquitectura del sistema (Etapa 2)"
     
-    echo -e "${WHITE}Arquitectura del Sistema Distribuido:${NC}"
+    echo -e "${WHITE}Arquitectura del Sistema Distribuido - Etapa 2:${NC}"
     echo
-    echo -e "${CYAN}1. Patrones de Comunicación:${NC}"
-    echo -e "   ${YELLOW}REQ/REP (Sincrono):${NC} PS <-> GC (puerto 5001)"
-    echo -e "   ${YELLOW}PUB/SUB (Asincrono):${NC} GC -> Actores (puerto 5002)"
+    echo -e "${CYAN}1. Componentes (6 servicios):${NC}"
+    echo -e "   ${GREEN}GA${NC} - Gestor de Almacenamiento (réplicas primaria/secundaria)"
+    echo -e "   ${GREEN}GC${NC} - Gestor de Carga (coordinador)"
+    echo -e "   ${GREEN}Actor Préstamo${NC} - Procesa préstamos (REQ/REP)"
+    echo -e "   ${GREEN}Actor Devolución${NC} - Procesa devoluciones (PUB/SUB)"
+    echo -e "   ${GREEN}Actor Renovación${NC} - Procesa renovaciones (PUB/SUB)"
+    echo -e "   ${GREEN}PS${NC} - Proceso Solicitante (cliente)"
     echo
-    echo -e "${CYAN}2. Flujo de Datos:${NC}"
-    echo -e "   ${GREEN}PS${NC} lee solicitudes -> envia a ${GREEN}GC${NC}"
-    echo -e "   ${GREEN}GC${NC} responde inmediatamente -> publica eventos"
-    echo -e "   ${GREEN}Actores${NC} procesan eventos -> actualizan BD"
+    echo -e "${CYAN}2. Patrones de Comunicación:${NC}"
+    echo -e "   ${YELLOW}REQ/REP (Síncrono):${NC}"
+    echo -e "      - PS <-> GC (puerto 5001)"
+    echo -e "      - GC <-> Actor Préstamo (puerto 5004)"
+    echo -e "      - Actores <-> GA (puerto 5003)"
+    echo -e "   ${YELLOW}PUB/SUB (Asíncrono):${NC}"
+    echo -e "      - GC -> Actores (puerto 5002) para devolución/renovación"
     echo
-    echo -e "${CYAN}3. Características Técnicas:${NC}"
-    echo -e "   - Comunicacion TCP entre contenedores"
-    echo -e "   - Base de datos JSON compartida"
-    echo -e "   - Logs detallados con timestamps"
-    echo -e "   - Manejo robusto de errores"
-    echo -e "   - Sistema completamente distribuido"
+    echo -e "${CYAN}3. Flujo de Operaciones:${NC}"
+    echo -e "   ${GREEN}Préstamo (REQ/REP):${NC}"
+    echo -e "      PS -> GC -> Actor Préstamo -> GA -> Actor Préstamo -> GC -> PS"
+    echo -e "   ${GREEN}Devolución/Renovación (PUB/SUB):${NC}"
+    echo -e "      PS -> GC (respuesta inmediata) -> GC publica evento -> Actor -> GA"
+    echo
+    echo -e "${CYAN}4. Características Técnicas:${NC}"
+    echo -e "   - Réplicas primaria/secundaria con sincronización asíncrona"
+    echo -e "   - Failover automático con health checks"
+    echo -e "   - Sistema de métricas con exportación a CSV"
+    echo -e "   - Búsqueda de libros por código o criterios"
+    echo -e "   - Validación de préstamos (máximo 2 semanas)"
+    echo -e "   - Comunicación TCP entre contenedores"
+    echo -e "   - Logs detallados con timestamps en español"
     echo
     
     pause
@@ -324,7 +597,7 @@ show_architecture() {
 
 # Función para limpiar
 cleanup() {
-    show_step "8" "Limpiando el sistema"
+    show_step "10" "Limpiando el sistema"
     
     show_info "Deteniendo contenedores..."
     docker compose down
@@ -335,27 +608,30 @@ cleanup() {
 # Función para mostrar menú
 show_menu() {
     clear_screen
-    echo -e "${WHITE}Selecciona una opción:${NC}"
+    echo -e "${WHITE}Selecciona una opción (Sistema Etapa 2):${NC}"
     echo
-    echo -e "${GREEN}1.${NC} Ver estado inicial"
+    echo -e "${GREEN}1.${NC} Ver estado inicial y réplicas"
     echo -e "${GREEN}2.${NC} Preparar entorno"
-    echo -e "${GREEN}3.${NC} Iniciar servicios y mostrar IPs"
-    echo -e "${GREEN}4.${NC} Ejecutar solicitudes"
+    echo -e "${GREEN}3.${NC} Iniciar servicios (GA, GC, Actores) y mostrar IPs"
+    echo -e "${GREEN}4.${NC} Ejecutar solicitudes (PRESTAMO, RENOVACION, DEVOLUCION)"
     echo -e "${GREEN}5.${NC} Mostrar logs detallados de comunicación"
-    echo -e "${GREEN}6.${NC} Ver resultados finales"
-    echo -e "${GREEN}7.${NC} Explicar arquitectura"
-    echo -e "${GREEN}8.${NC} Limpiar sistema"
-    echo -e "${RED}9.${NC} Salir"
+    echo -e "${GREEN}6.${NC} Ver resultados finales y sincronización de réplicas"
+    echo -e "${GREEN}7.${NC} Ver métricas de rendimiento"
+    echo -e "${GREEN}8.${NC} Probar failover (simular fallo de GA)"
+    echo -e "${GREEN}9.${NC} Explicar arquitectura (Etapa 2)"
+    echo -e "${GREEN}10.${NC} Limpiar sistema"
+    echo -e "${RED}11.${NC} Salir"
     echo
-    echo -n -e "${YELLOW}Ingresa tu opción (1-9): ${NC}"
+    echo -n -e "${YELLOW}Ingresa tu opción (1-11): ${NC}"
 }
 
 # Función principal
 main() {
     clear_screen
     
-    echo -e "${WHITE}Bienvenido al Sistema Distribuido de Libros${NC}"
+    echo -e "${WHITE}Bienvenido al Sistema Distribuido de Libros - Etapa 2${NC}"
     echo -e "${CYAN}Este script te guiará paso a paso para demostrar el funcionamiento${NC}"
+    echo -e "${CYAN}Incluye: PRESTAMO, réplicas, failover y métricas${NC}"
     echo
     
     while true; do
@@ -382,12 +658,18 @@ main() {
                 show_results
                 ;;
             7)
-                show_architecture
+                show_metrics
                 ;;
             8)
-                cleanup
+                test_failover
                 ;;
             9)
+                show_architecture
+                ;;
+            10)
+                cleanup
+                ;;
+            11)
                 echo -e "${GREEN}Hasta luego!${NC}"
                 exit 0
                 ;;
