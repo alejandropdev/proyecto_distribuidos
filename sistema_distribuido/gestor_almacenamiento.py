@@ -48,7 +48,6 @@ class GestorAlmacenamiento:
         self.running = True
         self.contador_operaciones = 0
         self.replicacion_lock = threading.Lock()
-        self.using_secondary = False  # Flag para indicar si estamos usando réplica secundaria
         
         # Asegurar que los directorios existen
         os.makedirs(os.path.dirname(self.primary_path), exist_ok=True)
@@ -103,43 +102,8 @@ class GestorAlmacenamiento:
         with open(archivo, 'w', encoding='utf-8') as f:
             json.dump(estructura_vacia, f, ensure_ascii=False, indent=2)
     
-    def _cargar_base_datos(self, archivo=None):
-        """
-        Carga la base de datos desde un archivo con failover automático
-        
-        Args:
-            archivo: Ruta al archivo (None para usar failover automático)
-        
-        Returns:
-            Dict con la base de datos o None si falla
-        """
-        # Si no se especifica archivo, usar failover automático
-        if archivo is None:
-            # Intentar cargar desde primaria primero
-            if os.path.exists(self.primary_path) and os.access(self.primary_path, os.R_OK):
-                try:
-                    base_datos = self._cargar_base_datos(self.primary_path)
-                    if base_datos:
-                        self.using_secondary = False
-                        return base_datos
-                except Exception as e:
-                    logger.warning(f"Error cargando réplica primaria: {e}")
-            
-            # Si primaria falla, intentar secundaria
-            if os.path.exists(self.secondary_path) and os.access(self.secondary_path, os.R_OK):
-                logger.warning("Réplica primaria no disponible, usando réplica secundaria")
-                try:
-                    base_datos = self._cargar_base_datos(self.secondary_path)
-                    if base_datos:
-                        self.using_secondary = True
-                        return base_datos
-                except Exception as e:
-                    logger.error(f"Error cargando réplica secundaria: {e}")
-            
-            logger.error("Ambas réplicas no están disponibles")
-            return None
-        
-        # Cargar desde archivo específico
+    def _cargar_base_datos(self, archivo):
+        """Carga la base de datos desde un archivo"""
         try:
             lock = FileLock(f"{archivo}.lock")
             with lock:
@@ -158,44 +122,8 @@ class GestorAlmacenamiento:
             logger.error(f"Error cargando base de datos desde {archivo}: {e}")
             return None
     
-    def _guardar_base_datos(self, base_datos, archivo=None):
-        """
-        Guarda la base de datos en un archivo con failover automático
-        
-        Args:
-            base_datos: Dict con la base de datos
-            archivo: Ruta al archivo (None para usar failover automático)
-        
-        Returns:
-            bool: True si se guardó exitosamente, False en caso contrario
-        """
-        # Si no se especifica archivo, usar failover automático
-        if archivo is None:
-            # Si estamos usando secundaria, guardar solo en secundaria
-            if self.using_secondary:
-                logger.warning("Guardando en réplica secundaria (modo degradado)")
-                return self._guardar_base_datos(base_datos, self.secondary_path)
-            
-            # Intentar guardar en primaria primero
-            if os.path.exists(os.path.dirname(self.primary_path)) and os.access(os.path.dirname(self.primary_path), os.W_OK):
-                try:
-                    if self._guardar_base_datos(base_datos, self.primary_path):
-                        # Si guardó en primaria, replicar a secundaria
-                        self._replicar_a_secundaria(base_datos)
-                        return True
-                except Exception as e:
-                    logger.warning(f"Error guardando en réplica primaria: {e}")
-            
-            # Si primaria falla, guardar en secundaria
-            if os.path.exists(os.path.dirname(self.secondary_path)) and os.access(os.path.dirname(self.secondary_path), os.W_OK):
-                logger.warning("Réplica primaria no disponible, guardando en réplica secundaria")
-                self.using_secondary = True
-                return self._guardar_base_datos(base_datos, self.secondary_path)
-            
-            logger.error("No se puede escribir en ninguna réplica")
-            return False
-        
-        # Guardar en archivo específico
+    def _guardar_base_datos(self, base_datos, archivo):
+        """Guarda la base de datos en un archivo"""
         try:
             lock = FileLock(f"{archivo}.lock")
             with lock:
@@ -242,7 +170,7 @@ class GestorAlmacenamiento:
         Returns:
             Dict con el libro encontrado o None
         """
-        base_datos = self._cargar_base_datos()  # Usar failover automático
+        base_datos = self._cargar_base_datos(self.primary_path)
         if not base_datos:
             return None
         
@@ -278,7 +206,7 @@ class GestorAlmacenamiento:
         Returns:
             Dict con resultado: {"success": bool, "message": str, "ejemplar_id": str}
         """
-        base_datos = self._cargar_base_datos()  # Usar failover automático
+        base_datos = self._cargar_base_datos(self.primary_path)
         if not base_datos:
             return {"success": False, "message": "Error cargando base de datos"}
         
@@ -338,13 +266,12 @@ class GestorAlmacenamiento:
                 ejemplar['fecha_devolucion'] = fecha_devolucion
                 break
         
-        # Guardar con failover automático
-        if not self._guardar_base_datos(base_datos):
-            return {"success": False, "message": "Error guardando en réplica"}
+        # Guardar en primaria
+        if not self._guardar_base_datos(base_datos, self.primary_path):
+            return {"success": False, "message": "Error guardando en réplica primaria"}
         
-        # Si estamos usando primaria, replicar a secundaria (asíncrono)
-        if not self.using_secondary:
-            self._replicar_a_secundaria(base_datos)
+        # Replicar a secundaria (asíncrono)
+        self._replicar_a_secundaria(base_datos)
         
         logger.info(f"Préstamo realizado: Libro {libro_id}, Ejemplar {ejemplar_prestado['ejemplar_id']}, Usuario {usuario_id}, Sede {sede}")
         
@@ -367,7 +294,7 @@ class GestorAlmacenamiento:
         Returns:
             Dict con resultado: {"success": bool, "message": str}
         """
-        base_datos = self._cargar_base_datos()  # Usar failover automático
+        base_datos = self._cargar_base_datos(self.primary_path)
         if not base_datos:
             return {"success": False, "message": "Error cargando base de datos"}
         
@@ -421,13 +348,12 @@ class GestorAlmacenamiento:
                 ejemplar['fecha_devolucion'] = None
                 break
         
-        # Guardar con failover automático
-        if not self._guardar_base_datos(base_datos):
-            return {"success": False, "message": "Error guardando en réplica"}
+        # Guardar en primaria
+        if not self._guardar_base_datos(base_datos, self.primary_path):
+            return {"success": False, "message": "Error guardando en réplica primaria"}
         
-        # Si estamos usando primaria, replicar a secundaria (asíncrono)
-        if not self.using_secondary:
-            self._replicar_a_secundaria(base_datos)
+        # Replicar a secundaria (asíncrono)
+        self._replicar_a_secundaria(base_datos)
         
         logger.info(f"Devolución realizada: Libro {libro_id}, Usuario {usuario_id}, Sede {sede}")
         
@@ -446,7 +372,7 @@ class GestorAlmacenamiento:
         Returns:
             Dict con resultado: {"success": bool, "message": str}
         """
-        base_datos = self._cargar_base_datos()  # Usar failover automático
+        base_datos = self._cargar_base_datos(self.primary_path)
         if not base_datos:
             return {"success": False, "message": "Error cargando base de datos"}
         
@@ -481,13 +407,12 @@ class GestorAlmacenamiento:
                 ejemplar['fecha_devolucion'] = nueva_fecha
                 break
         
-        # Guardar con failover automático
-        if not self._guardar_base_datos(base_datos):
-            return {"success": False, "message": "Error guardando en réplica"}
+        # Guardar en primaria
+        if not self._guardar_base_datos(base_datos, self.primary_path):
+            return {"success": False, "message": "Error guardando en réplica primaria"}
         
-        # Si estamos usando primaria, replicar a secundaria (asíncrono)
-        if not self.using_secondary:
-            self._replicar_a_secundaria(base_datos)
+        # Replicar a secundaria (asíncrono)
+        self._replicar_a_secundaria(base_datos)
         
         logger.info(f"Renovación realizada: Libro {libro_id}, Usuario {usuario_id}, Sede {sede}, Nueva fecha: {nueva_fecha}")
         
@@ -504,18 +429,16 @@ class GestorAlmacenamiento:
         Returns:
             Dict con resultado: {"success": bool, "message": str}
         """
-        base_datos = self._cargar_base_datos()  # Usar failover automático
+        base_datos = self._cargar_base_datos(self.primary_path)
         if not base_datos:
             return {"success": False, "message": "Error cargando base de datos"}
         
         # Implementar lógica de actualización según cambios
         # Por ahora, solo guardamos
-        if not self._guardar_base_datos(base_datos):
-            return {"success": False, "message": "Error guardando en réplica"}
+        if not self._guardar_base_datos(base_datos, self.primary_path):
+            return {"success": False, "message": "Error guardando en réplica primaria"}
         
-        # Si estamos usando primaria, replicar a secundaria (asíncrono)
-        if not self.using_secondary:
-            self._replicar_a_secundaria(base_datos)
+        self._replicar_a_secundaria(base_datos)
         
         return {"success": True, "message": "Actualización realizada exitosamente"}
     
@@ -524,24 +447,17 @@ class GestorAlmacenamiento:
         Verifica el estado de salud del GA
         
         Returns:
-            Dict con estado: {"status": "healthy"|"degraded", "primary_ok": bool, "secondary_ok": bool, "using_secondary": bool}
+            Dict con estado: {"status": "healthy", "primary_ok": bool, "secondary_ok": bool}
         """
-        primary_ok = os.path.exists(self.primary_path) and os.access(self.primary_path, os.R_OK)
-        secondary_ok = os.path.exists(self.secondary_path) and os.access(self.secondary_path, os.R_OK)
+        primary_ok = os.path.exists(self.primary_path)
+        secondary_ok = os.path.exists(self.secondary_path)
         
-        # Determinar estado
-        if primary_ok and secondary_ok:
-            status = "healthy"
-        elif secondary_ok:
-            status = "degraded"  # Solo secundaria disponible
-        else:
-            status = "unhealthy"  # Ninguna réplica disponible
+        status = "healthy" if (primary_ok and secondary_ok) else "degraded"
         
         return {
             "status": status,
             "primary_ok": primary_ok,
             "secondary_ok": secondary_ok,
-            "using_secondary": self.using_secondary,
             "primary_path": self.primary_path,
             "secondary_path": self.secondary_path
         }
