@@ -24,29 +24,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 class GestorCarga:
-    """
-    Gestor de Carga (GC) - Coordina las solicitudes del sistema
-    
-    El GC actúa como punto central de entrada para todas las solicitudes del sistema.
-    Soporta dos modos de operación:
-    - Serial: Procesa solicitudes una a la vez en un solo thread
-    - Multithread: Procesa múltiples solicitudes concurrentemente usando workers
-    
-    Patrones de comunicación:
-    - REQ/REP (síncrono): Recibe solicitudes de PS, envía préstamos a Actor Préstamo
-    - PUB/SUB (asíncrono): Publica eventos de devolución y renovación a actores
-    """
     def __init__(self):
-        """
-        Inicializa el Gestor de Carga
-        
-        Lee configuración desde variables de entorno:
-        - GC_MODE: 'serial' o 'multithread' (default: 'serial')
-        - GC_WORKERS: Número de workers en modo multithread (default: 4)
-        - GC_HOST, GC_REP_PORT, GC_PUB_PORT: Configuración de sockets
-        - ACTOR_PRESTAMO_HOST, ACTOR_PRESTAMO_PORT: Configuración de Actor Préstamo
-        - GA_HOST, GA_PORT: Configuración de Gestor de Almacenamiento
-        """
         self.context = zmq.Context()
         self.rep_socket = None  # Socket REP para recibir de PS
         self.pub_socket = None  # Socket PUB para enviar eventos a actores
@@ -287,19 +265,10 @@ class GestorCarga:
             logger.error(f"Error enviando evento a actores: {e}")
     
     def _worker_loop(self, worker_id, req_socket):
-        """
-        Loop de trabajo para un worker thread en modo multithread
-        
-        Cada worker:
-        1. Obtiene solicitudes de la cola de requests
-        2. Procesa la solicitud (puede ser préstamo, devolución o renovación)
-        3. Envía la respuesta a la cola de respuestas
-        
-        El worker mantiene su propio socket REQ hacia Actor Préstamo para
-        permitir procesamiento concurrente de préstamos.
+        """Loop de trabajo para un worker thread en modo multithread
         
         Args:
-            worker_id: ID único del worker (para logging)
+            worker_id: ID del worker
             req_socket: Socket REQ propio del worker para comunicarse con actor_prestamo
         """
         logger.info(f"Worker {worker_id} iniciado")
@@ -334,17 +303,7 @@ class GestorCarga:
         logger.info(f"Worker {worker_id} detenido")
     
     def _iniciar_workers(self):
-        """
-        Inicia los worker threads en modo multithread
-        
-        Crea N workers (donde N = self.num_workers), cada uno con:
-        - Su propio socket REQ hacia Actor Préstamo
-        - Acceso a las colas thread-safe (request_queue, response_queue)
-        - Acceso compartido al socket PUB (thread-safe en ZeroMQ)
-        
-        Los workers se ejecutan como threads daemon y procesan solicitudes
-        de forma concurrente mientras se mantiene la semántica REQ/REP.
-        """
+        """Inicia los worker threads en modo multithread"""
         logger.info(f"Iniciando {self.num_workers} workers...")
         
         for i in range(self.num_workers):
