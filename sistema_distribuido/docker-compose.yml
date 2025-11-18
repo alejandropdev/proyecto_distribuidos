@@ -47,6 +47,8 @@ services:
       - ACTOR_PRESTAMO_PORT=5004
       - GA_HOST=ga
       - GA_PORT=5003
+      - GC_MODE=serial
+      - GC_WORKERS=4
     healthcheck:
       test: ["CMD", "python", "-c", "import zmq; print('GC healthy')"]
       interval: 30s

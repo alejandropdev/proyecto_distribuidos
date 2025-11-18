@@ -208,6 +208,8 @@ Todos los servicios son configurables mediante variables de entorno:
 - `ACTOR_PRESTAMO_PORT`: Puerto del Actor Préstamo (default: 5004)
 - `GA_HOST`: Host del GA (default: ga)
 - `GA_PORT`: Puerto del GA (default: 5003)
+- `GC_MODE`: Modo de operación - `serial` o `multithread` (default: serial)
+- `GC_WORKERS`: Número de workers en modo multithread (default: 4)
 
 **Actores:**
 - `GC_HOST`: Host del GC (default: gc)
@@ -359,6 +361,70 @@ diff data/primary/libros.json data/secondary/libros.json
 ```
 
 Las réplicas deberían estar sincronizadas después de la recuperación.
+
+## Modos de Operación del GC
+
+El Gestor de Carga (GC) puede operar en dos modos diferentes:
+
+### Modo Serial (Default)
+
+- **Comportamiento**: Procesa solicitudes una a la vez en un solo thread
+- **Ventajas**: Comportamiento determinístico, fácil de depurar
+- **Uso**: Modo por defecto, compatible con el comportamiento original del sistema
+- **Configuración**: `GC_MODE=serial` (o no especificar, es el default)
+
+### Modo Multithread
+
+- **Comportamiento**: Procesa múltiples solicitudes concurrentemente usando un pool de workers
+- **Ventajas**: Mayor throughput, mejor utilización de recursos
+- **Uso**: Para experimentos de rendimiento y cargas altas
+- **Configuración**: 
+  - `GC_MODE=multithread`
+  - `GC_WORKERS=N` (número de workers, default: 4)
+
+**Características del Modo Multithread:**
+- Cada worker tiene su propio socket REQ para comunicarse con el Actor Préstamo
+- El socket PUB es compartido entre workers (thread-safe en ZeroMQ)
+- El contador de operaciones es thread-safe usando locks
+- Las solicitudes se procesan en paralelo mientras se mantiene la semántica REQ/REP
+
+### Cambiar entre Modos
+
+**Modo Serial:**
+```bash
+docker compose up -d --build gc
+# O explícitamente:
+docker compose run --rm -e GC_MODE=serial gc
+```
+
+**Modo Multithread:**
+```bash
+docker compose run --rm -e GC_MODE=multithread -e GC_WORKERS=4 gc
+# O modificar docker-compose.yml y hacer:
+docker compose up -d --build gc
+```
+
+### Comparar Modos
+
+Para comparar el rendimiento entre modos:
+
+1. **Ejecutar en modo serial:**
+```bash
+cd sistema_distribuido
+docker compose up -d ga gc actor_prestamo
+docker compose run --rm -e GC_MODE=serial ps
+# Analizar métricas en logs/metricas.csv
+```
+
+2. **Ejecutar en modo multithread:**
+```bash
+docker compose down
+docker compose up -d ga gc actor_prestamo
+docker compose run --rm -e GC_MODE=multithread -e GC_WORKERS=4 ps
+# Comparar métricas en logs/metricas.csv
+```
+
+Las métricas son compatibles entre ambos modos y mantienen el mismo formato.
 
 ## Experimentos de Rendimiento
 
